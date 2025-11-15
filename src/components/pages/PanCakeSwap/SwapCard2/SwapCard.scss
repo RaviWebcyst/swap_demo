@@ -1,0 +1,172 @@
+@import "../../../../assets/theme/_var.scss";
+
+.addCardBox .addCardBox_swap .addCard,
+.addCardBox .addCardBox_recieve .addCard {
+  border-radius: 2.5rem;
+  width: 100%;
+  min-width: 42rem;
+  margin: 0 auto;
+  // padding: 2.4rem 3rem;
+  padding: 2.975rem 2.75rem;
+  border: 1px solid #e5e5e5;
+  box-shadow: none;
+}
+.time_left .time_second {
+  font-size: 14px;
+  color: #737373;
+}
+.best_returns button {
+  color: #fff;
+  background-color: #000;
+  font-size: 12px;
+  padding: 2px 18px;
+}
+.first_value_div h1 {
+  font-size: 18px;
+  color: #000000;
+}
+.first_value_div h5,
+.squid_div {
+  font-size: 14px;
+  color: #414141;
+  font-weight: 500;
+}
+.squid_lifi_text {
+  font-size: 16px;
+  color: #414141 !important;
+  font-weight: 700;
+}
+.values_li {
+  font-size: 10px;
+  font-weight: 500;
+  color: #414141 !important;
+  align-items: flex-start;
+}
+.recieve_price_div h6,
+.recieve_price_div p {
+  color: #414141 !important;
+  font-size: 12px;
+}
+.addCardBox_recieve .accordion-button:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: 0px 0px 0px #000;
+}
+.addCardBox_recieve button.accordion-button {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.addCardBox_recieve .accordion {
+  --bs-accordion-bg: transparent;
+}
+.addCardBox_recieve .accordion-collapse.collapse.show .squid_div {
+  display: none;
+}
+.recieve_values_div {
+  background: #f6f6f6;
+  border-radius: 20px;
+  padding: 16px 15px 16px;
+}
+.recieve_values_div:hover {
+  border: 0.5px solid #1dd49a;
+  background-color: #dff9ff;
+}
+.recieve_values_div:hover .best_returns button {
+  background-color: #1dd49a;
+}
+
+.addCardBox .addCard_tokenvalues .swapBtn {
+  transform: rotate(90deg);
+}
+.addCardBox .addCard_tokenvalues .swapbt::before,
+.addCardBox .addCard_tokenvalues .swapbt::after {
+  display: none;
+}
+.addCardBox .addCardBox_swap .addCard_tokenvalues .activeCardtoken .listToken,
+.addCardBox
+  .addCardBox_swap
+  .addCard_tokenvalues
+  .secondaryCardToken
+  .listToken {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  width: 18em;
+  padding: 1.8em 1.1em;
+  background-color: #f6f6f6;
+  position: relative;
+}
+.addCardBox .addCardBox_swap .addCard_tokenvalues .swapBtn {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+.addCardBox_swap .swapbt {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+}
+.addCardBox_swap .tokenBtn img {
+  width: 40px;
+  height: 40px;
+}
+.addCardBox_swap .tokenBtn .tokenIcon {
+  margin-left: 8px;
+}
+// .addCardBox_swap .token_drop {
+//     color: black;
+//     position: absolute;
+//     left: 100%;
+//     transform: translateX(100%);
+// }
+.addCardBox_swap .tokenBtn {
+  padding: 0px;
+}
+.input_send_field {
+  background-color: #f6f6f6;
+  padding: 2em 1.1em 1.6em;
+  border-radius: 10px;
+}
+.input_send_field h6 {
+  font-size: 1.6em;
+}
+.input_send_field p {
+  font-size: 1.2em;
+}
+.get_bsc_gas h5 {
+  font-size: 1.6em;
+  color: #414141 !important;
+}
+.bsc_gas_description {
+  font-size: 12px;
+}
+.toggle_switch_button input {
+  width: 4em !important;
+  height: 2em;
+}
+.get_bsc_gas {
+  background: #dff9ff;
+  border: 0.5px solid #1dd49a;
+  border-radius: 10px;
+  padding: 1.1em 2em 1.6em;
+  margin-top: 2.6em;
+}
+.toggle_switch_button .form-check-input:checked {
+  background-color: #1dd49a;
+  border-color: #1dd49a;
+}
+.toggle_switch_button .form-check-input:focus{
+box-shadow: 0px 0px 0px #000;
+}
+.toggle_switch_button .form-check-input:focus{
+border-color: #1dd49a;
+}
+.enough_fund_msg {
+    background: #F5C31A1A;
+    border: 1px solid #F5C31A;
+    border-radius: 10px;
+    padding: 1.2em 2.3em;
+}
+.enough_fund_msg p{
+  font-size: 12px;
+}

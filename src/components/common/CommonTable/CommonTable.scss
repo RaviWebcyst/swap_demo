@@ -1,0 +1,133 @@
+@import '../../../assets/theme/_var.scss';
+
+.commonTable {
+    width: 100%;
+    border-radius: 0 0 1.6rem 1.6rem;
+    border-collapse: separate;
+    border-spacing: 0rem 1.2rem;
+    vertical-align: middle;
+    padding: 1rem 2rem 2rem;
+
+    @include theme() {
+        color: theme-get("textclr");
+        background: theme-get("secondryBg");
+    }
+
+    thead {
+        vertical-align: middle;
+
+        tr {
+            th {
+                background: transparent;
+                padding: 0rem 2rem .2rem 2rem;
+                margin: 0rem 2rem;
+                font-size: 1.6rem;
+                font-weight: 400;
+                border: none;
+                letter-spacing: 0.32px;
+                white-space: nowrap;
+                opacity: 0.8;
+
+                @include theme () {
+                    color: theme-get("textclr")
+                }
+
+                .iconSec {
+                    vertical-align: middle;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: 0.4rem;
+                    margin-bottom: 0.4rem;
+                }
+
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                padding: 3.1rem 2rem;
+                margin: 0rem 2rem;
+                border: none;
+                white-space: nowrap;
+                font-size: 1.4rem;
+                font-weight: 500;
+                vertical-align: middle;
+
+                @media (max-width: 991px) {
+                    padding: 2rem 1.4rem;
+
+                    &:first-child {
+                        padding-left: 2rem;
+                    }
+                }
+
+                @include theme() {
+                    background: theme-get("td_bg");
+                    color: theme-get("textclr")
+                }
+
+
+                &:first-child {
+                    border-radius: 1.6rem 0rem 0rem 1.6rem;
+                }
+
+                &:last-child {
+                    border-radius: 0rem 1.6rem 1.6rem 0rem;
+                }
+            }
+        }
+    }
+
+    &.last_btnfix {
+        position: relative;
+
+        thead,
+        tbody {
+            tr {
+
+                th,
+                td {
+                    &:last-child {
+                        position: sticky;
+                        right: 0;
+                        z-index: 100;
+                    }
+                }
+
+                td {
+                    &:last-child {
+                        @include theme () {
+                            background: theme-get("td_bg");
+                        }
+                    }
+                }
+            }
+        }
+
+        &.loading_table {
+
+            thead,
+            tbody {
+                tr {
+
+                    th,
+                    td {
+                        &:last-child {
+                            position: static;
+                        }
+                    }
+
+                    td {
+                        @include theme() {
+                            background: theme-get("td_bg");
+                            color: theme-get("textclr")
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,226 @@
+$font: "Inter", sans-serif, "Joystix";
+$fontSecondry: "Poppins", sans-serif;
+
+// z indexes
+$header: 102;
+$sidebar: 104;
+$dropdowns: 101;
+$tooltip: 1090;
+$sidebar_overlay: 103;
+$modal: 1055;
+$loader: 1100;
+
+$black: black;
+$white: white;
+$gradient: linear-gradient(125.91deg, #1AF5AF 0.95%, #3D84FF 45.06%);
+$border: rgba(194, 194, 196, 1);
+$grayLight: rgba(142, 150, 170, 1);
+$lightWhite: rgba(255, 255, 255, 0.6);
+$border2: rgba(30, 41, 59, 1);
+$baseclr: rgb(143, 92, 255);
+$textgray: rgb(161, 161, 161);
+$gradient2: linear-gradient(93.88deg,
+    rgba(1, 98, 241, 0.2) -1.33%,
+    rgba(139, 91, 255, 0.2) 50.37%),
+  linear-gradient(92.62deg,
+    rgba(143, 91, 255, 0.3) 0.64%,
+    rgba(0, 87, 255, 0.3) 103.8%),
+  linear-gradient(91.21deg,
+    rgba(255, 255, 255, 0.042) -1.1%,
+    rgba(255, 255, 255, 0.0615) 111.28%);
+$borderwhite01: #ffffff1a;
+$darkBlue: #07295d;
+$borderdarkblue: #1e293b;
+$shimmer: linear-gradient(90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 100%);
+$green: #3ebd61;
+$lightblue: rgb(0, 87, 255);
+$danger: rgb(249, 66, 66);
+// $shimmer_gradient: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0, rgba(0, 0, 0, 0.1) 30%, rgba(255, 255, 255, 0.1));
+
+$themes: (
+  light-theme: ("textclr": black,
+    // "bodyBg": #f9f7ff,
+    "bodyBg": "#FFFFFF",
+    "footertxtclr": #242424,
+    "footer_titletxt": #141414,
+    "marqueebg": #F5F5F5,
+    "trading_chartBg": #F5F5F5,
+    "footerBorderClr": #E5E5E5,
+    "sidebar": linear-gradient(93deg, #e1e6ff 0.64%, #ebe2ff 103.8%),
+    "headerbg": #fff,
+    "cardbg": #F5F5F5,
+    "card_icons_bg": #f9f7ff,
+    "cardbg_gradient": linear-gradient(180deg, #F5F5F5 0%, #FFF 100%),
+    "sidebartext": rgb(111, 108, 153),
+    "select_bg": #e1e6ff,
+    "options_bg": white,
+    "side_border": #e1e6ff,
+    "arrow_color": #1f2937,
+    "secondryBg": #fff,
+    "cardfieldBg": #f3f3f3,
+    "SeccardfieldBg": #f3f3f3,
+    "list_bg": rgba(240, 240, 240, 1),
+    "headCard_title": #0b0b0b,
+    "headCard_text": rgba(#0b0b0b, 0.6),
+    // "headCard_bg": linear-gradient(93deg, rgba(143, 91, 255, 0.30) 0.64%, rgba(0, 87, 255, 0.30) 103.8%),
+    "headCard_bg": (linear-gradient(93.88deg,
+        rgba(1, 98, 241, 0.2) -1.33%,
+        rgba(139, 91, 255, 0.2) 50.37%),
+      linear-gradient(92.62deg,
+        rgba(143, 91, 255, 0.3) 0.64%,
+        rgba(0, 87, 255, 0.3) 103.8%),
+      linear-gradient(91.21deg,
+        rgba(255, 255, 255, 0.042) -1.1%,
+        rgba(255, 255, 255, 0.0615) 111.28%),
+    ),
+    "card_glow":linear-gradient(180deg, #F5F5F5 0%, #FFF 100%),
+    "card_fill": #F5F5F5,
+    "textgray": #242424,
+    "whiteLight": #17171799,
+    "whiteLight6": #ffffff99,
+    "bordergray": rgb(180, 180, 180),
+    "fllSvg": rgb(18, 88, 255),
+    "borderwhite0.1": #6b6a7433,
+    "modal_bg": #e1e6ff,
+    "modal_body": linear-gradient(122.85deg, #f0f0f0 3.74%, #f0f0f0 93.67%),
+    "table_head_bg": linear-gradient(93deg,
+      rgba(143, 91, 255, 0.3) 0.64%,
+      rgba(0, 87, 255, 0.3) 103.8%),
+    "td_bg": #f3f3f3,
+    "connect_wallet_font": 500,
+    "swapBtnBg": (linear-gradient(173.59deg, #07295d 0.34%, #341f40 99.9%),
+      linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)),
+    ),
+    "textclrfade": rgba(white, 0.6),
+    "th_color": rgba(black, 0.8),
+    "whiteText": #171717,
+    "bordertransperent": #0000,
+    "bgWhite01": #ffffff33,
+    "bgWhite01sec": #fff,
+    "reviewCard": #0000001a,
+    "grayBtnbg": rgb(white, 1),
+    "textgray2": rgba(36, 36, 36, 1),
+    "svgstrokewhite": #6b6a74,
+    "borderwhite04": rgb(#6b6a74, 0.4),
+    "borderwhiteactive": #6b6a74,
+    "svgdark333": #33363f,
+    "btn#303030": #fff,
+    "textgradient": var(--gradient,
+      linear-gradient(92.62deg,
+        rgba(143, 91, 255, 1) 0%,
+        rgba(0, 87, 255, 1) 100%),
+      linear-gradient(93.88deg,
+        rgba(1, 98, 241, 0.2) 0%,
+        rgba(139, 91, 255, 0.2) 100%),
+      linear-gradient(91.21deg,
+        rgba(255, 255, 255, 0.04) 0%,
+        rgba(255, 255, 255, 0.06) 100%)),
+    "textTd": #a1a1a1,
+    "bgWhite33": #00000033,
+    "selectgradient": linear-gradient(122.85deg,
+      rgba(240, 240, 240, 1) 0%,
+      rgba(240, 240, 240, 1) 100%),
+    "cardtitle222": #222222,
+    "filter": invert(0),
+    "border_ul":rgba(0, 0, 0, 0.4),
+    "shimmer" : linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0, rgba(255, 255, 255, 0.1) 30%, rgba(0, 0, 0, 0.1)),
+    "invert1" : invert(0),
+    "activeRowBg" : rgb(204, 221, 255),
+    "tableRowTextColorLight" : rgba(black, 0.6),
+    "blackclr": black,
+  ),
+  dark-theme: ("textclr": white,
+    // "bodyBg": rgba(33, 33, 33, 1), before
+    "bodyBg": #000,
+    "footertxtclr": #D9D9D9 ,
+    "footer_titletxt": #FFFFFF,
+    "marqueebg": #141414,
+    "trading_chartBg": var(--1, #090D1F),
+    "footerBorderClr": #262626,
+    "sidebar": rgb(20, 20, 20),
+    "sidebartext": #fff,
+    // "headerbg": #151515, before
+    "headerbg": #000,
+    "card_icons_bg": #000,
+    "cardbg": linear-gradient(180deg, #141414 0%, #070707 100%),
+    "cardbg_gradient": linear-gradient(180deg, #141414 0%, #070707 100%), 
+    "options_bg": #1e293b,
+    "select_bg": rgba(255, 255, 255, 0.1),
+    "side_border": #e2e2e3,
+    "arrow_color": rgb(180, 180, 180),
+    "secondryBg": #141414,
+    "cardfieldBg": #191919,
+    "SeccardfieldBg": rgba(255, 255, 255, 0.1),
+    "headCard_title": white,
+    "headCard_text": rgba(white, 1),
+    "list_bg": black,
+    "headCard_bg": linear-gradient(93deg, #8f5bff 0.64%, #0057ff 103.8%),
+    "card_glow":linear-gradient(180deg, #141414 0%, #070707 100%),
+    "card_fill": #101010,
+    "textgray": #a1a1a1,
+    "whiteLight": #ffffff99,
+    "bordergray": #86868b,
+    "fllS vg": #fff,
+    "borderwhite0.1": rgba(255, 255, 255, 0.102),
+    "modal_bg": #1e293b,
+    "modal_body": linear-gradient(123deg, #141414 3.74%, #141414 93.67%),
+    "table_head_bg": linear-gradient(93deg, #8f5bff 0.64%, #0057ff 103.8%),
+    "td_bg": #191919,
+    "connect_wallet_font": 700,
+    "textclrfade": rgba(white, 1),
+    "swapBtnBg": rgba(20, 20, 20, 1),
+    "th_color": rgba(white, 0.8),
+    "whiteText": #fff,
+    "bordertransperent": #86868b,
+    "bgWhite01": #ffffff1a,
+    "bgWhite01sec": #ffffff1a,
+    "whiteLight6": #fff,
+    "reviewCard": #191919,
+    "grayBtnbg": rgba(white, 0.02),
+    "textgray2": rgba(255, 255, 255, 1),
+    "svgstrokewhite": #ffffff,
+    "borderwhite04": rgb(#fff, 0.4),
+    "borderwhiteactive": #fff,
+    "svgdark333": #fff,
+    "btn#303030": #303030,
+    "textgradient": linear-gradient(135.42deg,
+      rgba(195, 224, 254, 1) 3.125%,
+      rgba(205, 254, 252, 1) 45.86000144481659%,
+      rgba(204, 255, 230, 1) 77.64999866485596%,
+      rgba(199, 255, 221, 1) 93.18000078201294%,
+      rgba(209, 255, 227, 1) 99.47916865348816%),
+    "textTd": #cbd5e1,
+    "bgWhite33": #ffffff33,
+    "selectgradient": linear-gradient(122.85deg, #141414 0%, #141414 100%),
+    "cardtitle222": #fff,
+    "filter": invert(1),
+    "border_ul":rgba(255, 255, 255, 0.4),
+    "shimmer" : linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0, rgba(0, 0, 0, 0.1) 30%, rgba(255, 255, 255, 0.1)),
+    "invert1" : invert(1),
+    "activeRowBg" : rgba(#102143, 1),
+    "tableRowTextColorLight" : rgba(#A1A1A1, 1),
+    "blackclr": white,
+  ),
+);
+
+/* ===== theme ===== */
+@mixin theme() {
+  @each $theme, $map in $themes {
+    $theme-map: $map !global;
+
+    .#{$theme} & {
+      @content;
+    }
+  }
+
+  $theme-map: null !global;
+}
+
+@function theme-get($key) {
+  @return map-get($theme-map, $key);
+}
+
+// @include theme() {
+//   color: theme-get("textGreen");

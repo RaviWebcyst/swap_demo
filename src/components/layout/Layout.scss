@@ -1,0 +1,35 @@
+@import "../../assets/theme/_var.scss";
+
+.layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 2rem 0;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
+    @include theme() {
+        background-color: theme-get("bodyBg");
+    }
+
+    .container {
+        max-width: 147.4rem;
+        padding-inline: 1.5rem;
+        
+    }
+
+    .waterMark {
+        position: absolute;
+        right: 4.5rem;
+        bottom: 13%;
+        width: 100%;
+        height: auto;
+        max-width: 30.5rem;
+        z-index: -1;
+
+        @media (max-width:1899px) {
+            right: 1.5rem;
+        }
+    }
+}

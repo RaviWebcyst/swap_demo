@@ -1,0 +1,15 @@
+@import "../../../assets/theme/_var.scss";
+
+.swapPage {
+    .head_card {
+        .head_card_left {
+            img {
+                margin-bottom: -1.5rem;
+
+                @media (max-width:1199px) {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

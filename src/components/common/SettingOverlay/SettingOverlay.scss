@@ -1,0 +1,129 @@
+@import '../../../assets/theme/_var.scss';
+
+
+.settingOverlay {
+    .dropdown-toggle {
+        border: none;
+        outline: none;
+        box-shadow: none !important;
+        background-color: transparent !important;
+
+        &::after {
+            content: unset;
+        }
+    }
+
+    .dropdown-menu {
+        border-radius: 0.9rem;
+        border: 1px solid #1E293B;
+        width: 34.4rem;
+        padding: 0;
+        max-width: calc(100vw - 1rem);
+
+        @include theme() {
+            background: theme-get("modal_body");
+        }
+
+        .settingOverlayHeading {
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 2rem;
+            font-weight: 500;
+            text-transform: capitalize;
+            line-height: 1;
+            padding: 2.4rem 2rem;
+            border: none;
+            font-family: $fontSecondry;
+
+            @media (max-width: 767px) {
+                padding: 2rem;
+            }
+
+            &::before {
+                content: unset;
+            }
+
+            label {
+                margin-bottom: 0.4rem;
+            }
+
+            .closeBtn {
+                background: transparent;
+                border: none;
+                padding: 0;
+
+                svg {
+                    path {
+                        @include theme() {
+                            stroke: theme-get("textclr");
+                        }
+                    }
+                }
+            }
+        }
+
+        .settingOverlayBody {
+            padding: 0 2rem 4.9rem;
+
+            @media (max-width: 767px) {
+                padding: 0 2rem 2rem;
+            }
+
+            .inputOver {
+                margin-bottom: 2rem;
+
+                label {
+                    font-family: $font;
+                    margin-bottom: 0.4rem;
+                }
+
+                .rightIconInput {
+                    input {
+                        background: transparent;
+                        font-family: $fontSecondry;
+                        border-radius: 0.8rem;
+                        border: 1px solid #86868B;
+                        height: 6rem;
+                        padding-right: 4rem;
+
+                        @media (max-width: 767px) {
+                            height: 4.4rem;
+                        }
+
+                        &::placeholder {
+                            opacity: 0.6;
+                        }
+
+                    }
+
+                    .rightIcon {
+                        font-family: $fontSecondry;
+                        font-size: 1.4rem;
+                        font-weight: 500;
+                        line-height: 2.1rem;
+                        text-transform: capitalize;
+                        width: 100%;
+                        max-width: max-content;
+
+                        @include theme() {
+                            color: theme-get("textclr");
+                        }
+                    }
+                }
+
+                &.txn_timeout {
+                    input {
+                        padding-right: 8.5rem;
+                    }
+                }
+            }
+
+            .confirmBtn {
+                margin-top: 1rem;
+                box-shadow: 8px 8px 24px 0px rgba(9, 13, 20, 0.4);
+            }
+        }
+    }
+}

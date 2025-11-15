@@ -1,0 +1,144 @@
+@import '../../../assets/theme/_var.scss';
+
+.common_select {
+    .common_select_inner {
+        .react-select {
+            .react-select__control {
+                border-radius: 0.8rem;
+                border: 1px solid #A56CFE;
+                background: #00000033;
+                backdrop-filter: blur(28px);
+                min-height: 3.2rem;
+                color: $white;
+                box-shadow: none;
+
+                &--is--focused {
+                    border: none;
+                    outline: none;
+                }
+
+                .react-select__value-container {
+
+                    @media (max-width:479px) {
+                        padding: 0 0.4rem !important;
+                    }
+
+                    .react-select__single-value,
+                    .react-select__placeholder {
+                        color: $white;
+                        text-align: center;
+                        font-family: $fontSecondry;
+                        font-size: 1.6rem;
+                        font-weight: 500;
+                        line-height: 1;
+                        text-transform: capitalize;
+
+                        @media (max-width:479px) {
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
+
+                .react-select__indicators {
+                    .react-select__indicator-separator {
+                        display: none;
+                    }
+
+                    .react-select__indicator {
+                        padding: 0 0.8rem;
+
+                        @media (max-width:479px) {
+                            padding: 0 0.4rem !important;
+                        }
+
+                        svg {
+                            path {
+                                fill: #B4B4B4;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .react-select__menu {
+                border-radius: 0.9rem;
+                border: 0.1rem solid $borderdarkblue;
+                box-shadow: 0px 4px 6px -2px #10182808,
+                    0px 12px 16px -4px #10182814;
+                z-index: 9;
+                min-width: 10rem;
+
+                @include theme() {
+                    background: theme-get("selectgradient");
+                }
+
+                &-list {
+                    padding: 0;
+
+                    .react-select__option {
+                        font-family: $fontSecondry;
+                        font-size: 1.4rem;
+                        line-height: 1.5;
+                        font-weight: 500;
+                        white-space: nowrap;
+
+                        @include theme() {
+                            color: theme-get("textclr");
+                        }
+
+                        &:first-child {
+                            border-radius: 0.9rem 0.9rem 0 0;
+                        }
+
+                        &:last-child {
+                            border-radius: 0 0 0.9rem 0.9rem;
+                        }
+
+                        &--is-focused {
+                            background: transparent;
+                        }
+
+                        &:hover {
+                            @include theme() {
+                                background: theme-get("options_bg");
+                            }
+                        }
+
+                        &--is-selected {
+                            position: relative;
+
+                            @include theme() {
+                                background: theme-get("options_bg");
+                            }
+
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                top: 50%;
+                                right: 0;
+                                transform: translate(-1.6rem, -50%);
+                                background-image: url(../../../assets/icons/check.svg);
+                                width: 2rem;
+                                height: 2rem;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                background-position: center;
+
+                                @include theme() {
+                                    filter: theme-get("invert1");
+                                }
+                            }
+                        }
+
+                    }
+
+                    .react-select__menu-notice {
+                        font-family: $fontSecondry;
+                        font-size: 1.4rem;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+}

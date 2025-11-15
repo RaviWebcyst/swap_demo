@@ -1,0 +1,68 @@
+@import "../../../../assets/theme/_var.scss";
+
+.txn_modal {
+  .modal-content {
+    .modal-body {
+      padding: 8rem 2rem;
+      text-align: center;
+
+      .lottie_animation {
+        max-width: 10rem;
+        margin: auto;
+
+        &.loading {
+          max-width: 14rem;
+
+          svg {
+            path {
+              fill: $lightblue;
+            }
+          }
+        }
+
+        &.success {
+          svg {
+            path {
+              stroke: $green;
+            }
+          }
+        }
+      }
+
+      h3 {
+        margin: 2rem 0 4rem;
+        font-size: 2rem;
+        opacity: 0.7;
+
+        @include theme() {
+          color: theme-get("svgdark333");
+        }
+
+        @media (max-width: 575px) {
+          margin: 1.6rem 0 3rem;
+          font-style: 1.6rem;
+        }
+      }
+
+      a {
+        color: $baseclr;
+        font-size: 1.6rem;
+        font-weight: 500;
+
+        @include theme() {
+          color: rgba($lightblue, 0.8);
+
+          &:hover {
+            text-decoration: underline;
+            color: rgba($lightblue, 1);
+          }
+        }
+      }
+    }
+  }
+  .text_gradient {
+    background: -webkit-linear-gradient(92deg, #8f5bff, #0057ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

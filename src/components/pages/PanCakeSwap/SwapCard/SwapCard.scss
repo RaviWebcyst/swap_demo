@@ -1,0 +1,95 @@
+@import '../../../../assets/theme/_var.scss';
+
+// swap_recieve
+.addCardBox .addCardBox_swap .addCard,
+.addCardBox .addCardBox_recieve .addCard {
+  border-radius: 2.5rem;
+  width: 100%;
+  min-width: 45.6rem;
+  margin: 0 auto;
+  // padding: 2.4rem 3rem;
+  padding: 2.975rem 2.75rem;
+  border: 1px solid #e5e5e5;
+  box-shadow: none;
+}
+.time_left .time_second {
+  font-size: 14px;
+  color: #737373;
+}
+.best_returns button {
+  color: #fff;
+  background-color: #000;
+  font-size: 12px;
+  padding: 2px 18px;
+}
+.first_value_div h1 {
+  font-size: 18px;
+  color: #000000;
+}
+.first_value_div h5,
+.squid_div {
+  font-size: 14px;
+  color: #414141;
+  font-weight: 500;
+}
+.squid_lifi_text {
+  font-size: 16px;
+  color: #414141 !important;
+  font-weight: 700;
+}
+.values_li {
+  font-size: 10px;
+  font-weight: 500;
+  color: #414141 !important;
+  align-items: flex-start;
+}
+.recieve_price_div h6,
+.recieve_price_div p {
+  color: #414141 !important;
+  font-size: 12px;
+}
+.addCardBox_recieve .accordion-button:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: 0px 0px 0px #000;
+}
+.addCardBox_recieve button.accordion-button {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.addCardBox_recieve .accordion {
+  --bs-accordion-bg: transparent;
+}
+.addCardBox_recieve .accordion-collapse.collapse.show .squid_div {
+  display: none;
+}
+.recieve_values_div {
+  background: #f6f6f6;
+  border-radius: 20px;
+  padding: 16px 15px 16px;
+}
+.recieve_values_div:hover,.recieve_active {
+  border: 0.5px solid #1dd49a;
+  background-color: #dff9ff;
+}
+.recieve_values_div:hover .best_returns button, .recieve_active .best_returns button {
+  background-color: #1dd49a;
+}
+@media (min-width: 768px) and (max-width:992px){
+  .addCardBox .addCardBox_swap .addCard, .addCardBox .addCardBox_recieve .addCard{
+    min-width: 35rem;
+  }
+}
+@media (max-width:767px){
+   .addCardBox .addCardBox_swap .addCard, .addCardBox .addCardBox_recieve .addCard{
+    min-width: 100%;
+  }
+}
+
+
+.squid_div img, .squid_ul img{
+  border-radius: 50%;
+}
+
+.dark-theme .recieve_active .first_value_div .accordion-button{
+  background: #124938 !important;
+}

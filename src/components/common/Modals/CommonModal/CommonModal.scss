@@ -1,0 +1,54 @@
+@import "../../../../assets/theme/_var.scss";
+
+.custom_modal {
+    font-family: $fontSecondry;
+
+    .modal-content {
+        border-radius: 3rem;
+        // border: 1px solid $border2;
+        overflow: hidden;
+
+        @include theme() {
+            background: theme-get("modal_body");
+        }
+
+        .modal-header {
+            border-bottom: 0;
+            // padding: 2.4rem 1.4rem 1rem 2rem;
+            padding:3rem 4rem;
+
+            .btn-close {
+                width: 2.4rem;
+                height: 2.4rem;
+                border-radius: 50%;
+                box-shadow: none;
+
+                @include theme() {
+                    // background-color: rgba(theme-get("textclr"), 0.1);
+                    // border: 2px solid $black;
+                    filter: theme-get("filter");
+                }
+            }
+        }
+
+        .modal-title.h4 {
+            color: $white;
+            font-size: 2rem;
+            font-weight: 500;
+
+            @media (max-width: 991px) {
+                font-size: 1.6rem;
+            }
+
+            @include theme() {
+                color: theme-get("textclr");
+            }
+        }
+
+        .modal-body {
+            // padding: 0rem;
+             padding:0rem 2rem;
+        }
+    }
+}
+

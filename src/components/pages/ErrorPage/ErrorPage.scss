@@ -1,0 +1,94 @@
+@import "../../../assets/theme/_var.scss";
+
+.error_page {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    padding: 4rem 0;
+
+    @include theme() {
+        background-color: theme-get("bodyBg");
+        color: theme-get("textclr");
+    }
+
+    h3 {
+        padding-bottom: 0.4rem;
+        font-size: 1.6rem;
+        display: inline-flex;
+    }
+
+    h1 {
+        font-size: 7.4rem;
+        font-weight: 700;
+        margin: 1rem 0;
+
+        @media (max-width: 1479px) {
+            font-size: 6rem;
+        }
+
+        @media (max-width: 1399px) {
+            font-size: 5rem;
+        }
+
+        @media (max-width: 1199px) {
+            font-size: 4rem;
+        }
+
+        @media (max-width: 767px) {
+            font-size: 3rem;
+            margin: 1.6rem 0;
+        }
+    }
+
+    p {
+        font-size: 2rem;
+        opacity: 0.6;
+
+        @media (max-width: 1479px) {
+            font-size: 1.8rem;
+        }
+
+        @media (max-width: 1199px) {
+            font-size: 1.6rem;
+        }
+
+        @media (max-width: 767px) {
+            font-size: 1.4rem;
+        }
+    }
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        font-size: 1.6rem;
+        margin-top: 3rem;
+
+        @include theme() {
+            color: theme-get("textclr");
+        }
+
+        @media (max-width: 767px) {
+            font-size: 1.4rem;
+            margin-top: 2rem;
+        }
+
+        svg {
+            width: 1.4rem;
+            height: auto;
+            margin-left: 1rem;
+            transition: 200ms ease-in-out;
+
+            path {
+                @include theme() {
+                    stroke: theme-get("textclr");
+                }
+            }
+        }
+
+        &:hover {
+            svg {
+                transform: translateX(0.6rem);
+            }
+        }
+    }
+}

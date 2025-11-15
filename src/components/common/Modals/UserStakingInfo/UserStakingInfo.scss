@@ -1,0 +1,26 @@
+@import "../../../../assets/theme/_var.scss";
+
+.user_stake_info_modal {
+    .modal-dialog {
+        max-width: 84rem;
+    }
+
+    .table-responsive{
+        max-height: 53.3rem;
+        table{
+            margin-bottom: 0;
+        }
+    }
+
+    .status_txt {
+        text-transform: capitalize;
+
+        &.locked {
+            color: $danger;
+        }
+
+        &.unlocked {
+            color: $green;
+        }
+    }
+}

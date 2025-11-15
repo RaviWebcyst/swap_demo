@@ -1,0 +1,168 @@
+@import "../../../../assets/theme/_var.scss";
+
+.wallet_height{
+  height: 10% !important;
+}
+
+.connect_wallet.offcanvas-end {
+  // padding: 5.4rem 3.75rem 4rem;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 37.5rem;
+  border-left: none;
+  width: 100%;
+  height: 20%;
+  border-radius: 20px;
+
+  @media (max-width: 991px) {
+    // padding: 4rem 2rem;
+    padding: 2.5rem 2rem;
+  }
+
+  @include theme() {
+    background: theme-get("sidebar");
+  }
+
+  .action_btn {
+    text-align: center;
+    position: relative;
+
+    .croseBtn {
+      position: absolute;
+      right: -1.2rem;
+      top: -2.2rem;
+      width: 3rem;
+      height: 3rem;
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      z-index: 999;
+      display: none;
+      @media (max-width: 575px) {
+        display: block;
+      }
+      svg {
+        path {
+          @include theme() {
+            stroke: theme-get("textclr");
+          }
+        }
+      }
+    }
+    > svg {
+      path {
+        @include theme() {
+          stroke: theme-get("textclr");
+        }
+      }
+    }
+
+    .common_btn {
+      margin-top: 3.6rem;
+    }
+  }
+
+  .or_line {
+    position: relative;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    margin: 1.9rem 0 2.1rem;
+
+    span {
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 1.7rem;
+      letter-spacing: 0.02em;
+      padding-inline: 0.95rem;
+
+      @include theme() {
+        background: theme-get("sidebar");
+        color: rgba(theme-get("textclr"), 1);
+      }
+    }
+
+    &::before {
+      content: "";
+      width: 100%;
+      z-index: -1;
+      height: 1px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @include theme() {
+        background-color: rgba(theme-get("textclr"), 0.1);
+      }
+    }
+  }
+
+  .google_btn {
+    background-color: rgba($white, 0.1);
+    border: 1px solid rgba($white, 0.2);
+    padding: 0;
+    transition: background-color 200ms ease-in-out;
+
+    &::before {
+      content: unset;
+    }
+
+    .btn_tooltip {
+      top: calc(100% + 0.9rem);
+      right: 0;
+      background: $gradient;
+      position: absolute;
+      color: $white;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.2rem;
+      letter-spacing: 0em;
+      width: 9.2rem;
+      height: 2rem;
+      border-radius: 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+
+      &::before {
+        content: "";
+        width: 0.4rem;
+        height: 0.4rem;
+        background-image: url(../../../../assets/icons/arrow-up.svg);
+        position: absolute;
+        bottom: calc(100% - 1px);
+        right: 4rem;
+      }
+    }
+
+    svg {
+      margin-right: 1rem;
+      width: max-content;
+    }
+
+    @include theme() {
+      color: theme-get("textclr");
+    }
+
+    &.light {
+      background-color: $white;
+    }
+
+    &:not(.light):hover {
+      background-color: rgba($white, 0.2);
+    }
+  }
+
+  .footer_txt {
+    margin-top: auto;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+}

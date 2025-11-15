@@ -1,0 +1,79 @@
+{
+  "name": "swap",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "yarn@1.22.22",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.7",
+    "@reown/appkit": "^1.7.13",
+    "@reown/appkit-adapter-wagmi": "^1.7.13",
+    "@tanstack/react-query": "^5.81.5",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^17.0.45",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "apexcharts": "^4.6.0",
+    "axios": "^0.24.0",
+    "big-number": "^2.0.0",
+    "bignumber.js": "^9.1.2",
+    "bn.js": "^5.2.1",
+    "bootstrap": "^5.3.2",
+    "chart.js": "^4.4.4",
+    "cogo-toast": "^4.2.3",
+    "debounce.lodash": "^1.0.0",
+    "ethers": "^6.13.2",
+    "framer-motion": "^10.18.0",
+    "lightweight-charts": "^4.2.0",
+    "lodash": "^4.17.21",
+    "lottie-react": "^2.4.0",
+    "moment": "^2.30.1",
+    "react": "^18.2.0",
+    "react-apexcharts": "^1.7.0",
+    "react-bootstrap": "^2.10.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-countdown": "^2.3.5",
+    "react-dom": "^18.2.0",
+    "react-fast-marquee": "^1.6.5",
+    "react-icons": "^5.3.0",
+    "react-redux": "^8.1.3",
+    "react-router-dom": "^6.21.3",
+    "react-scripts": "5.0.1",
+    "react-select": "^5.8.0",
+    "redux-persist": "^6.0.0",
+    "sass": "^1.70.0",
+    "sweetalert2": "^11.10.7",
+    "typescript": "^5.8.3",
+    "universal-calci-pro": "^0.0.10",
+    "viem": "^2.31.7",
+    "wagmi": "^2.15.6",
+    "web-vitals": "^2.1.4",
+    "web3": "^1.10.3"
+  },
+  "scripts": {
+    "start": "HOST=0.0.0.0 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

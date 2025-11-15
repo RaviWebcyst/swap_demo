@@ -1,0 +1,104 @@
+@import "../../../../assets/theme/_var.scss";
+
+.txn_confirmation {
+    @include theme() {
+        .modal-dialog {
+            .modal-content {
+                .modal-body {
+                    padding: 2.4rem 1.4rem 2.4rem 2rem;
+                }
+            }
+        }
+
+        .from_to_box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+
+            &::before {
+                content: "";
+                width: 100%;
+                height: 0px;
+                border-bottom: 1px dashed theme-get("borderwhite04");
+                position: absolute;
+                bottom: 1.7rem;
+                transform: translate(-50%, 50%);
+                left: 50%;
+                z-index: -1;
+            }
+
+            li {
+                >div {
+                    p {
+                        font-size: 1.4rem;
+                        text-align: center;
+                    }
+
+                    img {
+                        width: 3.4rem;
+                        padding: 0.4rem;
+                        height: 3.4rem;
+                        border-radius: 50%;
+                        background-color: theme-get("svgdark333");
+
+                    }
+                }
+            }
+        }
+
+        .txn_rejected {
+            max-width: 6rem;
+            margin: 4rem auto 1rem;
+            width: 100%;
+        }
+
+        .txn_progress {
+            display: flex;
+            align-items: center;
+            background-color: rgba(theme-get("svgdark333"), 0.1);
+            border-radius: 10rem;
+            position: relative;
+            padding: 0.4rem;
+            margin: 6rem 0 1.6rem;
+
+            p {
+                position: absolute;
+                font-size: 1.4rem;
+                font-weight: 500;
+                left: 0;
+                bottom: 100%;
+                margin-bottom: 0.4rem;
+            }
+
+            >div {
+                height: 1.6rem;
+                border-radius: inherit;
+                transition: 200ms ease-in-out;
+                background: $gradient;
+            }
+        }
+
+        .balance_show_txt {
+            font-size: 1.6rem;
+            text-align: center;
+        }
+
+        .explorer_link {
+            font-size: 1.4rem;
+            color: $baseclr;
+            margin: 1rem auto;
+            width: fit-content;
+            display: block;
+            text-align: center;
+        }
+
+        .txn_txt {
+            font-size: 1.6rem;
+            font-weight: 500;
+            text-align: center;
+        }
+    }
+}

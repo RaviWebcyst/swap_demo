@@ -1,0 +1,40 @@
+@import "../../../assets/theme/_var.scss";
+
+.switch {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  padding-left: 0;
+
+  label {
+    color: $white;
+  }
+
+  .form-check-input {
+    background-image: url("../../../assets/icons/circle.svg") !important;
+    background-color: rgba($white, 0.2);
+    border: 0;
+    border-radius: 50px;
+    width: 4rem;
+    height: 2rem;
+    padding: 0.5rem;
+    margin-left: 1rem;
+
+    &:focus {
+      box-shadow: unset;
+    }
+
+    &:checked {
+      background-color: $baseclr !important;
+      // background-color: red;
+    }
+  }
+
+  .form-check-label {
+    font-size: 1.4rem;
+
+    @media (max-width: 575px) {
+      font-size: 1.2rem;
+    }
+  }
+}
