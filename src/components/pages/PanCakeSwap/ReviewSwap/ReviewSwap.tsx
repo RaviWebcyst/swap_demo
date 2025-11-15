@@ -140,12 +140,12 @@ const ReviewSwap = (props:any) => {
                 <h6 className="mb-2">You Pay</h6>
                 <div className="amount d-grid gap-2">
                   <h1>{state?.inputOne?.inputValue} {tokenOne?.symbol}</h1> 
-                  <p>
+                  {/* <p>
                     ~$
                     {cryptoDecimals(
                       state?.inputOne?.inputValue * state?.tk1DollarValue || 0
                     )}
-                  </p>
+                  </p> */}
                 </div>
               </div>
               {/* <div className="token_mainSelected_rightSide">
@@ -160,12 +160,12 @@ const ReviewSwap = (props:any) => {
                 <h6 className="mb-2">You Receive</h6>
                 <div className="amount d-grid gap-2">
                   <h1>{state?.inputTwo?.inputValue} {tokenTwo?.symbol}</h1>
-                  <p>
+                  {/* <p>
                     ~$
                     {cryptoDecimals(
                       state?.inputTwo?.inputValue * state?.tk2DollarValue || 0
                     )}
-                  </p>
+                  </p> */}
                 </div>
               </div>
               {/* <div className="token_receive_rightSide">

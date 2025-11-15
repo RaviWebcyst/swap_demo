@@ -1246,7 +1246,7 @@ const SwapCard = () => {
                                 <div className="font-geist">
                                   <h1 className="fw-bold">{priceList[0]}</h1>
                                   <div className="d-flex align-items-center gap-3">
-                                    <h5 className="mt-1 fw-medium">${dollar1}</h5>
+                                    {/* <h5 className="mt-1 fw-medium">${dollar1}</h5> */}
                                     <div className="d-flex align-items-center gap-2 squid_div">
                                       <img src={`${type1 == "Uniswapv3" ? 'https://s2.coinmarketcap.com/static/img/coins/64x64/7083.png' : 'https://tokens.pancakeswap.finance/images/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png'}`} width={25} />{type1}
                                     </div>
@@ -1319,7 +1319,7 @@ const SwapCard = () => {
                                 <div className="font-geist">
                                   <h1 className="fw-bold">{priceList[1]}</h1>
                                   <div className="d-flex align-items-center gap-3">
-                                    <h5 className="mt-1 fw-medium">${dollar2}</h5>
+                                    {/* <h5 className="mt-1 fw-medium">${dollar2}</h5> */}
                                     <div className="d-flex align-items-center gap-2 squid_div">
                                       <img src={`${type2 == "Uniswapv3" ? 'https://s2.coinmarketcap.com/static/img/coins/64x64/7083.png' : 'https://tokens.pancakeswap.finance/images/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png'}`} width={25} />{type2}
                                     </div>
@@ -1527,12 +1527,12 @@ const SwapCard = () => {
                   <h6 className="mb-2">You Pay</h6>
                   <div className="amount d-grid gap-2">
                     <h1>{inputOne?.inputValue} {tokenOne?.symbol}</h1>
-                    <p>
+                    {/* <p>
                       ~$
                       {cryptoDecimals(
                         Number(inputOne?.inputValue) * Number(tk1DollarValue) || 0
                       )}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
                 {/* <div className="token_mainSelected_rightSide">
@@ -1551,12 +1551,12 @@ const SwapCard = () => {
                   <h6 className="mb-2">You Receive</h6>
                   <div className="amount d-grid gap-2">
                     <h1>{inputTwo?.inputValue} {tokenTwo?.symbol}</h1>
-                    <p>
+                    {/* <p>
                       ~$
                       {cryptoDecimals(
                         Number(inputTwo?.inputValue) * Number(tk2DollarValue) || 0
                       )}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
                 {/* <div className="token_receive_rightSide">
