@@ -1,16 +1,16 @@
-// import accountIcon from "../../../../../assets/icons/accountIcon.svg";
+import { useState } from "react";
+import accountIcon from "../../../../../assets/icons/accountIcon.svg";
 import metamask from "../../../../../assets/icons/metamask.svg";
-import {ArrowdownIcon} from "../../../../../assets/icons/svgicons";
+import {
+  ArrowdownIcon,
+  ArrowUpIcon,
+} from "../../../../../assets/icons/svgicons";
 import "./ViewWallet.scss";
-
-//code updated
-
-const logoBaseURL = process.env.REACT_APP_S3_BASE_URL;
 
 const TabListdata = () => {
   const transactiondetails = [
     {
-      Imgaccount: `${logoBaseURL}accountIcon.svg`,
+      Imgaccount: accountIcon,
       ImgWallet: metamask,
       titleTrans: "Rps League",
       vauleTrans: "8.90RPS",
@@ -18,7 +18,7 @@ const TabListdata = () => {
       amountPerce: "1.11",
     },
     {
-      Imgaccount: `${logoBaseURL}accountIcon.svg`,
+      Imgaccount: accountIcon,
       ImgWallet: metamask,
       titleTrans: "Rps League",
       vauleTrans: "8.90RPS",
@@ -26,7 +26,7 @@ const TabListdata = () => {
       amountPerce: "1.11",
     },
     {
-      Imgaccount: `${logoBaseURL}accountIcon.svg`,
+      Imgaccount: accountIcon,
       ImgWallet: metamask,
       titleTrans: "Rps League",
       vauleTrans: "8.90RPS",
@@ -34,7 +34,7 @@ const TabListdata = () => {
       amountPerce: "1.11",
     },
     {
-      Imgaccount: `${logoBaseURL}accountIcon.svg`,
+      Imgaccount: accountIcon,
       ImgWallet: metamask,
       titleTrans: "Rps League",
       vauleTrans: "8.90RPS",

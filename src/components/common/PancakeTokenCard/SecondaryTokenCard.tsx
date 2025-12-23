@@ -54,6 +54,7 @@ const SecondaryTokenCard = ({
 }) => {
   
 
+
   const { walletAddress }: { walletAddress: string } = useAppSelector(
     (state: any) => state?.user
   );
@@ -77,11 +78,11 @@ const SecondaryTokenCard = ({
             ) : balance?.token2Balance ? (
               `${balance?.token2Balance}`
             ) : (
-              <Shimmer height={10} width={50} />
+              <Shimmer height={8} width={50} />
             )}
               <span className="ms-2">{tokenTwo?.name} </span>
           </h6>
-        ) : (<h6 className="balancevalue my-auto"> <Shimmer height={30} width={200} /> </h6>)}
+        ) : (<h6 className="balancevalue my-auto"> <Shimmer height={15} width={100} /> </h6>)}
       </>
     );
   };
@@ -93,10 +94,10 @@ const SecondaryTokenCard = ({
   return (
     <>
       <div className="secondaryCardToken">
-        <div className="d-flex">
+        <div className="d-grid">
           {/* <h4 ><span className="input_label">To:</span> {tokenTwo?.name} Coin  </h4> */}
           <h4 ><span className="input_label">To</span> </h4>
-          <div className="d-flex ms-auto">
+          <div className="d-flex">
             {showTokensSelectModal ? (
               <TokenselectReceivedModal
                 setTokenTwoValue={setTokenTwoValue}
@@ -113,7 +114,7 @@ const SecondaryTokenCard = ({
             )}
           </div>
         </div>
-        <ul className="listToken mt-3 ps-4">
+        <ul className="listToken without_bg  ps-4">
           {/* <div className="d-flex">
             {showTokensSelectModal ? (
               <TokenselectReceivedModal
@@ -135,11 +136,12 @@ const SecondaryTokenCard = ({
               <Shimmer height={30} width={200} />
             ) : (
               <Input
-                placeholder="Enter Amount"
+                placeholder="0"
                 className="without_bg"
                 type="number"
                 onChange={(e: any) => input(e.target.value, false, "TK2")}
                 value={ value?.inputValue}
+                disabled={true}
               />
             )}
             

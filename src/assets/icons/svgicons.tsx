@@ -1289,6 +1289,13 @@ export const LightMenu = () => (
   </svg>
 
 );
+export const EditIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.16797 1.66699H7.5013C3.33464 1.66699 1.66797 3.33366 1.66797 7.50033V12.5003C1.66797 16.667 3.33464 18.3337 7.5013 18.3337H12.5013C16.668 18.3337 18.3346 16.667 18.3346 12.5003V10.8337" stroke="#1DD59A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.3675 2.51639L6.80088 9.08306C6.55088 9.33306 6.30088 9.82472 6.25088 10.1831L5.89254 12.6914C5.75921 13.5997 6.40088 14.2331 7.30921 14.1081L9.81754 13.7497C10.1675 13.6997 10.6592 13.4497 10.9175 13.1997L17.4842 6.63306C18.6175 5.49972 19.1509 4.18306 17.4842 2.51639C15.8175 0.849722 14.5009 1.38306 13.3675 2.51639Z" stroke="#1DD59A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12.4258 3.45801C12.9841 5.44967 14.5424 7.00801 16.5424 7.57467" stroke="#1DD59A" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+)
 export const SettingIco = () => (
   <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M9.01562 22H15.0156C20.0156 22 22.0156 20 22.0156 15V9C22.0156 4 20.0156 2 15.0156 2H9.01562C4.01562 2 2.01562 4 2.01562 9V15C2.01562 20 4.01562 22 9.01562 22Z" stroke="#171717" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -1301,4 +1308,58 @@ export const SettingIco = () => (
   </svg>
 
 
+);
+export const Wallet = () => (
+  <svg
+    width='24'
+    height='24'
+    focusable="false"
+    aria-hidden="true"
+    viewBox="0 0 24 24"
+  >
+    <path d="M18 4H6C3.79 4 2 5.79 2 8v8c0 2.21 1.79 4 4 4h12c2.21 0 4-1.79 4-4V8c0-2.21-1.79-4-4-4m-1.86 9.77c-.24.2-.57.28-.88.2L4.15 11.25C4.45 10.52 5.16 10 6 10h12c.67 0 1.26.34 1.63.84zM6 6h12c1.1 0 2 .9 2 2v.55c-.59-.34-1.27-.55-2-.55H6c-.73 0-1.41.21-2 .55V8c0-1.1.9-2 2-2"></path>
+  </svg>
+)
+
+export const ArrowSwap = () => (
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 14 14"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5.25646 11.9586L2.32812 9.03613"
+      stroke="#171717"
+      stroke-width="1.5"
+      stroke-miterlimit="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M5.25391 2.04199V11.9587"
+      stroke="#171717"
+      stroke-width="1.5"
+      stroke-miterlimit="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M8.74609 2.04199L11.6744 4.96449"
+      stroke="#171717"
+      stroke-width="1.5"
+      stroke-miterlimit="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M8.74609 11.9587V2.04199"
+      stroke="#171717"
+      stroke-width="1.5"
+      stroke-miterlimit="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
 );

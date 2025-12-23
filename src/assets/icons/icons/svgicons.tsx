@@ -1294,3 +1294,18 @@ export const Menu = () => (
     />
   </svg>
 );
+export const GasIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1.75 11V2.5C1.75 1.5 2.42 1 3.25 1H7.25C8.08 1 8.75 1.5 8.75 2.5V11H1.75Z" stroke="#414141" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M1 11H9.5" stroke="#414141" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4.195 5.00011H6.31C6.83 5.00011 7.255 4.75011 7.255 4.05511V3.44012C7.255 2.74512 6.83 2.49512 6.31 2.49512H4.195C3.675 2.49512 3.25 2.74512 3.25 3.44012V4.05511C3.25 4.75011 3.675 5.00011 4.195 5.00011Z" stroke="#414141" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M3.25 6.5H4.75" stroke="#414141" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M8.75 8.005L11 8V5L10 4.5" stroke="#414141" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+export const ClockIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M11 6C11 8.76 8.76 11 6 11C3.24 11 1 8.76 1 6C1 3.24 3.24 1 6 1C8.76 1 11 3.24 11 6Z" stroke="#414141" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7.85445 7.58988L6.30445 6.66488C6.03445 6.50488 5.81445 6.11988 5.81445 5.80488V3.75488" stroke="#414141" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);

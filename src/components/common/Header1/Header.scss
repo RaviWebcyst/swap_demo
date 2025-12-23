@@ -136,11 +136,11 @@
             font-weight: theme-get("connect_wallet_font");
           }
 
-        width: 14.2rem !important;
+          width: 13.2rem;
           height: 4rem;
 
           @media (max-width: 575px) {
-            width: 12rem !important;
+            width: 10rem;
             height: 3.8rem;
           }
 
@@ -432,24 +432,4 @@
       }
     }
   }
-}
-
-
-.networkdiv{
-  box-shadow: none;
-    height: 3.5rem;
-    width: 7.3rem;
-    // background: rgb(225, 230, 255);  
-    background: rgb(92 92 92);  
-      border-width: 0px;
-    border-style: initial;
-    border-color: initial;
-    border-image: initial;
-    border-radius: 10px;
-
-    img{
-      width:1.5rem;
-    }
-   
-   
 }

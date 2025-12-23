@@ -49,9 +49,17 @@ import useIsWrongNetwork from "../../../../CustomHook/useisWrongNetwork";
 import TxnModal from "../../../common/Modals/TxnModal/TxnModal";
 import CommonModal from "../../../common/Modals/CommonModal/CommonModal";
 import ReviewSwap from "../ReviewSwap/ReviewSwap";
-import { IoIosArrowDropdownCircle, IoIosArrowDropupCircle } from "react-icons/io";
+import { IoIosArrowDropdownCircle, IoIosArrowDropupCircle, IoIosArrowRoundDown, IoIosArrowRoundUp } from "react-icons/io";
 import axios from "axios";
 import { useAppKit } from "@reown/appkit/react";
+
+import { executeRoute, getRoutes } from '@lifi/sdk'
+import Lottie from "lottie-react";
+import { ClockIcon, GasIcon } from '../../../../assets/icons/icons/svgicons'
+import loader from '../../../../assets/animations/rs_loader_.json'
+import { formatUnits, parseUnits } from "viem";
+import { TokensModalRef } from "../../../common/Modals/TokensModal/TokensModal";
+
 
 var oldTknVal = "";
 
@@ -77,6 +85,20 @@ const SwapCard = () => {
     title: "",
     txHash: "",
   });
+
+  const [usdPrice, setUsdPrice] = useState<number | string>(0.0);
+  const [quoteList, setQuoteList] = useState<any>([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [lifiRoute, setLifiRoute] = useState<any>([])
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [bnbdollar, setBnbdollar] = useState<any>(0.0)
+
+const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
+
+
+
+
+
 
 
   const { open } = useAppKit();
@@ -147,6 +169,17 @@ const SwapCard = () => {
     // }
   }
 
+    const tokenModalRef1 = useRef<TokensModalRef>(null)
+  const tokenModalRef2 = useRef<TokensModalRef>(null)
+
+  type CostList = { amountUSD?: string }[] | undefined
+
+  type Step = {
+    estimate?: { feeCosts?: CostList; gasCosts?: CostList }
+    includedSteps?: Step[]
+  }
+
+  type StepData = Step[] | undefined
 
 
   const data: GET_AMOUNTS_DATA = {
@@ -270,59 +303,112 @@ const SwapCard = () => {
     // }
   };
   // const { chainValues } = useAppSelector((state: any) => user);
+
+
+   const calculateTotalGasFeeUsd = (stepsData: StepData): number => {
+    let totalFeeUsd = 0.0
+
+    const sumCosts = (costs: CostList): number =>
+      costs?.reduce((sum, cost) => sum + parseFloat(cost.amountUSD || '0'), 0) || 0
+
+    if (stepsData) {
+      stepsData.forEach((step) => {
+        const estimate = step.estimate
+        if (estimate) {
+          // totalFeeUsd += sumCosts(estimate.feeCosts);
+          totalFeeUsd += sumCosts(estimate.gasCosts)
+        }
+      })
+    }
+    return parseFloat(totalFeeUsd.toFixed(4))
+  }
+
+
+  const getLifiQuote = async (amount:any) => {  
+
+          const decimals = tokenOne.decimals; // VERY IMPORTANT
+
+          const blockchainAmount = parseUnits(amount, decimals).toString();
+
+
+      var data:any = {
+          fromChainId: Number(tokenOne?.chainId), 
+          toChainId:  Number(tokenTwo?.chainId), 
+          fromTokenAddress: tokenOne?.address, 
+          toTokenAddress: tokenTwo?.address,
+          fromAmount: blockchainAmount,
+      }
+
+      
+
+      if(walletAddress){
+          data={...data,fromAddress:walletAddress};
+        }
+
+        const result = await getRoutes(data);
+
+
+        const route = result.routes.map((route:any) => ({
+            ...route,
+            fromAmount: formatUnits(route.fromAmount, decimals),
+            toAmount: formatUnits(route.toAmount, tokenTwo.decimals),
+        }));  
+            
+        return route;
+  };
   const getReservesFirstTime = async () => {
     
 
-    const data: GET_AMOUNTS_DATA = {
-      tokenOneAddress: tokenOne?.address,
-      tokenTwoAddress: tokenTwo?.address,
-      amountIn: (10 ** tokenOne?.decimals)?.toLocaleString("fullwide", {
-        useGrouping: !1,
-      }),
-      dispatch,
-      walletProvider,
-    };
+    // const data: GET_AMOUNTS_DATA = {
+    //   tokenOneAddress: tokenOne?.address,
+    //   tokenTwoAddress: tokenTwo?.address,
+    //   amountIn: (10 ** tokenOne?.decimals)?.toLocaleString("fullwide", {
+    //     useGrouping: !1,
+    //   }),
+    //   dispatch,
+    //   walletProvider,
+    // };
 
     
     
 
-    const reserveData: Array<string> = await getAmountsOutfunction(data);
+    // const reserveData: Array<string> = await getAmountsOutfunction(data);
 
     
 
     
 
 
-    if (reserveData == undefined) {
-      setRate("0");
-      setRate1("0");
-      setRate2("0");
-    } else {
-      var rates =
-        await convertUsingTokenDecimals(
-          tokenTwo,
-          reserveData[1]);
+    // if (reserveData == undefined) {
+    //   setRate("0");
+    //   setRate1("0");
+    //   setRate2("0");
+    // } else {
+    //   var rates =
+    //     await convertUsingTokenDecimals(
+    //       tokenTwo,
+    //       reserveData[1]);
   
 
 
    
 
-      //bigger value in rates1
+    //   //bigger value in rates1
     
       
 
 
-      // setRate(
+    //   // setRate(
 
-      //   cryptoDecimals(
-      //     Number(reserveData[1]) / 10 ** tokenTwo?.decimals
-      //   ).toString()
-      // );
+    //   //   cryptoDecimals(
+    //   //     Number(reserveData[1]) / 10 ** tokenTwo?.decimals
+    //   //   ).toString()
+    //   // );
 
-      setRate(Number(rates).toFixed(2));
+    //   setRate(Number(rates).toFixed(2));
 
 
-    }
+    // }
   };
 
   const tokenDetails: TOKEN_DETAILS = useMemo(() => {
@@ -651,78 +737,47 @@ const SwapCard = () => {
   };
 
 
-  const setInputValue = async(amount:any,fieldCondition:any,type:any,active:any,rate:any) =>{
+  const setInputValue = async (amount: any, fieldCondition: any, data: any, active: any, rate: any) => {
+    var type = data?.dex
 
+    setActiveIndex(active)
 
-      // var value: any = await convertUsingTokenDecimals(
-      //   fieldCondition == "TK1" ? tokenTwo : tokenOne,
-      //   amount
-      // );
+    var decimals = fieldCondition == 'TK1' ? tokenTwo?.decimals : tokenOne?.decimals
+    var value: any = cryptoDecimals(Number(amount) * 10 ** decimals).toString()
 
+    const list = store.getState()?.user?.contractDetails
 
-      
-      
-      var decimals= fieldCondition == "TK1" ? tokenTwo?.decimals : tokenOne?.decimals;
-      var value:any =cryptoDecimals(Number(amount) * 10 ** decimals).toString();
-      
-      
-      const list = store.getState()?.user?.contractDetails;
-      
-      
-      var cont_address = type == "Uniswapv3" ? list?.uniswapv3?.address : list?.panCakeSwap?.address;
-      
-      setRate(rate);
-      setConAdd(cont_address);
-      
+    // var cont_address =
+    //   type == 'rzr-v2'
+    //     ? list?.router?.address
+    //     : type == 'uniswap-v2'
+    //       ? list?.uniswap?.address
+    //       : type == 'uniswap-v3'
+    //         ? '0xed774a004dde83e72be5b3eaad3918f7232b470e'
+    //         : list?.panCakeSwap?.address
 
-        setType(type);
+    // if (type.startsWith('lifi')) {
+    //   cont_address = 'lificontract' 
+    // }
 
-     
-      
+    // setConAdd(cont_address)
 
-      if(active == 'active2'){
-        setActive({
-          active1:false,
-          active2:true,
-        })
-      }
-      else{
-          setActive({
-          active1:true,
-          active2:false,
-        })
-      }
+    setinputTwo({
+      convertedValue: value,
+      inputValue: toCustomFixed(amount, 7),
+      toolTipValue: amount,
+    })
 
-        
-      
+    setfixedinputTwo({
+      convertedValue: value,
+      inputValue: toCustomFixed(amount, 7),
+      toolTipValue: amount,
+    })
 
-       fieldCondition == "TK1"
-          ? setinputTwo({
-            convertedValue: value,
-            inputValue: toCustomFixed(amount, 7),
-            toolTipValue: amount,
-          })
-          : setinputOne({
-            convertedValue: value,
-            inputValue: toCustomFixed(amount, 7),
-            toolTipValue: amount,
-          });
-
-          fieldCondition == "TK1"
-          ? setfixedinputTwo({
-            convertedValue: value,
-            inputValue: toCustomFixed(amount, 7),
-            toolTipValue: amount,
-          })
-          : setfixedinputOne({
-            convertedValue: value,
-            inputValue: toCustomFixed(amount, 7),
-            toolTipValue: amount,
-          });
-
-     
-
+      setTk2DollarValue(data?.lifiRoute?.toAmountUSD)
+    
   }
+
 
   //without fees
 
@@ -732,178 +787,226 @@ const SwapCard = () => {
     max: boolean
   ) => {
 
-    const data: GET_AMOUNTS_DATA = {
-      tokenOneAddress: tokenOne?.address,
-      tokenTwoAddress: tokenTwo?.address,
-      amountIn: amount,
-      max: max,
-      dispatch,
-      walletProvider,
-    };
+    // const data: GET_AMOUNTS_DATA = {
+    //   tokenOneAddress: tokenOne?.address,
+    //   tokenTwoAddress: tokenTwo?.address,
+    //   amountIn: amount,
+    //   max: max,
+    //   dispatch,
+    //   walletProvider,
+    // };
+      setQuoteList([]);
 
-    const tokenValue: string[2] | undefined | any =
-      fieldCondition == "TK1"
-        ? await getAmountsOutfunction(data)
-        : await getAmountsInfunction(data);
-
-    // console.log("all data",data);
-    // console.log("tokenValue data",tokenValue);
-
-
-
-    const u3swaptokenValue: string[2] | undefined | any =
-      fieldCondition == "TK1"
-        ? await getUniV3AmountsOutfunction(data)
-        : await getUniV3AmountsInfunction(data);
-
-        
-
-    const fixed_data: GET_AMOUNTS_DATA = {
-      tokenOneAddress: tokenOne?.address,
-      tokenTwoAddress: tokenTwo?.address,
-      amountIn: (10 ** tokenOne?.decimals)?.toLocaleString("fullwide", {
-        useGrouping: !1,
-      }),
-      dispatch,
-      walletProvider,
-    };
-
-    
-    
-
-    
-  
-
-
-
-
-
-
-
-    if (tokenValue == undefined || (tokenValue[0] && tokenValue[1] == "0")) {
-      setSufficientLiquidityCheck(true);
-      setShimmerState("null");
-      setPriceImpact("0");
-      setShowRight(false);
-    } else {
-      setSufficientLiquidityCheck(false);
-
-      //maxEthAmount
-      // var value:any= BigInt(10000);
-      // var per:any= BigInt(1);
-      // var tv:any = Number(tokenValue[0]) * Number((value+per)/value);
-
-      // tv= tv.toString();
-
-      var tokenValue1 = tokenValue[1];
-
-
-
-
-      var value1: any = await convertUsingTokenDecimals(
-        fieldCondition == "TK1" ? tokenTwo : tokenOne,
-        fieldCondition == "TK1" ? tokenValue[1] : tokenValue[0]
-      );
-      var value2: any = await convertUsingTokenDecimals(
-        fieldCondition == "TK1" ? tokenTwo : tokenOne,
-        fieldCondition == "TK1" ? u3swaptokenValue[0] : u3swaptokenValue[0]
-      );
-
-
-      const pancakeData: Array<string> = await getAmountsOutfunction(fixed_data);
-       const univ3Data: Array<string> = await getUniV3AmountsOutfunction(fixed_data);
-
-      var rates1 =await convertUsingTokenDecimals( tokenTwo,pancakeData[1]);
-      var rates2 =await convertUsingTokenDecimals( tokenTwo,univ3Data[0]);
-
-       const list = store.getState()?.user?.contractDetails;
-         var type1 = "PanCake";
-        var type2 = "Uniswapv3";
-        var cont_address = list?.panCakeSwap?.address;
-
-
-      if (Number(u3swaptokenValue[0]) > Number(tokenValue[1])) {
-        tokenValue1 = u3swaptokenValue[0];
-
-        rates1 = await convertUsingTokenDecimals( tokenTwo,univ3Data[0]);
-        rates2 = await convertUsingTokenDecimals( tokenTwo,pancakeData[1]);
-
-        value1 = await convertUsingTokenDecimals(
-          fieldCondition == "TK1" ? tokenTwo : tokenOne,
-          fieldCondition == "TK1" ? u3swaptokenValue[0] : u3swaptokenValue[0]
-        );
-        value2 = await convertUsingTokenDecimals(
-          fieldCondition == "TK1" ? tokenTwo : tokenOne,
-          fieldCondition == "TK1" ? tokenValue[1] : tokenValue[0]
-        );
-
-        type1 = "Uniswapv3";
-        type2 = "PanCake";
-        cont_address = list?.quote?.address;
+      if(Number(inputOne?.inputValue) <= 0){
+          return;
       }
 
+       setIsLoading(true)
+      setShowRight(true)
 
-      setConAdd(cont_address);
-      setType1(type1);
-      setType2(type2);
-      setType(type1);
+        var result:any =  await getLifiQuote(inputOne?.inputValue);    
 
-      setRate(Number(rates1).toFixed(2));
-      setRate1(Number(rates1).toFixed(2));
-      setRate2(Number(rates2).toFixed(2));
-
-      setPriceList([value1, value2]);
-
-      setShowRight(true);
-
-
-
-
-      //  console.log(tokenValue1,"tokenValue1");
-
-
-
-      const calculatedBalance: string = await convertUsingTokenDecimals(
-        fieldCondition == "TK1" ? tokenTwo : tokenOne,
-        fieldCondition == "TK1" ? tokenValue1 : tokenValue[0]
-      );
-      
-      
-      if (Number(calculatedBalance)) {
-        
-               var inputvalue: any = inputOne.inputValue
-              var ra: any = Number(calculatedBalance) / Number(inputvalue)
-              var re = Number(rate)
-              var ress: any = Number(((re - ra) / re) * 100)
-              if (ress < 0) {
-                ress = -ress
-              }
-              setPriceImpact(cryptoDecimals(ress))
-      
-        fieldCondition == "TK1"
-          ? setinputTwo({
-            convertedValue: tokenValue1,
-            inputValue: toCustomFixed(calculatedBalance, 7),
-            toolTipValue: calculatedBalance,
-          })
-          : setinputOne({
-            convertedValue: tokenValue[0],
-            inputValue: toCustomFixed(calculatedBalance, 7),
-            toolTipValue: calculatedBalance,
-          });
-        setShimmerState("null");
-
-        var tokenprice = fieldCondition == "TK1" ? await getPrice(tokenTwo?.symbol) : await getPrice(tokenOne?.symbol);
-        if (tokenprice != undefined) {
-          var value = toCustomFixed(calculatedBalance, 7) * Number(tokenprice);
-          fieldCondition == "TK1" ? setTk2DollarValue(value) : setTk1DollarValue(value);
-          var dollar1 = Number(value1 * Number(tokenprice)).toFixed(8);
-          var dollar2 = Number(value2 * Number(tokenprice)).toFixed(8);
-          setDoller1(dollar1);
-          setDoller2(dollar2);
+        if(result.length == 0){
+            setIsLoading(false);
+            return;
         }
-      }
-    }
+        console.log(result,"result");
+        
+        
+        const ress: any = await getLifiQuote("1");
+        console.log(ress,"ress");
+        
+
+        const res = result.map((data: any, index: number) =>{ 
+            const dataTool = data?.steps?.[0]?.tool;
+            const ressTool = ress?.[index]?.steps?.[0]?.tool;
+
+            const tokenOutPerTokenIn =
+                dataTool && ressTool && dataTool === ressTool
+                    ? Number(data?.toAmount || 0)
+                    : 0;
+
+
+          return({
+            ...data,
+            tokenOutPerTokenIn
+        })});
+        
+    //  tokenOutPerTokenIn
+      
+      
+        // setUsdPrice(res[0]?.lifiRoute?.toToken?.priceUSD);
+        setTk1DollarValue(res[0]?.fromAmountUSD)
+        setTk2DollarValue(res[0]?.toAmountUSD)
+        setQuoteList(res)
+        setLifiRoute(res[0])
+        setIsLoading(false);
+        handleTime();
+
+        setinputTwo({
+            convertedValue: res[0]?.toAmount,
+            inputValue: Number(res[0]?.toAmount).toFixed(7),
+            toolTipValue: Number(res[0]?.toAmount).toFixed(7),
+        });
+
+
+        
+        setShimmerState("null");
+       
+       
+
+    // const tokenValue: string[2] | undefined | any =
+    //   fieldCondition == "TK1"
+    //     ? await getAmountsOutfunction(data)
+    //     : await getAmountsInfunction(data);
+
+    // // console.log("all data",data);
+    // // console.log("tokenValue data",tokenValue);
+
+
+
+    // const u3swaptokenValue: string[2] | undefined | any =
+    //   fieldCondition == "TK1"
+    //     ? await getUniV3AmountsOutfunction(data)
+    //     : await getUniV3AmountsInfunction(data);
+
+        
+
+    // const fixed_data: GET_AMOUNTS_DATA = {
+    //   tokenOneAddress: tokenOne?.address,
+    //   tokenTwoAddress: tokenTwo?.address,
+    //   amountIn: (10 ** tokenOne?.decimals)?.toLocaleString("fullwide", {
+    //     useGrouping: !1,
+    //   }),
+    //   dispatch,
+    //   walletProvider,
+    // };
+
+    
+    // if (tokenValue == undefined || (tokenValue[0] && tokenValue[1] == "0")) {
+    //   setSufficientLiquidityCheck(true);
+    //   setShimmerState("null");
+    //   setPriceImpact("0");
+    //   setShowRight(false);
+    // } else {
+    //   setSufficientLiquidityCheck(false);
+
+    //   //maxEthAmount
+    //   // var value:any= BigInt(10000);
+    //   // var per:any= BigInt(1);
+    //   // var tv:any = Number(tokenValue[0]) * Number((value+per)/value);
+
+    //   // tv= tv.toString();
+
+    //   var tokenValue1 = tokenValue[1];
+
+
+
+
+    //   var value1: any = await convertUsingTokenDecimals(
+    //     fieldCondition == "TK1" ? tokenTwo : tokenOne,
+    //     fieldCondition == "TK1" ? tokenValue[1] : tokenValue[0]
+    //   );
+    //   var value2: any = await convertUsingTokenDecimals(
+    //     fieldCondition == "TK1" ? tokenTwo : tokenOne,
+    //     fieldCondition == "TK1" ? u3swaptokenValue[0] : u3swaptokenValue[0]
+    //   );
+
+
+    //   const pancakeData: Array<string> = await getAmountsOutfunction(fixed_data);
+    //    const univ3Data: Array<string> = await getUniV3AmountsOutfunction(fixed_data);
+
+    //   var rates1 =await convertUsingTokenDecimals( tokenTwo,pancakeData[1]);
+    //   var rates2 =await convertUsingTokenDecimals( tokenTwo,univ3Data[0]);
+
+    //    const list = store.getState()?.user?.contractDetails;
+    //      var type1 = "PanCake";
+    //     var type2 = "Uniswapv3";
+    //     var cont_address = list?.panCakeSwap?.address;
+
+
+    //   if (Number(u3swaptokenValue[0]) > Number(tokenValue[1])) {
+    //     tokenValue1 = u3swaptokenValue[0];
+
+    //     rates1 = await convertUsingTokenDecimals( tokenTwo,univ3Data[0]);
+    //     rates2 = await convertUsingTokenDecimals( tokenTwo,pancakeData[1]);
+
+    //     value1 = await convertUsingTokenDecimals(
+    //       fieldCondition == "TK1" ? tokenTwo : tokenOne,
+    //       fieldCondition == "TK1" ? u3swaptokenValue[0] : u3swaptokenValue[0]
+    //     );
+    //     value2 = await convertUsingTokenDecimals(
+    //       fieldCondition == "TK1" ? tokenTwo : tokenOne,
+    //       fieldCondition == "TK1" ? tokenValue[1] : tokenValue[0]
+    //     );
+
+    //     type1 = "Uniswapv3";
+    //     type2 = "PanCake";
+    //     cont_address = list?.quote?.address;
+    //   }
+
+
+    //   setConAdd(cont_address);
+    //   setType1(type1);
+    //   setType2(type2);
+    //   setType(type1);
+
+    //   setRate(Number(rates1).toFixed(2));
+    //   setRate1(Number(rates1).toFixed(2));
+    //   setRate2(Number(rates2).toFixed(2));
+
+    //   setPriceList([value1, value2]);
+
+    //   setShowRight(true);
+
+
+
+
+    //   //  console.log(tokenValue1,"tokenValue1");
+
+
+
+    //   const calculatedBalance: string = await convertUsingTokenDecimals(
+    //     fieldCondition == "TK1" ? tokenTwo : tokenOne,
+    //     fieldCondition == "TK1" ? tokenValue1 : tokenValue[0]
+    //   );
+      
+      
+    //   if (Number(calculatedBalance)) {
+        
+    //            var inputvalue: any = inputOne.inputValue
+    //           var ra: any = Number(calculatedBalance) / Number(inputvalue)
+    //           var re = Number(rate)
+    //           var ress: any = Number(((re - ra) / re) * 100)
+    //           if (ress < 0) {
+    //             ress = -ress
+    //           }
+    //           setPriceImpact(cryptoDecimals(ress))
+      
+    //     fieldCondition == "TK1"
+    //       ? setinputTwo({
+    //         convertedValue: tokenValue1,
+    //         inputValue: toCustomFixed(calculatedBalance, 7),
+    //         toolTipValue: calculatedBalance,
+    //       })
+    //       : setinputOne({
+    //         convertedValue: tokenValue[0],
+    //         inputValue: toCustomFixed(calculatedBalance, 7),
+    //         toolTipValue: calculatedBalance,
+    //       });
+    //     setShimmerState("null");
+
+    //     var tokenprice = fieldCondition == "TK1" ? await getPrice(tokenTwo?.symbol) : await getPrice(tokenOne?.symbol);
+    //     if (tokenprice != undefined) {
+    //       var value = toCustomFixed(calculatedBalance, 7) * Number(tokenprice);
+    //       fieldCondition == "TK1" ? setTk2DollarValue(value) : setTk1DollarValue(value);
+    //       var dollar1 = Number(value1 * Number(tokenprice)).toFixed(8);
+    //       var dollar2 = Number(value2 * Number(tokenprice)).toFixed(8);
+    //       setDoller1(dollar1);
+    //       setDoller2(dollar2);
+    //     }
+    //   }
+    // }
   };
 
   const handleMaximumFunction = async (data: string) => {
@@ -1079,8 +1182,11 @@ const SwapCard = () => {
               />
               <div className="swapbt">
 
-                <Button className="swapBtn my-3" onClick={() => handleSwitchTokens()}>
-                  <DropUpswapIcon />
+                <Button className="swapBtn my-2" onClick={() => handleSwitchTokens()}>
+                  {/* <DropUpswapIcon /> */}
+                  <IoIosArrowRoundDown  className="icon down"  />
+                  <IoIosArrowRoundUp  className="icon up"  />
+
                 </Button>
               </div>
               <SecondaryTokenCard
@@ -1091,65 +1197,11 @@ const SwapCard = () => {
                 dollarVal={tk2DollarValue}
                 shimmer={shimmerState}
                 key=""
+               
               />
             </div>
-            <div className="showBtn">
-              <button onClick={toggleVisibility}>
-                {!showMore ? "Show More" : "Show Less"}
-                {/* {!showMore ? <IoIosArrowDropdownCircle className="ms-2 fs-3" /> : <IoIosArrowDropupCircle className="ms-2 fs-3" />} */}
-              </button>
-            </div>
-            <ul className="addCard_valuesList">
-              <li>
-                <label>Price impact</label>
-                <p>~{priceImpact || "0"}%</p>
-              </li>
 
-              <li>
-                <label>Rate:</label>
-                <p>
-                  1 {tokenOne?.name} = {rate} {tokenTwo?.name}
-                </p>
-              </li>
-              <AnimatePresence mode="sync">
-                {showMore && (
-                  <>
-                    <motion.li
-                      initial={{ x: 100, opacity: 0 }}
-                      exit={{ x: -100, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{
-                        delay: 0.1,
-                      }}
-                    ></motion.li>
-                    <motion.li
-                      animate={{ x: 0, opacity: 1 }}
-                      initial={{ x: 100, opacity: 0 }}
-                      exit={{ x: -100, opacity: 0 }}
-                      transition={{
-                        delay: 0.2,
-                      }}
-                    >
-                      <label>Slippage</label>
-                      <p>{slippage}%</p>
-                    </motion.li>
-                    <motion.li
-                      exit={{ x: -100, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      initial={{ x: 100, opacity: 0 }}
-                      transition={{
-                        delay: 0.3,
-                      }}
-                    >
-                      <label>Order routing</label>
-                      <p>swap</p>
-                    </motion.li>
-                  </>
-                )}
-              </AnimatePresence>
-            </ul>
-          </div>
-          <div className="addCard_footer ">
+             <div className="addCard_footer ">
             <Button
               fluid
               className={`btnapprove mb-3 ${!walletAddress
@@ -1202,8 +1254,217 @@ const SwapCard = () => {
                     "Approve and Swap"}
             </Button>
           </div>
+            {/* <div className="showBtn">
+              <button onClick={toggleVisibility}>
+                {!showMore ? "Show More" : "Show Less"}
+              
+              </button>
+            </div>
+            <ul className="addCard_valuesList">
+              <li>
+                <label>Price impact</label>
+                <p>~{priceImpact || "0"}%</p>
+              </li>
+
+              <li>
+                <label>Rate:</label>
+                <p>
+                  1 {tokenOne?.name} = {rate} {tokenTwo?.name}
+                </p>
+              </li>
+              <AnimatePresence mode="sync">
+                {showMore && (
+                  <>
+                    <motion.li
+                      initial={{ x: 100, opacity: 0 }}
+                      exit={{ x: -100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{
+                        delay: 0.1,
+                      }}
+                    ></motion.li>
+                    <motion.li
+                      animate={{ x: 0, opacity: 1 }}
+                      initial={{ x: 100, opacity: 0 }}
+                      exit={{ x: -100, opacity: 0 }}
+                      transition={{
+                        delay: 0.2,
+                      }}
+                    >
+                      <label>Slippage</label>
+                      <p>{slippage}%</p>
+                    </motion.li>
+                    <motion.li
+                      exit={{ x: -100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      initial={{ x: 100, opacity: 0 }}
+                      transition={{
+                        delay: 0.3,
+                      }}
+                    >
+                      <label>Order routing</label>
+                      <p>swap</p>
+                    </motion.li>
+                  </>
+                )}
+              </AnimatePresence>
+            </ul> */}
+          </div>
+         {/* previous btn  */}
         </div>
+
         <AnimatePresence mode="sync">
+          {showRight && (
+            <motion.li
+              initial={{ x: 100, opacity: 0 }}
+              exit={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{
+                delay: 0.1,
+              }}
+              style={{ listStyle: 'none' }}
+            >
+              <div className="addCardBox_recieve ">
+                <div className="addCard_heading mx-auto justify-content-between">
+                  <h1 className="titleHeading">Receive</h1>
+                  <div className={`p-3 seticon-bg`}>
+                    {/* <SettingOverlay /> */}
+                    <div className="time_left">
+                      <div className="d-flex gap-3 align-items-center justify-content-center">
+                        <img
+                          src="assets/images/swap_reciev/refresh-circle.svg"
+                          onClick={() => {
+                            handleGetAmountsData('TK1', inputOne.convertedValue, false)
+                          }}
+                        />
+                        <p className="time_second font-geist">{time}s left</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="addCard mh-50">
+                  {isLoading && (
+                    <Lottie
+                      animationData={loader}
+                      className={`lottie_animation loading d-flex mx-auto my-auto w-25`}
+                      loop={true}
+                    />
+                  )}
+                  {quoteList.length === 0 && !isLoading && (
+                    <div className="text-center d-grid gap-3">
+                      <div>
+                        <svg className="routeImg" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M19 15.18V7c0-2.21-1.79-4-4-4s-4 1.79-4 4v10c0 1.1-.9 2-2 2s-2-.9-2-2V8.82C8.16 8.4 9 7.3 9 6c0-1.66-1.34-3-3-3S3 4.34 3 6c0 1.3.84 2.4 2 2.82V17c0 2.21 1.79 4 4 4s4-1.79 4-4V7c0-1.1.9-2 2-2s2 .9 2 2v8.18c-1.16.41-2 1.51-2 2.82 0 1.66 1.34 3 3 3s3-1.34 3-3c0-1.3-.84-2.4-2-2.82"></path>
+                        </svg>
+                      </div>
+                      <h3>No Route Found </h3>
+                      <h5>
+                        Reasons for that could be: low liquidity, amount selected is too low, gas costs are too high or
+                        there are no routes for the selected combination.
+                      </h5>
+                    </div>
+                  )}
+                  {quoteList.length > 0 &&
+                    quoteList.map((data: any, index: any) => (
+                        <div className="addCard_recieveValues mt-4" key={index}>
+                          <div
+                            className={`recieve_values_div ${index == activeIndex ? 'recieve_active' : ''}`}
+                            onClick={() => {
+                              setInputValue(
+                                data.toAmount,
+                                selectedField,
+                                data,
+                                index,
+                               0,
+                              )
+                              setLifiRoute(data)
+                            }}
+                          >
+                            <div className="best_returns"></div>
+                            <div className="first_value_div pt-3">
+                              <Accordion>
+                                <Accordion.Item eventKey="0" className="border-0">
+                                  <Accordion.Header>
+                                    <div className="d-flex align-items-center gap-3">
+                                      <img src={tokenTwo.icon} className="sideicon" />
+                                      <div className="font-geist">
+                                        <h1 className="fw-bold">{Number(data.toAmount).toFixed(3)}</h1>
+                                        <div className="d-flex align-items-center gap-3">
+                                          {/* <h5 className="mt-1 fw-medium">${Number(toCustomFixed(data.amountOutFormatted, 7) * Number(usdPrice)).toFixed(1)}</h5> */}
+                                          <h5 className="mt-1 fw-medium">
+                                            $
+                                            {Number(data?.toAmount * data?.toToken?.priceUSD).toFixed(3)}
+                                            {/* <small>{data.priceImpactPercentFormatted}</small> */}
+                                          </h5>
+                                          <div className="d-flex align-items-center gap-2 squid_div">
+                                            <img
+                                              src={ data?.steps?.[0]?.toolDetails?.logoURI || ''}
+                                              width={25}
+                                            />
+                                            {/* {data.dex} */}
+                                            {data?.steps[0].toolDetails?.name }
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </Accordion.Header>
+                                  <Accordion.Body>
+                                    <div className="squid_ul">
+                                      <div className="d-flex gap-3">
+                                        <img
+                                          src={ data?.steps?.[0]?.toolDetails?.logoURI || ''}
+                                          width={25}
+                                        />
+                                        {/* <p className="squid_lifi_text">{data.dex}</p> */}
+                                        <p className="squid_lifi_text">
+                                          { data?.steps[0].toolDetails?.name}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </Accordion.Body>
+                                </Accordion.Item>
+                              </Accordion>
+                            </div>
+                            <div className="d-flex justify-content-between align-items-center mt-4 recieve_price_div d-flex justify-content-between">
+                              <h6>
+                                {/* 1 {tokenOne?.name} ~ {Number(data.fixedRate).toFixed(2)} {tokenTwo?.name} */}1{' '}
+                                {tokenOne?.name} ~ {data.tokenOutPerTokenIn} {tokenTwo?.name}
+                              </h6>
+                              <div className="d-flex gap-4">
+                                <p className='d-flex gap-2'>
+                                  <div className='my-auto'>
+                                  <GasIcon /></div><div className='my-auto'>$
+                                  {data?.steps?.length > 0
+                                    ? calculateTotalGasFeeUsd(data.steps).toFixed(5)
+                                    : ""} </div>
+                                </p>
+                                {/* <p><GasIcon /> ${data?.lifiRoute?.gasCostUSD || Number(parseFloat(data.estimatedGasFeeFormatted.replace(/[^\d.]/g, '')) * bnbdollar).toFixed(5)}</p> */}
+
+                                
+                                 
+                                <p className='d-flex gap-2'>
+                                <div className='my-auto'>
+                                    <ClockIcon />
+                                    </div>
+                                    <div className='my-auto'>
+                                    { data?.steps[0].estimate.executionDuration || '30'}s
+                                    </div>
+                                  </p>
+                                 
+                               
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                </div>
+              </div>
+            </motion.li>
+          )}
+        </AnimatePresence>
+
+        {/* <AnimatePresence mode="sync">
           {showRight && (
             <motion.li
               initial={{ x: 100, opacity: 0 }}
@@ -1218,7 +1479,7 @@ const SwapCard = () => {
                 <div className="addCard_heading mx-auto">
                   <h1 className="titleHeading">Recieve</h1>
                   <div className={`p-3 seticon-bg`}>
-                    {/* <SettingOverlay /> */}
+                 
                     <div className="time_left">
                       <div className="d-flex gap-3 align-items-center justify-content-center">
                         <img src="assets/images/swap_reciev/refresh-circle.svg" onClick={() => handleTime()} />
@@ -1233,9 +1494,7 @@ const SwapCard = () => {
                   <div className="addCard_recieveValues">
                     <div className={`recieve_values_div ${active.active1 ? 'recieve_active':'' }`} onClick={()=>setInputValue(priceList[0],selectedField,type1,"active1",rate1)}>
                       <div className="best_returns">
-                        {/* <button className="rounded-2 fw-medium font-geist border-0">
-                    Aggregator
-                  </button> */}
+                       
                       </div>
                       <div className="first_value_div pt-3">
                         <Accordion>
@@ -1246,7 +1505,7 @@ const SwapCard = () => {
                                 <div className="font-geist">
                                   <h1 className="fw-bold">{priceList[0]}</h1>
                                   <div className="d-flex align-items-center gap-3">
-                                    {/* <h5 className="mt-1 fw-medium">${dollar1}</h5> */}
+                                   
                                     <div className="d-flex align-items-center gap-2 squid_div">
                                       <img src={`${type1 == "Uniswapv3" ? 'https://s2.coinmarketcap.com/static/img/coins/64x64/7083.png' : 'https://tokens.pancakeswap.finance/images/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png'}`} width={25} />{type1}
                                     </div>
@@ -1260,24 +1519,7 @@ const SwapCard = () => {
                                   <img src={`${type1 == "Uniswapv3" ? 'https://s2.coinmarketcap.com/static/img/coins/64x64/7083.png' : 'https://tokens.pancakeswap.finance/images/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png'}`} width={25} />
                                   <p className="squid_lifi_text">{type1} </p>
                                 </div>
-                                {/* <ul className="ps-5 pt-3 pb-3">
-                            <li className="d-flex align-items-start gap-3 values_li">
-                              <img src="assets/images/swap_reciev/Squid.svg" width={14} />
-                              Swap on Binance via {type1} Dex Aggregator <br />
-                              {inputOne.inputValue} {tokenOne.symbol} {`>`} {inputTwo.inputValue} {tokenTwo.symbol}
-                            </li>
-                            <li className="d-flex gap-3 values_li mt-3">
-                              <img src="assets/images/swap_reciev/bridge.svg" className="pt-2 bridge_img" />
-                              Bridge from {tokenOne.name} to {tokenTwo.name} via {type1} <br />
-                              {inputOne.inputValue} {tokenOne.symbol} {`>`} {inputTwo.inputValue} {tokenTwo.symbol}
-                            </li>
-                            <li className="d-flex align-items-start gap-3 values_li mt-3">
-                             
-                              <img src={tokenOne.icon} className="ethereum_img"  width={15}/>
-                              LI.FI to {tokenOne.symbol} to {tokenTwo.symbol} via {type1}<br />
-                              {inputOne.inputValue} {tokenOne.symbol} {`>`} {inputTwo.inputValue} {tokenTwo.symbol}
-                            </li>
-                          </ul> */}
+                              
                               </div>
                             </Accordion.Body>
                           </Accordion.Item>
@@ -1287,16 +1529,7 @@ const SwapCard = () => {
                         <h6>
                           1 {tokenOne?.name} ~ {rate1} {tokenTwo?.name}
                         </h6>
-                        {/* <div className="d-flex gap-4">
-                    <div className="d-flex first_value_price gap-2">
-                      <img src="assets/images/swap_reciev/gas-station.svg" />
-                      <p>$3.71</p>
-                    </div>
-                    <div className="d-flex first_value_time gap-2">
-                      <img src="assets/images/swap_reciev/time_value.svg" />
-                      <p>5m</p>
-                    </div>
-                  </div> */}
+                    
                       </div>
                     </div>
                   </div>
@@ -1306,9 +1539,7 @@ const SwapCard = () => {
                   <div className="addCard_recieveValues mt-4">
                     <div className={`recieve_values_div ${active.active2 ? 'recieve_active':'' }`} onClick={()=>setInputValue(priceList[1],selectedField,type2,"active2",rate2)}>
                       <div className="best_returns">
-                        {/* <button className="rounded-2 fw-medium font-geist border-0">
-                    Fastest
-                  </button> */}
+                     
                       </div>
                       <div className="first_value_div pt-3">
                         <Accordion>
@@ -1319,7 +1550,7 @@ const SwapCard = () => {
                                 <div className="font-geist">
                                   <h1 className="fw-bold">{priceList[1]}</h1>
                                   <div className="d-flex align-items-center gap-3">
-                                    {/* <h5 className="mt-1 fw-medium">${dollar2}</h5> */}
+                                   
                                     <div className="d-flex align-items-center gap-2 squid_div">
                                       <img src={`${type2 == "Uniswapv3" ? 'https://s2.coinmarketcap.com/static/img/coins/64x64/7083.png' : 'https://tokens.pancakeswap.finance/images/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png'}`} width={25} />{type2}
                                     </div>
@@ -1333,23 +1564,7 @@ const SwapCard = () => {
                                   <img src={`${type2 == "Uniswapv3" ? 'https://s2.coinmarketcap.com/static/img/coins/64x64/7083.png' : 'https://tokens.pancakeswap.finance/images/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png'}`} width={25} />
                                   <p className="squid_lifi_text">{type2} </p>
                                 </div>
-                                {/* <ul className="ps-5 pt-3 pb-3">
-                            <li className="d-flex align-items-start gap-3 values_li">
-                              <img src="assets/images/swap_reciev/Squid.svg" width={14} />
-                              Swap on Binance via {type2} Dex Aggregator <br />
-                             {inputOne.inputValue} {tokenOne.symbol} {`>`} {priceList[1]} {tokenTwo.symbol}
-                            </li>
-                            <li className="d-flex gap-3 values_li mt-3">
-                              <img src="assets/images/swap_reciev/bridge.svg" className="pt-2 bridge_img" />
-                                Bridge from {tokenOne.name} to {tokenTwo.name} via {type2} <br />
-                              {inputOne.inputValue} {tokenOne.symbol} {`>`} {priceList[1]} {tokenTwo.symbol}
-                            </li>
-                            <li className="d-flex align-items-start gap-3 values_li mt-3">
-                              <img src={tokenOne.icon} className="ethereum_img"  width={15}/>
-                              LI.FI to {tokenOne.symbol} to {tokenTwo.symbol} via {type2}<br />
-                              {inputOne.inputValue} {tokenOne.symbol} {`>`} {priceList[1]} {tokenTwo.symbol}
-                            </li>
-                          </ul> */}
+                                
                               </div>
                             </Accordion.Body>
                           </Accordion.Item>
@@ -1359,149 +1574,17 @@ const SwapCard = () => {
                         <h6>
                           1 {tokenOne?.name} ~ {rate2} {tokenTwo?.name}
                         </h6>
-                        {/* <div className="d-flex gap-4">
-                    <div className="d-flex first_value_price gap-2">
-                      <img src="assets/images/swap_reciev/gas-station.svg" />
-                      <p>$3.71</p>
-                    </div>
-                    <div className="d-flex first_value_time gap-2">
-                      <img src="assets/images/swap_reciev/time_value.svg" />
-                      <p>5m</p>
-                    </div>
-                  </div> */}
+                        
                       </div>
                     </div>
                   </div>
                     )}
-                  {/* <div className="addCard_recieveValues mt-4">
-              <div className="recieve_values_div">
-                <div className="first_value_div">
-                  <Accordion>
-                    <Accordion.Item eventKey="0" className="border-0">
-                      <Accordion.Header>
-                        <div className="d-flex align-items-center gap-3">
-                         <img src="assets/images/swap_reciev/Bitcoin_send.svg" />
-                          <div className="font-geist">
-                            <h1 className="fw-bold">37.705199</h1>
-                            <div className="d-flex align-items-center gap-3">
-                              <h5 className="mt-1 fw-medium">$24,194.55 + 0.46%</h5>
-                              <div className="d-flex align-items-center gap-2 squid_div">
-                                <img src="assets/images/swap_reciev/Squid.svg" />Squid
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </Accordion.Header>
-                      <Accordion.Body>
-                        <div className="squid_ul">
-                          <div className="d-flex gap-3">
-                            <img src="assets/images/swap_reciev/Squid.svg" width={25} />
-                            <p className="squid_lifi_text">Squid via LI.FI</p>
-                          </div>
-                          <ul className="ps-5 pt-3 pb-3">
-                            <li className="d-flex align-items-start gap-3 values_li">
-                              <img src="assets/images/swap_reciev/Squid.svg" width={14} />
-                              Swap on Ethereum via LI.FI Dex Aggregator <br />
-                              10 DAI {`>`} 9.265111 USDC
-                            </li>
-                            <li className="d-flex gap-3 values_li mt-3">
-                              <img src="assets/images/swap_reciev/bridge.svg" className="pt-2 bridge_img" />
-                              Bridge from Ethereum to BSC via Squid <br />
-                              9.95889 USDC {`>`} 9.265111 USDD
-                            </li>
-                            <li className="d-flex align-items-start gap-3 values_li mt-3">
-                              <img src="assets/images/swap_reciev/ethereum.svg" className="ethereum_img" />
-                              LI.FI to Ethereum to BSC via Squid<br />
-                              9.95889 USDC {`>`} 9.265111 USDD
-                            </li>
-                          </ul>
-                        </div>
-                      </Accordion.Body>
-                    </Accordion.Item>
-                  </Accordion>
-                </div>
-                <div className="d-flex justify-content-between align-items-center mt-4 recieve_price_div">
-                  <h6>1ETH ~ 3.7659037 BNB</h6>
-                  <div className="d-flex gap-4">
-                    <div className="d-flex first_value_price gap-2">
-                      <img src="assets/images/swap_reciev/gas-station.svg" />
-                      <p>$3.71</p>
-                    </div>
-                    <div className="d-flex first_value_time gap-2">
-                      <img src="assets/images/swap_reciev/time_value.svg" />
-                      <p>5m</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-                  {/* <div className="addCard_recieveValues mt-4">
-              <div className="recieve_values_div">
-                <div className="first_value_div">
-                  <Accordion>
-                    <Accordion.Item eventKey="0" className="border-0">
-                      <Accordion.Header>
-                        <div className="d-flex align-items-center gap-3">
-                          <img src="assets/images/swap_reciev/Bitcoin_send.svg" />
-                          <div className="font-geist">
-                            <h1 className="fw-bold">37.705199</h1>
-                            <div className="d-flex align-items-center gap-3">
-                              <h5 className="mt-1 fw-medium">$24,194.55 + 0.46%</h5>
-                              <div className="d-flex align-items-center gap-2 squid_div">
-                                <img src="assets/images/swap_reciev/Squid.svg" />Squid
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </Accordion.Header>
-                      <Accordion.Body>
-                        <div className="squid_ul">
-                          <div className="d-flex gap-3">
-                            <img src="assets/images/swap_reciev/Squid.svg" width={25} />
-                            <p className="squid_lifi_text">Squid via LI.FI</p>
-                          </div>
-                          <ul className="ps-5 pt-3 pb-3">
-                            <li className="d-flex align-items-start gap-3 values_li">
-                              <img src="assets/images/swap_reciev/Squid.svg" width={14} />
-                              Swap on Ethereum via LI.FI Dex Aggregator <br />
-                              10 DAI {`>`} 9.265111 USDC
-                            </li>
-                            <li className="d-flex gap-3 values_li mt-3">
-                              <img src="assets/images/swap_reciev/bridge.svg" className="pt-2 bridge_img" />
-                              Bridge from Ethereum to BSC via Squid <br />
-                              9.95889 USDC {`>`} 9.265111 USDD
-                            </li>
-                            <li className="d-flex align-items-start gap-3 values_li mt-3">
-                              <img src="assets/images/swap_reciev/ethereum.svg" className="ethereum_img" />
-                              LI.FI to Ethereum to BSC via Squid<br />
-                              9.95889 USDC {`>`} 9.265111 USDD
-                            </li>
-                          </ul>
-                        </div>
-                      </Accordion.Body>
-                    </Accordion.Item>
-                  </Accordion>
-                </div>
-                <div className="d-flex justify-content-between align-items-center mt-4 recieve_price_div">
-                  <h6>1ETH ~ 3.7659037 BNB</h6>
-                  <div className="d-flex gap-4">
-                    <div className="d-flex first_value_price gap-2">
-                      <img src="assets/images/swap_reciev/gas-station.svg" />
-                      <p>$3.71</p>
-                    </div>
-                    <div className="d-flex first_value_time gap-2">
-                      <img src="assets/images/swap_reciev/time_value.svg" />
-                      <p>5m</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
+                  
                 </div>
               </div>
             </motion.li>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
       </div>
 
       <ConnectWallet
@@ -1595,9 +1678,22 @@ const SwapCard = () => {
         heading="Confirmation"
         status=""
       >
-        <ReviewSwap state={
-          { tokenDetails, selectedField, inputFixedTwo, inputOne, inputTwo, tk1DollarValue, tk2DollarValue, contAdd }
-        } isShow={setShow} />
+        <ReviewSwap
+          state={{
+            tokenDetails,
+            selectedField,
+            inputFixedTwo: inputTwo,
+            inputOne,
+            inputTwo,
+            tk1DollarValue,
+            tk2DollarValue,
+            contAdd,
+            lifiRoute,
+            fetchData,
+            selectedQuote: quoteList[activeIndex],
+          }}
+          isShow={setShow}
+        />
 
       </CommonModal>
 

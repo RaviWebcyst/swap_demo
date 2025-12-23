@@ -4,9 +4,17 @@
   "private": true,
   "packageManager": "yarn@1.22.22",
   "dependencies": {
+    "@lifi/sdk": "^3.13.3",
     "@reduxjs/toolkit": "^1.9.7",
     "@reown/appkit": "^1.7.13",
     "@reown/appkit-adapter-wagmi": "^1.7.13",
+    "@solana/spl-token": "^0.4.14",
+    "@solana/wallet-adapter-base": "^0.9.23",
+    "@solana/wallet-adapter-react": "^0.15.35",
+    "@solana/wallet-adapter-react-ui": "^0.9.35",
+    "@solana/wallet-adapter-walletconnect": "^0.1.16",
+    "@solana/wallet-adapter-wallets": "^0.19.32",
+    "@solana/web3.js": "^1.95.3",
     "@tanstack/react-query": "^5.81.5",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -21,8 +29,10 @@
     "bignumber.js": "^9.1.2",
     "bn.js": "^5.2.1",
     "bootstrap": "^5.3.2",
+    "buffer": "^6.0.3",
     "chart.js": "^4.4.4",
     "cogo-toast": "^4.2.3",
+    "crypto-browserify": "^3.12.1",
     "debounce.lodash": "^1.0.0",
     "ethers": "^6.13.2",
     "framer-motion": "^10.18.0",
@@ -30,8 +40,10 @@
     "lodash": "^4.17.21",
     "lottie-react": "^2.4.0",
     "moment": "^2.30.1",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-apexcharts": "^1.7.0",
+    "react-app-rewired": "^2.2.1",
     "react-bootstrap": "^2.10.0",
     "react-chartjs-2": "^5.2.0",
     "react-countdown": "^2.3.5",
@@ -44,6 +56,7 @@
     "react-select": "^5.8.0",
     "redux-persist": "^6.0.0",
     "sass": "^1.70.0",
+    "stream-browserify": "^3.0.0",
     "sweetalert2": "^11.10.7",
     "typescript": "^5.8.3",
     "universal-calci-pro": "^0.0.10",
@@ -53,10 +66,10 @@
     "web3": "^1.10.3"
   },
   "scripts": {
-    "start": "HOST=0.0.0.0 react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "HOST=0.0.0.0 react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": [

@@ -167,9 +167,9 @@ span {
         .listToken {
           display: flex;
           flex-direction: column;
-          // border: 1px solid #1af5af;
+          // border: 1px solid #9E79D2;
           border-radius: 10px;
-          padding: 1.5rem 2rem;
+          padding: 0.5rem 2rem;
           background-color: #f6f6f6;
 
           li {
@@ -226,7 +226,7 @@ span {
                 // padding: 0.2rem 0.8rem;
                 // height: 2.2rem;
                 // background: $white;
-                color: #1dd49a;
+                color: #9E79D2;
                 font-size: 1.7rem;
                 padding: 0px;
                 // margin-right: 0.9rem;
@@ -260,12 +260,14 @@ span {
         margin: -2rem auto;
         z-index: 1;
         width: 5rem;
-        height: 5rem;
+        // height: 5rem;
+        height: auto;
         padding: 0;
-        border-radius: 50%;
-        border: 7px solid #dffff5;
+        border-radius: 1.15rem;
+        padding: 0.5rem;
+        // border: 7px solid #dffff5;
         // background: $darkBlue;
-        // background: #1DD49A;
+        // background: #9E79D2;
         z-index: 1;
 
         @media (max-width: 991px) {
@@ -306,7 +308,8 @@ span {
           display: flex;
           flex-direction: column;
           background-color: #f6f6f6;
-          padding: 1.5rem 3rem;
+          // padding: 1.5rem 3rem;
+           padding: 0.5rem 2rem;
           border-radius: 10px;
 
           li {
@@ -687,7 +690,7 @@ table {
   transform: translateX(-50%);
 }
 .rezorSwap-wrapper .swapnow_button {
-  background-color: #1dd49a;
+  background-color: #9E79D2;
   color: #fff;
   font-size: 0.9em;
   width: 16em;
@@ -761,7 +764,7 @@ table {
   position: absolute;
   right: 10%;
   bottom: 3%;
-  color: #1dd49a;
+  color: #9E79D2;
   font-size: 3.175em;
   /* font-family: "Inter"; */
 }
@@ -797,7 +800,7 @@ table {
   padding-bottom: 9%;
 }
 .rezorSwap-wrapper .heading_million_div h1 {
-  background: linear-gradient(90deg, #1af5af 0%, #1dd59a 100%);
+  background: linear-gradient(90deg, #9E79D2 0%, #1dd59a 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -821,7 +824,7 @@ table {
 .rezorSwap-wrapper .our_products_heading_h2,
 .rezorSwap-wrapper .overview_h2,
 .rezorSwap-wrapper .h1_heading_community {
-  background: linear-gradient(90deg, #1af5af 0%, #1dd59a 100%);
+  background: linear-gradient(90deg, #9E79D2 0%, #1dd59a 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 3em;
@@ -901,7 +904,7 @@ table {
   font-size: 3em;
 }
 .rezorSwap-wrapper .h4_heading_statistics {
-  color: #1af5af;
+  color: #9E79D2;
   font-size: 2em;
 }
 .rezorSwap-wrapper .p_para_statistics {
@@ -949,7 +952,7 @@ table {
 }
 .rezorSwap-wrapper .forms_text h3,
 .rezorSwap-wrapper .copyright_content a {
-  color: #1dd49a;
+  color: #9E79D2;
 }
 .rezorSwap-wrapper .back-to-top img,
 .back-to-top img {
@@ -1020,7 +1023,7 @@ table {
 }
 
 .rezorSwapNavBarUl li > a:hover {
-  color: #1dd49a !important;
+  color: #9E79D2 !important;
 }
 .main-wrapper .scan-code {
   bottom: 0%;
@@ -1489,7 +1492,7 @@ a.btn-download {
   --primary-color: #f5f7fa;
   --primary-font: "Geist";
   --black-color-theme: #0d0f1a;
-  --buttons-bg-color: #1dd49a;
+  --buttons-bg-color: #9E79D2;
   --border-radius: 10px;
   --text-color-first: rgba(65, 65, 65, 1);
   --text-color-second: #262626;
@@ -1561,7 +1564,7 @@ a.btn-download {
 }
 
 .balancevalue {
-  font-size: 16px;
+  font-size: 13px;
   margin-top: 0.5em;
   margin-left: 0.5em;
 }
@@ -2012,7 +2015,8 @@ body.dark-theme .tokenBtn .tokenIcon {
 
 @media (min-width: 952px) {
   .addCardBox .addCard_footer {
-    width: 36rem;
+    // width: 36rem;
+    width: 40rem;
   }
   .rezorSwap-wrapper .mobile_footer_parent {
     display: none;
@@ -2118,6 +2122,7 @@ body.dark-theme .bg-image {
 }
 
 .addCardBox .addCard_tokenvalues .swapbt::after {
+  display: none;
   content: "";
   width: 15%;
   z-index: 0;
@@ -2129,6 +2134,7 @@ body.dark-theme .bg-image {
 }
 
 .addCardBox .addCard_tokenvalues .swapbt::before {
+  display: none;
   content: "";
   width: 15%;
   z-index: 0;
@@ -2151,13 +2157,13 @@ body.dark-theme .input_label {
 }
 
 .copyright_content a {
-  color: #1dd49a;
+  color: #9E79D2;
 }
 
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link.show , body.dark-theme .navbar-nav .nav-link.active, .navbar-nav .nav-link.show 
  {
-  color: #1dd49a;
+  color: #9E79D2;
 }
 
 .dropdown-custom p {
@@ -2246,9 +2252,9 @@ body.dark-theme .seticon-bg{
 }
 
 
-.listToken:hover{
-  border: 1px solid #1af5af;
-}
+// .listToken:hover{
+//   border: 1px solid #9E79D2;
+// }
 
 @media (min-width: 1500px) and (max-width:1750px) {
      .rezorSwap-wrapper .trusted_million_img, .rezorSwap-wrapper .statistics_div_img  {
@@ -2471,8 +2477,9 @@ background-color: #fff;
 color: #000;
 }
 body.dark-theme .recieve_values_div:hover, body.dark-theme .recieve_active {
-    border: 0.5px solid #1dd49a;
-    background-color: #124938 !important;
+    border: 0.5px solid #9E79D2;
+    // background-color: #124938 !important;
+    background-color: transparent !important;
 }
 body.dark-theme .time_left img{
   content: url('../public/assets/images/swap_reciev/refresh-circle-white.svg');

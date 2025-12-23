@@ -1,0 +1,343 @@
+@import "../../../../../assets/theme/_var.scss";
+
+.viewWallet {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: -1.5rem;
+  position: relative;
+  .croseBtn {
+    position: absolute;
+    // left: -2.2rem;
+    // top: -2.2rem;
+    right: -1.2rem;
+    top: -1.2rem;
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    z-index: 999;
+    display: none;
+    @media (max-width: 575px) {
+      display: block;
+    }
+    svg {
+      path {
+        @include theme() {
+          stroke: theme-get("textclr");
+        }
+      }
+    }
+  }
+  &_tophead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    &_connectIcon {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+      width: calc(100% - 101px);
+      padding-right: 0.5rem;
+
+      img {
+        width: 4.5rem;
+        height: 4.5rem;
+        object-fit: cover;
+      }
+
+      .walletIcon {
+        position: absolute;
+        bottom: -0.5rem;
+        left: 3rem;
+        width: 1.8rem;
+        height: 1.8rem;
+        background: $white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        outline: $baseclr solid 2px;
+        outline-offset: -0.1px;
+        padding: 0.3rem;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      h6 {
+        font-family: $fontSecondry;
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 1;
+        text-transform: capitalize;
+        margin-left: 1rem;
+      }
+    }
+
+    &_rightBtn {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      width: 101px;
+      justify-content: flex-end;
+      right: 0;
+
+      .btnsize,
+      .btnlogout {
+        padding: 0 0.5rem;
+        height: auto;
+
+        svg {
+          flex-shrink: 0;
+          width: max-content;
+          margin-right: 0.8rem;
+          path {
+            @include theme() {
+              fill: theme-get("textclr");
+            }
+          }
+        }
+      }
+
+      .btnlogout {
+        display: flex;
+        align-items: center;
+        max-width: max-content;
+        transition: 0.8s all ease-in-out;
+        position: static;
+
+        @include theme() {
+          background: theme-get("sidebar");
+        }
+
+        span {
+          opacity: 0;
+          visibility: hidden;
+          font-size: 1.2rem;
+          line-height: 1;
+          position: absolute;
+          right: -12rem;
+          z-index: 1;
+          padding: 1rem 0;
+          transition: all ease-in-out 0.3s;
+
+          @include theme() {
+            color: theme-get("textclr");
+            background: theme-get("sidebar");
+          }
+        }
+
+        &:hover {
+          span {
+            opacity: 1;
+            visibility: visible;
+            right: 0rem;
+          }
+        }
+      }
+    }
+  }
+
+  &_balanceInfo {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 4.5rem;
+    margin: 3rem 0;
+  }
+
+  &_SellandBuybtn {
+    .google_btn {
+      margin-bottom: 1.6rem;
+
+      svg {
+        path,
+        rect {
+          @include theme() {
+            stroke: theme-get("svgdark333");
+          }
+        }
+      }
+    }
+  }
+
+  &_tabSection {
+    margin: 2.8rem 0;
+
+    .nav-tabs {
+      margin-bottom: 1rem;
+      border: none;
+
+      .nav-item {
+        .nav-link {
+          background: transparent;
+          border: none;
+          font-size: 1.6rem;
+          font-weight: 500;
+          line-height: 1;
+          color: #6b6a74;
+
+          &.active {
+            @include theme() {
+              color: theme-get("textclr");
+            }
+          }
+        }
+
+        &:first-child {
+          .nav-link {
+            padding-left: 0;
+          }
+        }
+
+        &:last-child {
+          .nav-link {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &_footer {
+    margin-top: auto;
+    width: 100%;
+
+    h6 {
+      font-family: $fontSecondry;
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 2.4rem;
+      text-transform: capitalize;
+      margin-bottom: 1.4rem;
+    }
+
+    p {
+      -webkit-text-strokewidth: 1;
+      -webkit-text-stroke-color: rgba(245, 247, 250, 0.06);
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.4rem;
+      letter-spacing: 0.24px;
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+.tabList {
+  .listingdetails {
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+
+      .connectIcon {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+
+        img {
+          width: 5rem;
+          height: 5rem;
+        }
+
+        .walletIcon {
+          position: absolute;
+          bottom: -0.5rem;
+          left: 3.2rem;
+          width: 2.2rem;
+          height: 2.2rem;
+          background: $white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          outline: $baseclr solid 2px;
+          outline-offset: -0.1px;
+          padding: 0.3rem;
+
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+
+        .transactionstatus {
+          margin-left: 1rem;
+
+          h6 {
+            font-family: $fontSecondry;
+            font-size: 1.4rem;
+            font-weight: 400;
+            line-height: 1;
+            text-transform: capitalize;
+            margin-bottom: 0.8rem;
+          }
+
+          p {
+            font-family: $fontSecondry;
+            font-size: 1.4rem;
+            font-weight: 400;
+            line-height: 1;
+            text-transform: capitalize;
+
+            @include theme() {
+              color: theme-get("borderwhite04");
+            }
+          }
+        }
+      }
+
+      .amountstatus {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        flex-direction: column;
+
+        h6 {
+          font-family: $fontSecondry;
+          font-size: 1.4rem;
+          font-weight: 400;
+          line-height: 1;
+          text-transform: capitalize;
+          margin-bottom: 0.4rem;
+        }
+
+        p {
+          font-family: $fontSecondry;
+          font-size: 1.4rem;
+          font-weight: 400;
+          line-height: 1;
+          text-transform: capitalize;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          @include theme() {
+            color: theme-get("borderwhite04");
+          }
+
+          svg {
+            margin-right: 0.6rem;
+          }
+        }
+      }
+    }
+  }
+}

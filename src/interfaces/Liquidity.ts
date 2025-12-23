@@ -18,6 +18,7 @@ export interface TOKEN_DATA {
   isNative: boolean;
   decimals: number;
   symbol: string;
+  chainId: any;
 }
 
 export interface GET_LP_BALANCE_RESP {

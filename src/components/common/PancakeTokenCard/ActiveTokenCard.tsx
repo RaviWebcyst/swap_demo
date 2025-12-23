@@ -62,7 +62,7 @@ const ActiveTokenCard = ({
             )}
               <span className="ms-2">{tokenOne?.name} </span>
           </h6>
-        ) : (<h6 className="balancevalue my-auto"> <Shimmer height={30} width={200} /> </h6>)}
+        ) : (<h6 className="balancevalue my-auto"> <Shimmer height={15} width={200} /> </h6>)}
       </>
     );
   };
@@ -70,10 +70,10 @@ const ActiveTokenCard = ({
     <>
       <div className="activeCardtoken">
          
-         <div className="d-flex">
+         <div className="d-grid mb-2">
           {/* <h4><span className="input_label">From: </span>  {tokenOne?.name} Coin </h4> */}
           <h4><span className="input_label ms-3">From </span> </h4>
-            <div className="d-flex ms-auto">
+            <div className="d-flex ">
               {showTokensSelectModal ? (
                 <TokenselectModal
                   field={field}
@@ -86,7 +86,7 @@ const ActiveTokenCard = ({
               )}
               </div>
             </div>
-        <ul className="listToken mt-3">
+        <ul className="listToken hoverClr">
           {/* <div className="d-flex">
               {showTokensSelectModal ? (
                 <TokenselectModal
@@ -104,20 +104,20 @@ const ActiveTokenCard = ({
               <Shimmer height={30} width={200} />
             ) : (
               <Input
-                placeholder="Enter Amount"
+                placeholder="0"
                 className="without_bg inputActive"
                 type="number"
                 onChange={(e: any) => input(e.target.value, false, "TK1")}
                 value={value?.inputValue}
               />
             )}
-            <div className="listRight">
+            {/* <div className="listRight">
               <Button
                 text="max"
                 className="maxBtn without_bg_border"
                 onClick={() => maxFunction("TK1")}
               />
-            </div>
+            </div> */}
           </li>
         </ul>
         

@@ -9,6 +9,8 @@ import { store } from "../src/app/store";
 import { useLocation } from "react-router-dom";
 
 import { useAppKit, useAppKitNetwork, useDisconnect,createAppKit, useAppKitAccount } from "@reown/appkit/react";
+import { useWalletConnect } from "./CustomHook/useWalletConnect";
+
 
 
 
@@ -20,7 +22,9 @@ const generalConfig = {
   themeMode: 'light' as const,
   themeVariables: {
     '--w3m-accent': '#000000',
-  }
+  },
+  autoConnect: false,  
+
 }
 
 // Create modal
@@ -32,7 +36,7 @@ createAppKit({
     email:false,
     socials:[]
   },
-  enableReconnect:false
+  enableReconnect:true
 
 })
 
@@ -77,24 +81,31 @@ function App() {
   // const { switchNetwork, walletProviderType } = useWalletConnect();
 
   const { switchNetwork } = useAppKitNetwork();
+  const { setNetworkInReduxState } = useWalletConnect()
+
+
+   const { tokenOne, tokenTwo }: { tokenOne: any; tokenTwo: any } = useAppSelector(
+    (store: any) => store?.token,
+  )
 
 
 
   useEffect(() => {
-    document.body.className = `${theme}-theme`;
+    // document.body.className = `${theme}-theme`;
+    document.body.className = `dark-theme`;
    
   }, [theme]);
 
   var {pathname} = window.location;
 
-  useEffect(() => {
-    if(pathname != "/liquidity"){
-    dispatch(setTokenOne(tokenList[0]));
-    dispatch(setTokenTwo(tokenList[1]));
-    }
+  // useEffect(() => {
+  //   if(pathname != "/liquidity"){
+  //   dispatch(setTokenOne(tokenList[0]));
+  //   dispatch(setTokenTwo(tokenList[1]));
+  //   }
    
   
-  }, [chainValues]);
+  // }, [chainValues]);
 
   const changeDefaultNetwork = async () => {
     if (isWrongNetwork && window?.location?.pathname != "/cross-chain") {
@@ -109,6 +120,19 @@ function App() {
     console.log('build version v1');
     changeDefaultNetwork();
   }, [isWrongNetwork]);
+
+
+
+  useEffect(() => {
+    
+    if (store.getState()?.user?.chainValues.chainId !== tokenOne.chainId){      
+     
+      
+      setNetworkInReduxState(tokenOne.chainId);
+    }
+
+  }, [tokenOne.chainId]);
+
   return (
     <>
       {isWrongNetwork && window?.location?.pathname != "/cross-chain" ? (

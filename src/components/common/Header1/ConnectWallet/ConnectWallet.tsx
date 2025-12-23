@@ -8,10 +8,13 @@ import {
 import Button from "../../Button/Button";
 import "./ConnectWallet.scss";
 import { useEffect, useState } from "react";
-
+import { setWalletAddress } from "../../../../features/theme/user.slice";
+import { useWalletConnect } from "../../../../CustomHook/useWalletConnect";
 import ViewWallet from "./ViewWallet/ViewWallet";
-import { useAppKit, useAppKitAccount,useDisconnect } from "@reown/appkit/react";
-
+import store from "../../../../app/store";
+import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
+// import { useDisconnect } from "@web3modal/ethers/react";
+import { useDisconnect } from 'wagmi';
 
 
 type propTypes = {
@@ -23,25 +26,23 @@ const ConnectWallet = (props: propTypes) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
 
-  const {
-  
-    walletAddress,
-    solanawalletAddress,
-  }: {walletAddress:any,solanawalletAddress:any } = useAppSelector(
-    (store: any) => store?.user);
 
+  // const dispatch = useAppDispatch();
 
+  // const { disconnect, open,isConnected } = useWalletConnect();
 
-
+  const { address, isConnected, caipAddress, status, embeddedWalletInfo } = useAppKitAccount();
   const { disconnect } = useDisconnect();
   const { open } = useAppKit();
+
+    // const  address:any  = store?.getState()?.user?.walletAddress;
   
 
   const handleWalletConnect = async () => {
-    if (walletAddress) {
-      await disconnect({ namespace: 'eip155' });
+    if (isConnected) {
+      disconnect();
     } else {
-      await open({view:'Connect',namespace: 'eip155'});
+       open({view:'Connect'});
       handleClose();
     }
   };
@@ -49,12 +50,12 @@ const ConnectWallet = (props: propTypes) => {
   return (
     <>
       <Offcanvas
-        className={`connect_wallet ${walletAddress && solanawalletAddress ? 'heightBoth' : solanawalletAddress || walletAddress ?'wallet_heights' : ''}`}
+        className={`connect_wallet ${address?'wallet_height':''}`}
         show={props.show}
         placement="end"
         onHide={props.handleClose}
       >
-        {!walletAddress && !solanawalletAddress ? (
+        {!isConnected ? (
           <>
             <div className="action_btn">
               <button className="croseBtn" onClick={() => props?.handleClose()}>
@@ -67,16 +68,23 @@ const ConnectWallet = (props: propTypes) => {
                   handleWalletConnect();
                 }} >Connect Wallet</button>
             </div>
-           
+            {/* <p className="or_line">
+            </p>
+            <p className="footer_txt">
+              You consent to the Terms of Service and Privacy Policy of
+              RezorSwap by connecting a wallet. <br />
+              (Latest revision: 6.7.23)
+            </p> */}
           </>
         ) : (
           <>
             <ViewWallet
               logoutOnCick={() => {
                 props?.handleClose();
+                disconnect();
               }}
               justClose={props?.handleClose}
-              address={walletAddress}
+              address={address}
             />
           </>
         )}

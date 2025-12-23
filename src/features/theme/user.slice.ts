@@ -5,6 +5,7 @@ import { BSC_CONTRACT_LIST } from "../../assets/tokens&ContractInfo/info";
 
 export interface userState {
   walletAddress: string;
+  solanawalletAddress: string;
   walletType: string;
   chainValues: NetworkTypes;
   contractDetails: any;
@@ -18,6 +19,7 @@ export interface userState {
 
 const initialState: userState = {
   walletAddress: "",
+  solanawalletAddress: "",
   walletType: "",
   chainValues: NETWORKS[0],
   contractDetails: BSC_CONTRACT_LIST,
@@ -34,6 +36,9 @@ const userReducer = createSlice({
   reducers: {
     setWalletAddress: (state, action) => {
       state.walletAddress = action.payload;
+    },
+     setSolanaWalletAddress: (state, action) => {
+      state.solanawalletAddress = action.payload;
     },
     setUserConnected: (state, action) => {
       state.userConnected = action.payload;
@@ -76,6 +81,7 @@ export const {
   setTransactionCounter,
   setImportedLps,
   setUserConnected,
+  setSolanaWalletAddress
   // setRezorChainValues,
   // setRezorContractDetails
 

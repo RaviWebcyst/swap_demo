@@ -14,8 +14,9 @@ interface propTypes {
   data?: {
     title?: string;
     bodyText?: string;
-    status?: "success" | "failed" | "in-progress" | "";
+    status?: "success" | "failed" | "in-progress" | ""; 
     txHash?: string | null;
+    type?:undefined
   };
 }
 
@@ -26,9 +27,18 @@ const TxnModal = (props: propTypes) => {
   chainValues: any;
 } = useAppSelector((state) => state?.user);
 
+// console.log(props,"props");
+
+
   // var chainDetails = useAppSelector((state) => state?.user?.chainValues);
    var {pathname} = useLocation();
-  const chainDetails =  chainValues;
+  // const chainDetails = pathname === "/liquidity" ? rezorchainValues : chainValues;
+
+  var explorerUrl = pathname === "/swap" ? chainValues.metamask?.blockExplorerUrls[0]:pathname ==="/solana" ? "https://solscan.io/" : "https://bscscan.com/";
+
+  
+  
+  
 
   return (
     <>
@@ -58,14 +68,27 @@ const TxnModal = (props: propTypes) => {
         />
         <h3>{props.data?.bodyText}</h3>
         {props.data?.status === "success" && (
+          <>
+          {props.data.type && props?.data?.type === "lifi" ? (
           <Link
             className="view_btn text_gradient"
             target="_blank"
-            to={`${chainDetails?.explorerUrl}/tx/${props?.data?.txHash}`}
+            to={`${props.data.txHash}`}
           >
             View on Explorer
           </Link>
+          ):(
+          <Link
+            className="view_btn text_gradient"
+            target="_blank"
+            to={`${explorerUrl}tx/${props?.data?.txHash}`}
+          >
+            View on Explorer
+          </Link>
+          )}
+          </>
         )}
+        
       </CommonModal>
     </>
   );

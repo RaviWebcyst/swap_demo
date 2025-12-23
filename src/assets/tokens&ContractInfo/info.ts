@@ -93,12 +93,12 @@ export const BSC_CONTRACT_LIST =
         blockNumber: 6810080,
         abi: routerABI,
       },
-       quote: {
+      quote: {
         address: "0x78D78E420Da98ad378D7799bE8f4AF69033EB077",
         Block: 6615558,
         abi: quoteABI,
       },
-       uniswapv3: {
+      uniswapv3: {
         address: "0xB971eF87ede563556b2ED4b1C0b0019111Dd85d2",
         Block: 6615558,
         abi: uniswapv3ABI,
@@ -217,6 +217,7 @@ export const BSC_TOKEN_LIST: TOKEN_DATA[] =
         isNative: true,
         decimals: 18,
         symbol: "BNB",
+        chainId: 97,
         icon: BNB,
       },
       {
@@ -225,6 +226,7 @@ export const BSC_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "MAZI",
+        chainId: 97,
         icon: MAZI,
       },
       {
@@ -233,6 +235,7 @@ export const BSC_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "USDT",
+        chainId: 97,
         icon: BUSD,
       },
       {
@@ -241,6 +244,7 @@ export const BSC_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 8,
         symbol: "DOGE",
+        chainId: 97,
         icon: DOGE,
       },
     ]
@@ -251,6 +255,7 @@ export const BSC_TOKEN_LIST: TOKEN_DATA[] =
         isNative: true,
         decimals: 18,
         symbol: "BNB",
+        chainId: 56,
         icon: BNB,
       },
       {
@@ -259,6 +264,7 @@ export const BSC_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "MAZI",
+        chainId: 56,
         icon: MAZI,
       },
       {
@@ -267,6 +273,7 @@ export const BSC_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "TruMaga",
+        chainId: 56,
         icon: MAGA,
       },
       {
@@ -275,6 +282,7 @@ export const BSC_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "BDEFI",
+        chainId: 56,
         icon: BDEFI,
       },
       {
@@ -283,6 +291,7 @@ export const BSC_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "FOF",
+        chainId: 56,
         icon: FOF,
       },
       {
@@ -291,6 +300,7 @@ export const BSC_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "USDT",
+        chainId: 56,
         icon: BUSD,
       },
       {
@@ -299,6 +309,7 @@ export const BSC_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "MOTN",
+        chainId: 56,
         icon: motionToken,
       },
       {
@@ -307,6 +318,7 @@ export const BSC_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 8,
         symbol: "DOGE",
+        chainId: 56,
         icon: DOGE,
       },
     ];
@@ -324,6 +336,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: true,
         decimals: 18,
         symbol: "ETH",
+        chainId: 1,
         icon: ETH,
       },
       {
@@ -332,6 +345,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 9,
         symbol: "Kishimoto",
+        chainId: 1,
         icon: Kishimoto,
       },
       {
@@ -340,6 +354,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "SLAKE",
+        chainId: 1,
         icon: SLAKE,
       },
       {
@@ -348,6 +363,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 9,
         symbol: "Unification(FUND)",
+        chainId: 1,
         icon: FUND,
       },
       {
@@ -356,6 +372,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 9,
         symbol: "MANDOX",
+        chainId: 1,
         icon: MANDOX,
       },
       {
@@ -364,6 +381,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "BONE",
+        chainId: 1,
         icon: BONE,
       },
       {
@@ -372,6 +390,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 9,
         symbol: "BlueSparrow",
+        chainId: 1,
         icon: BlueSparrow,
       },
       {
@@ -380,6 +399,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 8,
         symbol: "CRO",
+        chainId: 1,
         icon: CRO,
       },
       {
@@ -388,6 +408,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "JASMY",
+        chainId: 1,
         icon: Jasmy,
       },
       {
@@ -396,6 +417,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "LUNC",
+        chainId: 1,
         icon: LUNAC,
       },
       {
@@ -404,6 +426,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "iRYDE",
+        chainId: 1,
         icon: iRYDE,
       },
       {
@@ -412,6 +435,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 9,
         symbol: "DUB",
+        chainId: 1,
         icon: DUBX,
       },
     ]
@@ -422,6 +446,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: true,
         decimals: 18,
         symbol: "ETH",
+        chainId: 1,
         icon: ETH,
       },
       {
@@ -430,6 +455,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 9,
         symbol: "Kishimoto",
+        chainId: 1,
         icon: Kishimoto,
       },
       {
@@ -438,6 +464,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "SLAKE",
+        chainId: 1,
         icon: SLAKE,
       },
       // {
@@ -446,7 +473,8 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
       //   isNative: false,
       //   decimals: 9,
       //   symbol: "Unification(FUND)",
-      //   icon: FUND,
+      //  chainId:1,
+      // icon: FUND,
       // },
       {
         name: "Mandox",
@@ -454,6 +482,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 9,
         symbol: "MANDOX",
+        chainId: 1,
         icon: MANDOX,
       },
       // {
@@ -462,7 +491,8 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
       //   isNative: false,
       //   decimals: 18,
       //   symbol: "BONE",
-      //   icon: BONE,
+      //  chainId:1,
+      // icon: BONE,
       // },
       {
         name: "BlueSparrow Token",
@@ -470,6 +500,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 9,
         symbol: "BlueSparrow",
+        chainId: 1,
         icon: BlueSparrow,
       },
       // {
@@ -478,7 +509,8 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
       //   isNative: false,
       //   decimals: 8,
       //   symbol: "CRO",
-      //   icon: CRO,
+      //  chainId:1,
+      // icon: CRO,
       // },
       // {
       //   name: "JasmyCoin",
@@ -486,7 +518,8 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
       //   isNative: false,
       //   decimals: 18,
       //   symbol: "JASMY",
-      //   icon: Jasmy,
+      //  chainId:1,
+      // icon: Jasmy,
       // },
       // {
       //   name: "LUNA Classic",
@@ -494,7 +527,8 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
       //   isNative: false,
       //   decimals: 18,
       //   symbol: "LUNC",
-      //   icon: LUNAC,
+      //  chainId:1,
+      // icon: LUNAC,
       // },
       {
         name: "iRYDE",
@@ -502,6 +536,7 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "iRYDE",
+        chainId: 1,
         icon: iRYDE,
       },
       {
@@ -510,46 +545,51 @@ export const ETHEREUM_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 9,
         symbol: "DUB",
+        chainId: 1,
         icon: DUBX,
       },
     ];
 
-  export const REZOR_TOKEN_LIST: TOKEN_DATA[] =
+export const REZOR_TOKEN_LIST: TOKEN_DATA[] =
   [
-      {
-        name: "BNB",
-        address: "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
-        isNative: true,
-        decimals: 18,
-        symbol: "BNB",
-        icon: BNB,
-      },
-     
-      {
-        name: "USDC",
-        address: "0x6e4BB331Fd5fd9d7d9Cb7De52C2426ED861d5302",
-        isNative: false,
-        decimals: 6,
-        symbol: "USDC",
-        icon: BUSD,
-      },
-      {
-        name: "DogeCoin",
-        address: "0xA5d77349db339eaC3E0AC749A03fde07653CC00B",
-        isNative: false,
-        decimals: 8,
-        symbol: "DOGE",
-        icon: DOGE,
-      },
-      {
-        name: "USDT",
-        address: "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd",
-        isNative: false,
-        decimals: 18,
-        symbol: "USDT",
-        icon: BUSD,
-      },
-    ];
+    {
+      name: "BNB",
+      address: "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
+      isNative: true,
+      decimals: 18,
+      symbol: "BNB",
+      chainId: 56, 
+      icon:BNB,
+    },
+
+    {
+      name: "USDC",
+      address: "0x6e4BB331Fd5fd9d7d9Cb7De52C2426ED861d5302",
+      isNative: false,
+      decimals: 6,
+      symbol: "USDC",
+      chainId: 56,
+      icon: BUSD,
+    },
+    {
+      name: "DogeCoin",
+      address: "0xA5d77349db339eaC3E0AC749A03fde07653CC00B",
+      isNative: false,
+      decimals: 8,
+      symbol: "DOGE",
+      chainId: 56,
+      icon: DOGE,
+    },
+    {
+      name: "USDT",
+      address: "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd",
+      isNative: false,
+      decimals: 18,
+      symbol: "USDT",
+      chainId: 56,
+      icon: BUSD,
+    },
+  ];
 
 export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
   envType !== "production"
@@ -560,7 +600,8 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
       //   isNative: true,
       //   decimals: 18,
       //   symbol: "BNB",
-      //   icon: BNB,
+      //  chainId:1,
+      // icon: BNB,
       // },
       {
         name: "BNB",
@@ -568,15 +609,17 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         isNative: true,
         decimals: 18,
         symbol: "BNB",
+        chainId: 97,
         icon: BNB,
       },
-    
+
       {
         name: "USDC",
         address: "0x6e4BB331Fd5fd9d7d9Cb7De52C2426ED861d5302",
         isNative: false,
         decimals: 6,
         symbol: "USDC",
+        chainId: 97,
         icon: BUSD,
       },
       {
@@ -585,6 +628,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 8,
         symbol: "DOGE",
+        chainId: 97,
         icon: DOGE,
       },
       {
@@ -593,25 +637,27 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "USDT",
+        chainId: 97,
         icon: BUSD,
       }
     ]
     : [
       {
         name: "BNB",
-        address: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        address: "0x0000000000000000000000000000000000000000",
         isNative: true,
         decimals: 18,
         symbol: "BNB",
+        chainId: 56,
         icon: BNB,
       },
-     
       {
         name: "USDC",
         address: "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
         isNative: false,
         decimals: 18,
         symbol: "USDC",
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d.png",
       },
       {
@@ -620,6 +666,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 18,
         symbol: "USDT",
+        chainId: 56,
         icon: BUSD,
       },
       {
@@ -628,6 +675,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         isNative: false,
         decimals: 8,
         symbol: "DOGE",
+        chainId: 56,
         icon: DOGE,
       },
       {
@@ -636,6 +684,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47.png",
       },
       {
@@ -644,6 +693,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xAC51066d7bEC65Dc4589368da368b212745d63E8",
         isNative: false,
         decimals: 6,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xAC51066d7bEC65Dc4589368da368b212745d63E8.png",
       },
       {
@@ -652,6 +702,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xaF6Bd11A6F8f9c44b9D18f5FA116E403db599f8E",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xaF6Bd11A6F8f9c44b9D18f5FA116E403db599f8E/logo.png",
       },
       {
@@ -660,6 +711,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xa1faa113cbE53436Df28FF0aEe54275c13B40975",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xa1faa113cbE53436Df28FF0aEe54275c13B40975.png",
       },
       {
@@ -668,6 +720,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x8263CD1601FE73C066bf49cc09841f35348e3be0",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x8263CD1601FE73C066bf49cc09841f35348e3be0/logo.png",
       },
       {
@@ -676,6 +729,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xA2120b9e674d3fC3875f415A7DF52e382F141225",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xA2120b9e674d3fC3875f415A7DF52e382F141225.png",
       },
       {
@@ -684,6 +738,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x0Eb3a705fc54725037CC9e008bDede697f62F335",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x0Eb3a705fc54725037CC9e008bDede697f62F335.png",
       },
       {
@@ -692,7 +747,17 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x715D400F88C167884bbCc41C5FeA407ed4D2f8A0",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x715D400F88C167884bbCc41C5FeA407ed4D2f8A0.png",
+      },
+      {
+        name: "WBNB",
+        address: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        isNative: true,
+        decimals: 18,
+        symbol: "WBNB",
+        chainId: 56,
+        icon: BNB,
       },
       {
         name: "Baby Doge Coin",
@@ -700,6 +765,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xc748673057861a797275CD8A068AbB95A902e8de",
         isNative: false,
         decimals: 9,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xc748673057861a797275CD8A068AbB95A902e8de/logo.png",
       },
       {
@@ -708,6 +774,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xc3EAE9b061Aa0e1B9BD3436080Dc57D2d63FEdc1",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xc3EAE9b061Aa0e1B9BD3436080Dc57D2d63FEdc1/logo.png",
       },
       {
@@ -716,6 +783,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x8443f091997f06a61670B735ED92734F5628692F",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x8443f091997f06a61670B735ED92734F5628692F.png",
       },
       {
@@ -724,6 +792,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xE0e514c71282b6f4e823703a39374Cf58dc3eA4f",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xE0e514c71282b6f4e823703a39374Cf58dc3eA4f.png",
       },
       {
@@ -732,6 +801,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xe56842Ed550Ff2794F010738554db45E60730371",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xe56842Ed550Ff2794F010738554db45E60730371/logo.png",
       },
       {
@@ -740,6 +810,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x08ba0619b1e7A582E0BCe5BBE9843322C954C340",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x08ba0619b1e7A582E0BCe5BBE9843322C954C340.png",
       },
       {
@@ -748,6 +819,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x8C851d1a123Ff703BD1f9dabe631b69902Df5f97",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x8C851d1a123Ff703BD1f9dabe631b69902Df5f97/logo.png",
       },
       {
@@ -756,6 +828,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xACB8f52DC63BB752a51186D1c55868ADbFfEe9C1",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xACB8f52DC63BB752a51186D1c55868ADbFfEe9C1.png",
       },
       {
@@ -764,6 +837,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x5A3010d4d8D3B5fB49f8B6E57FB9E48063f16700",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x5A3010d4d8D3B5fB49f8B6E57FB9E48063f16700.png",
       },
       {
@@ -772,6 +846,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x8595F9dA7b868b1822194fAEd312235E43007b49",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x8595F9dA7b868b1822194fAEd312235E43007b49.png",
       },
       {
@@ -780,6 +855,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xaEC945e04baF28b135Fa7c640f624f8D90F1C3a6",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xaEC945e04baF28b135Fa7c640f624f8D90F1C3a6.png",
       },
       {
@@ -788,6 +864,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x20de22029ab63cf9A7Cf5fEB2b737Ca1eE4c82A6",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x20de22029ab63cf9A7Cf5fEB2b737Ca1eE4c82A6.png",
       },
       {
@@ -796,6 +873,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xf9CeC8d50f6c8ad3Fb6dcCEC577e05aA32B224FE",
         isNative: false,
         decimals: 6,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xf9CeC8d50f6c8ad3Fb6dcCEC577e05aA32B224FE.png",
       },
       {
@@ -804,6 +882,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x82C19905B036bf4E329740989DCF6aE441AE26c1",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x82C19905B036bf4E329740989DCF6aE441AE26c1/logo.png",
       },
       {
@@ -812,6 +891,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x373E768f79c820aA441540d254dCA6d045c6d25b",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x373E768f79c820aA441540d254dCA6d045c6d25b/logo.png",
       },
       {
@@ -820,6 +900,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x67ee3Cb086F8a16f34beE3ca72FAD36F7Db929e2",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x67ee3Cb086F8a16f34beE3ca72FAD36F7Db929e2.png",
       },
       {
@@ -828,6 +909,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xbA2aE424d960c26247Dd6c32edC70B295c744C43",
         isNative: false,
         decimals: 8,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xbA2aE424d960c26247Dd6c32edC70B295c744C43.png",
       },
       {
@@ -836,6 +918,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xfb62AE373acA027177D1c18Ee0862817f9080d08",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xfb62AE373acA027177D1c18Ee0862817f9080d08/logo.png",
       },
       {
@@ -844,6 +927,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xA6c897CaaCA3Db7fD6e2D2cE1a00744f40aB87Bb",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xA6c897CaaCA3Db7fD6e2D2cE1a00744f40aB87Bb/logo.png",
       },
       {
@@ -852,6 +936,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xc8E8ecB2A5B5d1eCFf007BF74d15A86434aA0c5C",
         isNative: false,
         decimals: 9,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xc8E8ecB2A5B5d1eCFf007BF74d15A86434aA0c5C/logo.png",
       },
       {
@@ -860,6 +945,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x758FB037A375F17c7e195CC634D77dA4F554255B",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x758FB037A375F17c7e195CC634D77dA4F554255B.png",
       },
       {
@@ -868,6 +954,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x8D047F4F57A190C96c8b9704B39A1379E999D82B",
         isNative: false,
         decimals: 8,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x8D047F4F57A190C96c8b9704B39A1379E999D82B/logo.png",
       },
       {
@@ -876,6 +963,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xA7f552078dcC247C2684336020c03648500C6d9F",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xA7f552078dcC247C2684336020c03648500C6d9F.png",
       },
       {
@@ -884,6 +972,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xF4Ed363144981D3A65f42e7D0DC54FF9EEf559A1",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xF4Ed363144981D3A65f42e7D0DC54FF9EEf559A1/logo.png",
       },
       {
@@ -892,6 +981,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x2B3F34e9D4b127797CE6244Ea341a83733ddd6E4",
         isNative: false,
         decimals: 9,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x2B3F34e9D4b127797CE6244Ea341a83733ddd6E4/logo.png",
       },
       {
@@ -900,6 +990,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x25A528af62e56512A19ce8c3cAB427807c28CC19",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x25A528af62e56512A19ce8c3cAB427807c28CC19.png",
       },
       {
@@ -908,6 +999,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x928e55daB735aa8260AF3cEDadA18B5f70C72f1b",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x928e55daB735aa8260AF3cEDadA18B5f70C72f1b.png",
       },
       {
@@ -916,6 +1008,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xb3a6381070B1a15169DEA646166EC0699fDAeA79",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xb3a6381070B1a15169DEA646166EC0699fDAeA79/logo.png",
       },
       {
@@ -924,6 +1017,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xE8176d414560cFE1Bf82Fd73B986823B89E4F545",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xE8176d414560cFE1Bf82Fd73B986823B89E4F545.png",
       },
       {
@@ -932,6 +1026,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xD40bEDb44C081D2935eebA6eF5a3c8A31A1bBE13",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xD40bEDb44C081D2935eebA6eF5a3c8A31A1bBE13.png",
       },
       {
@@ -940,6 +1035,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xFa363022816aBf82f18a9C2809dCd2BB393F6AC5",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xFa363022816aBf82f18a9C2809dCd2BB393F6AC5/logo.png",
       },
       {
@@ -948,6 +1044,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x565b72163f17849832A692A3c5928cc502f46D69",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x565b72163f17849832A692A3c5928cc502f46D69/logo.png",
       },
       {
@@ -956,6 +1053,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xa2B726B1145A4773F68593CF171187d8EBe4d495",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xa2B726B1145A4773F68593CF171187d8EBe4d495.png",
       },
       {
@@ -964,6 +1062,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x9678E42ceBEb63F23197D726B29b1CB20d0064E5",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x9678E42ceBEb63F23197D726B29b1CB20d0064E5.png",
       },
       {
@@ -972,6 +1071,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x02A40C048eE2607B5f5606e445CFc3633Fb20b58",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x02A40C048eE2607B5f5606e445CFc3633Fb20b58/logo.png",
       },
       {
@@ -980,6 +1080,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xc732B6586A93b6B7CF5FeD3470808Bc74998224D",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xc732B6586A93b6B7CF5FeD3470808Bc74998224D/logo.png",
       },
       {
@@ -988,6 +1089,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x762539b45A1dCcE3D36d080F74d1AED37844b878",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x762539b45A1dCcE3D36d080F74d1AED37844b878.png",
       },
       {
@@ -996,6 +1098,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD.png",
       },
       {
@@ -1004,6 +1107,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x2eD9a5C8C13b93955103B9a7C167B67Ef4d568a3",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x2eD9a5C8C13b93955103B9a7C167B67Ef4d568a3.png",
       },
       {
@@ -1012,6 +1116,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x3203c9E46cA618C8C1cE5dC67e7e9D75f5da2377",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x3203c9E46cA618C8C1cE5dC67e7e9D75f5da2377.png",
       },
       {
@@ -1020,6 +1125,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xD024Ac1195762F6F13f8CfDF3cdd2c97b33B248b",
         isNative: false,
         decimals: 9,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xD024Ac1195762F6F13f8CfDF3cdd2c97b33B248b/logo.png",
       },
       {
@@ -1028,6 +1134,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x68E374F856bF25468D365E539b700b648Bf94B67",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x68E374F856bF25468D365E539b700b648Bf94B67/logo.png",
       },
       {
@@ -1036,6 +1143,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x4c97c901B5147F8C1C7Ce3c5cF3eB83B44F244fE",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x4c97c901B5147F8C1C7Ce3c5cF3eB83B44F244fE/logo.png",
       },
       {
@@ -1044,6 +1152,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x9573c88aE3e37508f87649f87c4dd5373C9F31e0",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x9573c88aE3e37508f87649f87c4dd5373C9F31e0/logo.png",
       },
       {
@@ -1052,6 +1161,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xD7730681B1DC8f6F969166B29D8A5EA8568616a3",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xD7730681B1DC8f6F969166B29D8A5EA8568616a3/logo.png",
       },
       {
@@ -1060,6 +1170,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xA67a13c9283Da5AABB199Da54a9Cb4cD8B9b16bA",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xA67a13c9283Da5AABB199Da54a9Cb4cD8B9b16bA/logo.png",
       },
       {
@@ -1068,6 +1179,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xde3dbBE30cfa9F437b293294d1fD64B26045C71A",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xde3dbBE30cfa9F437b293294d1fD64B26045C71A/logo.png",
       },
       {
@@ -1076,6 +1188,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x42F6f551ae042cBe50C739158b4f0CAC0Edb9096",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x42F6f551ae042cBe50C739158b4f0CAC0Edb9096.png",
       },
       {
@@ -1084,6 +1197,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x03fF0ff224f904be3118461335064bB48Df47938",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x03fF0ff224f904be3118461335064bB48Df47938.png",
       },
       {
@@ -1092,6 +1206,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xAD86d0E9764ba90DDD68747D64BFfBd79879a238",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xAD86d0E9764ba90DDD68747D64BFfBd79879a238/logo.png",
       },
       {
@@ -1100,6 +1215,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x09607078980CbB0665ABa9c6D1B84b8eAD246aA0",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x09607078980CbB0665ABa9c6D1B84b8eAD246aA0/logo.png",
       },
       {
@@ -1108,6 +1224,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x9133049Fb1FdDC110c92BF5b7Df635abB70C89DC",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x9133049Fb1FdDC110c92BF5b7Df635abB70C89DC/logo.png",
       },
       {
@@ -1116,6 +1233,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x1796ae0b0fa4862485106a0de9b654eFE301D0b2",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x1796ae0b0fa4862485106a0de9b654eFE301D0b2.png",
       },
       {
@@ -1124,6 +1242,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x394bBA8F309f3462b31238B3fd04b83F71A98848",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x394bBA8F309f3462b31238B3fd04b83F71A98848/logo.png",
       },
       {
@@ -1132,6 +1251,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x3Fcca8648651E5b974DD6d3e50F61567779772A8",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x3Fcca8648651E5b974DD6d3e50F61567779772A8.png",
       },
       {
@@ -1140,6 +1260,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x31471E0791fCdbE82fbF4C44943255e923F1b794",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x31471E0791fCdbE82fbF4C44943255e923F1b794/logo.png",
       },
       {
@@ -1148,6 +1269,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xf3eDD4f14a018df4b6f02Bf1b2cF17A8120519A2",
         isNative: false,
         decimals: 8,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xf3eDD4f14a018df4b6f02Bf1b2cF17A8120519A2/logo.png",
       },
       {
@@ -1156,6 +1278,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x17B7163cf1Dbd286E262ddc68b553D899B93f526",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x17B7163cf1Dbd286E262ddc68b553D899B93f526.png",
       },
       {
@@ -1164,6 +1287,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x12BB890508c125661E03b09EC06E404bc9289040",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x12BB890508c125661E03b09EC06E404bc9289040/logo.png",
       },
       {
@@ -1172,6 +1296,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x8519EA49c997f50cefFa444d240fB655e89248Aa",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x8519EA49c997f50cefFa444d240fB655e89248Aa.png",
       },
       {
@@ -1180,6 +1305,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xF21768cCBC73Ea5B6fd3C687208a7c2def2d966e",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xF21768cCBC73Ea5B6fd3C687208a7c2def2d966e.png",
       },
       {
@@ -1188,6 +1314,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x07663837218A003e66310a01596af4bf4e44623D",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x07663837218A003e66310a01596af4bf4e44623D.png",
       },
       {
@@ -1196,6 +1323,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xD41FDb03Ba84762dD66a0af1a6C8540FF1ba5dfb",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xD41FDb03Ba84762dD66a0af1a6C8540FF1ba5dfb.png",
       },
       {
@@ -1204,6 +1332,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x477bC8d23c634C154061869478bce96BE6045D12",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x477bC8d23c634C154061869478bce96BE6045D12.png",
       },
       {
@@ -1212,6 +1341,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x7269d98Af4aA705e0B1A5D8512FadB4d45817d5a",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7269d98Af4aA705e0B1A5D8512FadB4d45817d5a/logo.png",
       },
       {
@@ -1220,6 +1350,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x154A9F9cbd3449AD22FDaE23044319D6eF2a1Fab",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x154A9F9cbd3449AD22FDaE23044319D6eF2a1Fab.png",
       },
       {
@@ -1228,6 +1359,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xAB15B79880f11cFfb58dB25eC2bc39d28c4d80d2",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xAB15B79880f11cFfb58dB25eC2bc39d28c4d80d2/logo.png",
       },
       {
@@ -1236,6 +1368,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x1633b7157e7638C4d6593436111Bf125Ee74703F",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x1633b7157e7638C4d6593436111Bf125Ee74703F.png",
       },
       {
@@ -1244,6 +1377,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x947950BcC74888a40Ffa2593C5798F11Fc9124C4",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x947950BcC74888a40Ffa2593C5798F11Fc9124C4.png",
       },
       {
@@ -1252,6 +1386,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x47BEAd2563dCBf3bF2c9407fEa4dC236fAbA485A",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x47BEAd2563dCBf3bF2c9407fEa4dC236fAbA485A.png",
       },
       {
@@ -1260,6 +1395,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x9f589e3eabe42ebC94A44727b3f3531C0c877809",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x9f589e3eabe42ebC94A44727b3f3531C0c877809.png",
       },
       {
@@ -1268,6 +1404,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x2222227E22102Fe3322098e4CBfE18cFebD57c95",
         isNative: false,
         decimals: 4,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x2222227E22102Fe3322098e4CBfE18cFebD57c95.png",
       },
       {
@@ -1276,6 +1413,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xECa41281c24451168a37211F0bc2b8645AF45092",
         isNative: false,
         decimals: 4,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xECa41281c24451168a37211F0bc2b8645AF45092.png",
       },
       {
@@ -1284,6 +1422,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x1Bf7AedeC439D6BFE38f8f9b20CF3dc99e3571C4",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x1Bf7AedeC439D6BFE38f8f9b20CF3dc99e3571C4/logo.png",
       },
       {
@@ -1292,6 +1431,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x85EAC5Ac2F758618dFa09bDbe0cf174e7d574D5B",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x85EAC5Ac2F758618dFa09bDbe0cf174e7d574D5B.png",
       },
       {
@@ -1300,6 +1440,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xA2a26349448ddAfAe34949a6Cc2cEcF78c0497aC",
         isNative: false,
         decimals: 9,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xA2a26349448ddAfAe34949a6Cc2cEcF78c0497aC/logo.png",
       },
       {
@@ -1308,6 +1449,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x14016E85a25aeb13065688cAFB43044C2ef86784",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x14016E85a25aeb13065688cAFB43044C2ef86784.png",
       },
       {
@@ -1316,6 +1458,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x4B0F1812e5Df2A09796481Ff14017e6005508003",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x4B0F1812e5Df2A09796481Ff14017e6005508003.png",
       },
       {
@@ -1324,6 +1467,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x0E8D5504bF54D9E44260f8d153EcD5412130CaBb",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x0E8D5504bF54D9E44260f8d153EcD5412130CaBb/logo.png",
       },
       {
@@ -1332,6 +1476,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x09a6c44c3947B69E2B45F4D51b67E6a39ACfB506",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x09a6c44c3947B69E2B45F4D51b67E6a39ACfB506/logo.png",
       },
       {
@@ -1340,6 +1485,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xBf5140A22578168FD562DCcF235E5D43A02ce9B1",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xBf5140A22578168FD562DCcF235E5D43A02ce9B1.png",
       },
       {
@@ -1348,6 +1494,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x23396cF899Ca06c4472205fC903bDB4de249D6fC",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x23396cF899Ca06c4472205fC903bDB4de249D6fC.png",
       },
       {
@@ -1356,6 +1503,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x4BD17003473389A42DAF6a0a729f6Fdb328BbBd7",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x4BD17003473389A42DAF6a0a729f6Fdb328BbBd7.png",
       },
       {
@@ -1364,6 +1512,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x339C72829AB7DD45C3C52f965E7ABe358dd8761E",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x339C72829AB7DD45C3C52f965E7ABe358dd8761E/logo.png",
       },
       {
@@ -1372,6 +1521,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xFAfD4CB703B25CB22f43D017e7e0d75FEBc26743",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xFAfD4CB703B25CB22f43D017e7e0d75FEBc26743/logo.png",
       },
       {
@@ -1380,6 +1530,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xaeF0d72a118ce24feE3cD1d43d383897D05B4e99",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0xaeF0d72a118ce24feE3cD1d43d383897D05B4e99.png",
       },
       {
@@ -1388,6 +1539,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://tokens.pancakeswap.finance/images/0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE.png",
       },
       {
@@ -1396,6 +1548,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x6b23C89196DeB721e6Fd9726E6C76E4810a464bc",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x6b23C89196DeB721e6Fd9726E6C76E4810a464bc/logo.png",
       },
       {
@@ -1404,6 +1557,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x524dF384BFFB18C0C8f3f43d012011F8F9795579",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x524dF384BFFB18C0C8f3f43d012011F8F9795579/logo.png",
       },
       {
@@ -1412,6 +1566,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xFbe0b4aE6E5a200c36A341299604D5f71A5F0a48",
         isNative: false,
         decimals: 18,
+        chainId: 56,
         icon: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xFbe0b4aE6E5a200c36A341299604D5f71A5F0a48/logo.png",
       },
       {
@@ -1420,6 +1575,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0x42981d0bfbAf196529376EE702F2a9Eb9092fcB5",
         isNative: false,
         decimals: 9,
+        chainId: 56,
         icon: "https://assets.coingecko.com/coins/images/21863/thumb/photo_2021-12-22_14.43.36.jpeg?1696521217",
       },
       {
@@ -1428,6 +1584,7 @@ export const PANCAKE_TOKEN_LIST: TOKEN_DATA[] =
         address: "0xAe2DF9F730c54400934c06a17462c41C08a06ED8",
         isNative: false,
         decimals: 9,
+        chainId: 56,
         icon: "https://assets.coingecko.com/coins/images/19153/thumb/dobo.png?1696518604",
       },
     ];

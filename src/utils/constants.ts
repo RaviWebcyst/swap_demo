@@ -1,4 +1,4 @@
-import { bscTestnet, mainnet } from "viem/chains";
+import { base, bscTestnet, mainnet, polygon } from "viem/chains";
 import EthIcon from "../../src/assets/icons/tokens/EthIcon.svg";
 import bnbIcon from "../assets/icons/tokens/bnb.svg";
 
@@ -12,6 +12,9 @@ import {
 import { DAYS_TO_VALUE_MAP, NetworkTypes } from "../interfaces/common";
 import { AppKitNetwork,bsc } from "@reown/appkit/networks";
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
+
+import evmChains from "../assets/evmChains.json";
+
 
 
 
@@ -90,15 +93,29 @@ export const NETWORKS: NetworkTypes[] =
     
 
 export const networkConfig = (chainId: number = NETWORKS[0].chainId) => {
-  const network = NETWORKS.find((network) => network.chainId === chainId);
+  // const network = NETWORKS.find((network) => network.chainId === chainId);
+  var network:any = evmChains.find((network) => network.id === chainId);
+  
+  if(chainId === 900){
+    network = NETWORKS.find((network) => network.chainId === chainId);
+      
+  }
+
   if (network) {
-    if (network.symbol === "BSC") {
+    if (network.coin === "BSC") {
       return {
         network: network,
         contractList: BSC_CONTRACT_LIST,
         tokenList: PANCAKE_TOKEN_LIST,
       };
-    } else if (network.symbol === "ETH") {
+    } else if (network.coin === "ETH") {
+      return {
+        network: network,
+        contractList: ETHEREUM_CONTRACT_LIST,
+        tokenList: ETHEREUM_TOKEN_LIST,
+      };
+    }
+    else if (network.coin === "POL") {
       return {
         network: network,
         contractList: ETHEREUM_CONTRACT_LIST,
@@ -113,7 +130,6 @@ export const networkConfig = (chainId: number = NETWORKS[0].chainId) => {
     };
   }
 };
-
 
 export const metadata = {
   name: " swap",
@@ -154,7 +170,7 @@ export const projectId: string = "a9d7c8d07b81ba50fa96d6670edc1afb";
 // export const projectId: string = "0fee233b7ebb41dd859e4e8cf7f23207";
 
 // export const networks = [bscTestnet] as [AppKitNetwork, ...AppKitNetwork[]]
-export const networks = [bsc] as [AppKitNetwork, ...AppKitNetwork[]]
+export const networks = [bsc,mainnet,polygon,base] as [AppKitNetwork, ...AppKitNetwork[]]
 
 
 

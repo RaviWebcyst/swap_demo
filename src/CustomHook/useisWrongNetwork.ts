@@ -11,11 +11,15 @@ const useIsWrongNetwork = () => {
   return (
     chainId !== 11155111 &&
     chainId !== 97 &&
-    // chainId != 129 &&
-    // chainId != 0 &&
-    chainId != 1 &&
-    chainId != 56 &&
-    chainId != 1209 &&
+    chainId !== 900 &&
+    chainId !== 137 &&
+    chainId !== 8453 &&
+    chainId !== 1151111081099710 &&
+    chainId !== 42161 &&
+    chainId !== 146 &&
+    chainId !== 1 &&
+    chainId !== 56 &&
+    chainId !== 1209 &&
     chainId !== undefined &&
     Boolean(walletAddress)
   );
