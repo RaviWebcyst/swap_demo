@@ -109,6 +109,7 @@
 
         &::before,
         &::after {
+          display: none;
           content: "";
           width: 0.1rem;
           height: 2.4rem;
@@ -160,14 +161,14 @@
           }
 
           @include theme() {
-            background: linear-gradient(
-                  180deg,
-                  theme-get("headerbg"),
-                  theme-get("headerbg")
-                )
-                padding-box,
-              $gradient border-box;
-            border: 1px solid transparent;
+            // background: linear-gradient(
+            //       180deg,
+            //       theme-get("headerbg"),
+            //       theme-get("headerbg")
+            //     )
+            //     padding-box,
+            //   $gradient border-box;
+            border: 1px solid #9E79D2;
           }
 
           &:hover {

@@ -109,6 +109,7 @@
 
         &::before,
         &::after {
+          display: none;
           content: "";
           width: 0.1rem;
           height: 2.4rem;

@@ -159,15 +159,10 @@ const Header = (props: propTypes) => {
      <header className="header">
         <Container fluid className="px-40">
           <div className="header_in">
-            <Link to={ROUTES.HOME} className={"header_logo"}>
+            {/* <Link to={ROUTES.HOME} className={"header_logo"}>
             <h1>Swap</h1>
-              {/* <img
-                className="d-sm-block d-none"
-                src=""
-                alt="logo"
-              />
-              <img src="" alt="logo" className="d-sm-none" /> */}
-            </Link>
+             
+            </Link> */}
             <Sidebar
               handleActive={props.handleActive}
               active={props.active}

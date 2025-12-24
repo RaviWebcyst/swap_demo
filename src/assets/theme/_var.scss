@@ -142,7 +142,8 @@ $themes: (
     "sidebar": rgb(20, 20, 20),
     "sidebartext": #fff,
     // "headerbg": #151515, before
-    "headerbg": #000,
+    // "headerbg": #000,
+    "headerbg": transparent,
     "card_icons_bg": #000,
     "cardbg": linear-gradient(180deg, #141414 0%, #070707 100%),
     "cardbg_gradient": linear-gradient(180deg, #141414 0%, #070707 100%), 
