@@ -639,13 +639,12 @@ const TokensModal = forwardRef<TokensModalRef, any>(
     return (
       <>
         {!tokenActive ? (
-          <Button className="rzrtokenBtn my-3" onClick={() => {
+          <div className="my-3" >
+            <Button className="d-flex gap-2 tokenSelectBtn rzrtokenBtn" onClick={() => {
             getTokens(field === "Field1" ? tokenOne : tokenTwo);
             setShowToken(true);
             setTokenOneChain(evmChains.filter((data: any) => data.id == tokenOne.chainId)?.[0].name);
-
           }}>
-            <div className="d-flex gap-2 tokenSelectBtn">
               <span className="d-flex">
                 <span className="networkIcon">
                   <img src={evmChains.filter((data: any) => data.id == tokenOne.chainId)?.[0]?.logoURI} alt="" />
@@ -663,17 +662,17 @@ const TokensModal = forwardRef<TokensModalRef, any>(
                 </span>
               </span>
 
-            </div>
+            </Button>
             {/* <div className="ps-5">
               {!readOnly ? <AiOutlineCaretDown className="token_drop" /> : null}
             </div> */}
-          </Button>
+          </div>
         ) : (
-          <Button className="rzrtokenBtn my-3 " onClick={() => {
+          <div className="my-3 " >
+            <Button className="d-flex gap-2 tokenSelectBtn rzrtokenBtn" onClick={() => {
             getTokens(field === "Field1" ? tokenOne : tokenTwo); setShowToken(true);
             setTokenTwoChain(evmChains.filter((data: any) => data.id == tokenTwo.chainId)?.[0]?.name);
           }}>
-            <div className="d-flex gap-2 tokenSelectBtn">
               <span className="d-flex">
                 <span className="networkIcon">
                   <img src={evmChains.filter((data: any) => data.id == tokenTwo.chainId)?.[0]?.logoURI} alt="" />
@@ -688,11 +687,11 @@ const TokensModal = forwardRef<TokensModalRef, any>(
                 <span className="tokenIcon">{tokenTwo?.name.length > 10 ? customizeAddress(tokenTwo?.name) : tokenTwo?.name}</span>
                 </span>
               </span>
-            </div>
+            </Button>
             {/* <div className="ps-5">
               <AiOutlineCaretDown className="token_drop" />
             </div> */}
-          </Button>
+          </div>
         )}
 
 

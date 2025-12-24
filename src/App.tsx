@@ -19,7 +19,7 @@ const generalConfig = {
   projectId,
   networks,
   metadata,
-  themeMode: 'light' as const,
+  themeMode: 'dark' as const,
   themeVariables: {
     '--w3m-accent': '#000000',
   },
