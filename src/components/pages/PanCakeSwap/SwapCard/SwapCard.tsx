@@ -802,7 +802,9 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
       }
 
        setIsLoading(true)
-      setShowRight(true)
+        setShowRight(true)
+
+        setActiveIndex(0)
 
         var result:any =  await getLifiQuote(inputOne?.inputValue);    
 
@@ -1389,12 +1391,12 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
                                     <div className="d-flex align-items-center gap-3">
                                       <img src={tokenTwo.icon} className="sideicon" />
                                       <div className="font-geist">
-                                        <h1 className="fw-bold">{Number(data.toAmount).toFixed(3)}</h1>
+                                        <h1 className="fw-bold">{Number(data.toAmount).toFixed(7)}</h1>
                                         <div className="d-flex align-items-center gap-3">
                                           {/* <h5 className="mt-1 fw-medium">${Number(toCustomFixed(data.amountOutFormatted, 7) * Number(usdPrice)).toFixed(1)}</h5> */}
                                           <h5 className="mt-1 fw-medium">
                                             $
-                                            {Number(data?.toAmount * data?.toToken?.priceUSD).toFixed(3)}
+                                            {Number(data?.toAmount * data?.toToken?.priceUSD).toFixed(5)}
                                             {/* <small>{data.priceImpactPercentFormatted}</small> */}
                                           </h5>
                                           <div className="d-flex align-items-center gap-2 squid_div">
@@ -1626,9 +1628,12 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
               </div> */}
               </div>
 
-              <div className="my-2 ms-4">
+              {/* <div className="my-2 ms-4">
                 <h1>{type} Aggregator </h1>
-              </div>
+              </div> */}
+               {/* {quoteList?.length > 0 && (
+                  <h1>{quoteList[activeIndex]?.label?.replace(/Aggregator/gi, '').trim() || ''} Aggregator </h1>
+                )} */}
               <div className="token_receive">
                 <div className="token_receive_leftSide">
                   <h6 className="mb-2">You Receive</h6>
@@ -1691,6 +1696,7 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
             lifiRoute,
             fetchData,
             selectedQuote: quoteList[activeIndex],
+            setShowRight
           }}
           isShow={setShow}
         />

@@ -30,6 +30,8 @@ import loader from '../../../../assets/animations/rs_loader_.json'
 import tick from '../../../../assets/animations/tick.json'
 import cross from '../../../../assets/animations/error.json';
 import Lottie from "lottie-react";
+import * as chains from "viem/chains";
+
 
 
 const ReviewSwap = (props:any) => {
@@ -80,8 +82,10 @@ const ReviewSwap = (props:any) => {
    const chainMap: Record<number, any> = {
     1: mainnet,
     56: bsc,
-    137: polygon,
-    8453: base,
+    137: chains.polygon,
+    8453: chains.base,
+    42161: chains.arbitrum,
+    146: chains.sonic,
 
   }
 
@@ -408,7 +412,7 @@ const ReviewSwap = (props:any) => {
 
           await executeRoute(routeData, options); // execute lifi swap
           await state.fetchData();
-
+          state.setShowRight(false);
           dispatch(setTransactionCounter(true)); // set transaction in redux
           return;
         }

@@ -174,9 +174,9 @@
           &:hover {
             color: $white;
 
-            &::before {
-              opacity: 1;
-            }
+            // &::before {
+            //   opacity: 1;
+            // }
           }
         }
       }
