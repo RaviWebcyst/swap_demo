@@ -93,7 +93,7 @@ const SwapCard = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [bnbdollar, setBnbdollar] = useState<any>(0.0)
 
-const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
+  const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
 
 
 
@@ -169,7 +169,7 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
     // }
   }
 
-    const tokenModalRef1 = useRef<TokensModalRef>(null)
+  const tokenModalRef1 = useRef<TokensModalRef>(null)
   const tokenModalRef2 = useRef<TokensModalRef>(null)
 
   type CostList = { amountUSD?: string }[] | undefined
@@ -219,7 +219,6 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
 
       const delayDebounce: NodeJS.Timeout = setTimeout(() => {
         handleGetAmountsData("TK1", inputOne?.convertedValue, false);
-        handleGetFeeAmountsData("TK1", inputOne?.convertedValue, false);
       }, 500);
       return () => clearTimeout(delayDebounce);
     }
@@ -235,7 +234,6 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
     ) {
       const delayDebounce: NodeJS.Timeout = setTimeout(() => {
         handleGetAmountsData("TK2", inputTwo?.convertedValue, false);
-        handleGetFeeAmountsData("TK2", inputTwo?.convertedValue, false);
 
       }, 500);
       return () => clearTimeout(delayDebounce);
@@ -305,7 +303,7 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
   // const { chainValues } = useAppSelector((state: any) => user);
 
 
-   const calculateTotalGasFeeUsd = (stepsData: StepData): number => {
+  const calculateTotalGasFeeUsd = (stepsData: StepData): number => {
     let totalFeeUsd = 0.0
 
     const sumCosts = (costs: CostList): number =>
@@ -324,40 +322,40 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
   }
 
 
-  const getLifiQuote = async (amount:any) => {  
+  const getLifiQuote = async (amount: any) => {
 
-          const decimals = tokenOne.decimals; // VERY IMPORTANT
+    const decimals = tokenOne.decimals; // VERY IMPORTANT
 
-          const blockchainAmount = parseUnits(amount, decimals).toString();
-
-
-      var data:any = {
-          fromChainId: Number(tokenOne?.chainId), 
-          toChainId:  Number(tokenTwo?.chainId), 
-          fromTokenAddress: tokenOne?.address, 
-          toTokenAddress: tokenTwo?.address,
-          fromAmount: blockchainAmount,
-      }
-
-      
-
-      if(walletAddress){
-          data={...data,fromAddress:walletAddress};
-        }
-
-        const result = await getRoutes(data);
+    const blockchainAmount = parseUnits(amount, decimals).toString();
 
 
-        const route = result.routes.map((route:any) => ({
-            ...route,
-            fromAmount: formatUnits(route.fromAmount, decimals),
-            toAmount: formatUnits(route.toAmount, tokenTwo.decimals),
-        }));  
-            
-        return route;
+    var data: any = {
+      fromChainId: Number(tokenOne?.chainId),
+      toChainId: Number(tokenTwo?.chainId),
+      fromTokenAddress: tokenOne?.address,
+      toTokenAddress: tokenTwo?.address,
+      fromAmount: blockchainAmount,
+    }
+
+
+
+    if (walletAddress) {
+      data = { ...data, fromAddress: walletAddress };
+    }
+
+    const result = await getRoutes(data);
+
+
+    const route = result.routes.map((route: any) => ({
+      ...route,
+      fromAmount: formatUnits(route.fromAmount, decimals),
+      toAmount: formatUnits(route.toAmount, tokenTwo.decimals),
+    }));
+
+    return route;
   };
   const getReservesFirstTime = async () => {
-    
+
 
     // const data: GET_AMOUNTS_DATA = {
     //   tokenOneAddress: tokenOne?.address,
@@ -369,14 +367,14 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
     //   walletProvider,
     // };
 
-    
-    
+
+
 
     // const reserveData: Array<string> = await getAmountsOutfunction(data);
 
-    
 
-    
+
+
 
 
     // if (reserveData == undefined) {
@@ -388,14 +386,14 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
     //     await convertUsingTokenDecimals(
     //       tokenTwo,
     //       reserveData[1]);
-  
 
 
-   
+
+
 
     //   //bigger value in rates1
-    
-      
+
+
 
 
     //   // setRate(
@@ -582,7 +580,6 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
     var value = selectedField == "TK1" ? inputOne?.convertedValue : inputTwo?.convertedValue;
 
 
-    handleGetFeeAmountsData(selectedField, value, false);
 
 
     intervalRef.current = setInterval(() => {
@@ -597,144 +594,7 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
     }, 1000);
   }
 
-  const handleGetFeeAmountsData = async (
-    fieldCondition: string,
-    amount: string,
-    max: boolean
-  ) => {
 
-
-    // var feeData: any = {
-    //   dispatch,
-    //   walletProvider,
-    // }
-
-    // var getPercentage = await getFeePercentage(feeData);
-
-    // var per_val = getPercentage ? Number(getPercentage / 10000) : 0.002;
-
-    // // console.log(per_val,"per_val");
-
-
-    // var amountInput = Math.floor(Number(amount) - (per_val) * Number(amount));
-    // // var amountInput = amount;
-
-
-    // const data: GET_AMOUNTS_DATA = {
-    //   tokenOneAddress: tokenOne?.address,
-    //   tokenTwoAddress: tokenTwo?.address,
-    //   amountIn: amountInput.toString(),
-    //   max: max,
-    //   dispatch,
-    //   walletProvider,
-    // };
-
-
-    // const tokenValue: string[2] | undefined | any =
-    //   fieldCondition == "TK1"
-    //     ? await getAmountsOutfunction(data)
-    //     : await getAmountsInfunction(data);
-
-
-    // const u3swaptokenValue: string[2] | undefined | any =
-    //   fieldCondition == "TK1"
-    //     ? await getUniV3AmountsOutfunction(data)
-    //     : await getUniV3AmountsInfunction(data);
-
-
-
-    // if (tokenValue == undefined || (tokenValue[0] && tokenValue[1] == "0")) {
-    //   setSufficientLiquidityCheck(true);
-    //   setShimmerState("null");
-    //   setPriceImpact("0");
-    // } else {
-    //   setSufficientLiquidityCheck(false);
-
-    //   //maxEthAmount
-    //   // var value:any= BigInt(10000);
-    //   // var per:any= BigInt(1);
-    //   // var tv:any = Number(tokenValue[0]) * Number((value+per)/value);
-
-    //   // tv= tv.toString();
-
-    //   var tokenValue1 = tokenValue[1];
-
-
-    //   var value1: string = await convertUsingTokenDecimals(
-    //     fieldCondition == "TK1" ? tokenTwo : tokenOne,
-    //     fieldCondition == "TK1" ? tokenValue[1] : tokenValue[0]
-    //   );
-    //   var value2: string = await convertUsingTokenDecimals(
-    //     fieldCondition == "TK1" ? tokenTwo : tokenOne,
-    //     fieldCondition == "TK1" ? u3swaptokenValue[0] : u3swaptokenValue[0]
-    //   );
-
-    //   const list = store.getState()?.user?.contractDetails;
-
-    //   var type1 = "PanCake";
-    //   var type2 = "Uniswapv3";
-    //   var cont_address = list?.panCakeSwap?.address;
-
-
-    //   if (Number(u3swaptokenValue[0]) > Number(tokenValue[1])) {
-    //     tokenValue1 = u3swaptokenValue[0];
-
-    //     value1 = await convertUsingTokenDecimals(
-    //       fieldCondition == "TK1" ? tokenTwo : tokenOne,
-    //       fieldCondition == "TK1" ? u3swaptokenValue[0] : u3swaptokenValue[0]
-    //     );
-    //     value2 = await convertUsingTokenDecimals(
-    //       fieldCondition == "TK1" ? tokenTwo : tokenOne,
-    //       fieldCondition == "TK1" ? tokenValue[1] : tokenValue[0]
-    //     );
-
-    //     type1 = "Uniswapv3";
-    //     type2 = "PanCake";
-    //     cont_address = list?.quote?.address;
-    //   }
-
-
-    //   setConAdd(cont_address);
-
-
-    //   setType1(type1);
-    //   setType2(type2);
-    //   setType(type1);
-   
-
-
-    //   const calculatedBalance: string = await convertUsingTokenDecimals(
-    //     fieldCondition == "TK1" ? tokenTwo : tokenOne,
-    //     fieldCondition == "TK1" ? tokenValue1 : tokenValue[0]
-    //   );
-
-
-    //   if (Number(calculatedBalance)) {
-    //     if (walletAddress) {
-    //       const res: string = await getPriceImpact(
-    //         fieldCondition == "TK1" ? tokenValue1 : tokenValue[0],
-    //         tokenOne?.address,
-    //         tokenTwo?.address,
-    //         dispatch,
-    //         walletProvider
-    //       );
-    //       setPriceImpact(cryptoDecimals(res));
-    //     }
-    //     fieldCondition == "TK1"
-    //       ? setfixedinputTwo({
-    //         convertedValue: tokenValue1,
-    //         inputValue: toCustomFixed(calculatedBalance, 7),
-    //         toolTipValue: calculatedBalance,
-    //       })
-    //       : setfixedinputOne({
-    //         convertedValue: tokenValue[0],
-    //         inputValue: toCustomFixed(calculatedBalance, 7),
-    //         toolTipValue: calculatedBalance,
-    //       });
-    //     setShimmerState("null");
-    //   }
-    // }
-  };
 
 
   const setInputValue = async (amount: any, fieldCondition: any, data: any, active: any, rate: any) => {
@@ -774,8 +634,8 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
       toolTipValue: amount,
     })
 
-      setTk2DollarValue(data?.lifiRoute?.toAmountUSD)
-    
+    setTk2DollarValue(data?.lifiRoute?.toAmountUSD)
+
   }
 
 
@@ -795,67 +655,69 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
     //   dispatch,
     //   walletProvider,
     // };
-      setQuoteList([]);
+    setQuoteList([]);
 
-      if(Number(inputOne?.inputValue) <= 0){
-          return;
-      }
+    if (Number(inputOne?.inputValue) <= 0) {
+      return;
+    }
 
-       setIsLoading(true)
-        setShowRight(true)
+    setIsLoading(true)
+    setShowRight(true)
 
-        setActiveIndex(0)
+    setActiveIndex(0)
 
-        var result:any =  await getLifiQuote(inputOne?.inputValue);    
+    var result: any = await getLifiQuote(inputOne?.inputValue);
 
-        if(result.length == 0){
-            setIsLoading(false);
-            return;
-        }
-        console.log(result,"result");
-        
-        
-        const ress: any = await getLifiQuote("1");
-        console.log(ress,"ress");
-        
-
-        const res = result.map((data: any, index: number) =>{ 
-            const dataTool = data?.steps?.[0]?.tool;
-            const ressTool = ress?.[index]?.steps?.[0]?.tool;
-
-            const tokenOutPerTokenIn =
-                dataTool && ressTool && dataTool === ressTool
-                    ? Number(data?.toAmount || 0)
-                    : 0;
+    if (result.length == 0) {
+      setIsLoading(false);
+      return;
+    }
+    console.log(result, "result");
 
 
-          return({
-            ...data,
-            tokenOutPerTokenIn
-        })});
-        
+    const ress: any = await getLifiQuote("1");
+    console.log(ress, "ress");
+
+    const res = result.map((data: any) => {
+      const dataTool = data?.steps?.[0]?.tool;
+
+      // find matching item in entire ress array
+      const matchedRess = ress?.find(
+        (r: any) => r?.steps?.[0]?.tool === dataTool
+      );
+      
+      const tokenOutPerTokenIn = matchedRess
+        ? Number(data?.toAmount)
+        : 0;
+
+      return {
+        ...data,
+        tokenOutPerTokenIn,
+      };
+    });
+
     //  tokenOutPerTokenIn
-      
-      
-        // setUsdPrice(res[0]?.lifiRoute?.toToken?.priceUSD);
-        setTk1DollarValue(res[0]?.fromAmountUSD)
-        setTk2DollarValue(res[0]?.toAmountUSD)
-        setQuoteList(res)
-        setLifiRoute(res[0])
-        setIsLoading(false);
-        handleTime();
-
-        setinputTwo({
-            convertedValue: res[0]?.toAmount,
-            inputValue: Number(res[0]?.toAmount).toFixed(7),
-            toolTipValue: Number(res[0]?.toAmount).toFixed(7),
-        });
 
 
-        
-        setShimmerState("null");
-       
-       
+    // setUsdPrice(res[0]?.lifiRoute?.toToken?.priceUSD);
+    setTk1DollarValue(res[0]?.fromAmountUSD)
+    setTk2DollarValue(res[0]?.toAmountUSD)
+    setQuoteList(res)
+    setLifiRoute(res[0])
+    setIsLoading(false);
+    handleTime();
+
+    setinputTwo({
+      convertedValue: res[0]?.toAmount,
+      inputValue: Number(res[0]?.toAmount).toFixed(7),
+      toolTipValue: Number(res[0]?.toAmount).toFixed(7),
+    });
+
+
+
+    setShimmerState("null");
+
+
 
     // const tokenValue: string[2] | undefined | any =
     //   fieldCondition == "TK1"
@@ -872,7 +734,7 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
     //     ? await getUniV3AmountsOutfunction(data)
     //     : await getUniV3AmountsInfunction(data);
 
-        
+
 
     // const fixed_data: GET_AMOUNTS_DATA = {
     //   tokenOneAddress: tokenOne?.address,
@@ -884,7 +746,7 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
     //   walletProvider,
     // };
 
-    
+
     // if (tokenValue == undefined || (tokenValue[0] && tokenValue[1] == "0")) {
     //   setSufficientLiquidityCheck(true);
     //   setShimmerState("null");
@@ -972,10 +834,10 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
     //     fieldCondition == "TK1" ? tokenTwo : tokenOne,
     //     fieldCondition == "TK1" ? tokenValue1 : tokenValue[0]
     //   );
-      
-      
+
+
     //   if (Number(calculatedBalance)) {
-        
+
     //            var inputvalue: any = inputOne.inputValue
     //           var ra: any = Number(calculatedBalance) / Number(inputvalue)
     //           var re = Number(rate)
@@ -984,7 +846,7 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
     //             ress = -ress
     //           }
     //           setPriceImpact(cryptoDecimals(ress))
-      
+
     //     fieldCondition == "TK1"
     //       ? setinputTwo({
     //         convertedValue: tokenValue1,
@@ -1089,7 +951,7 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
       );
 
       const u3swaptokenValue: string[2] | undefined | any = await getUniV3AmountsOutfunction(data)
-       
+
 
 
       if (tokenTwoValue == undefined) {
@@ -1106,35 +968,35 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
           u3swaptokenValue[0]
         );
 
-          if (u3swaptokenValue[0] > tokenTwoValue[1]) {
-              calculatedBalance = await convertUsingTokenDecimals(
-              tokenOne,
-              u3swaptokenValue[0]
-            );
-            calculatedBalance1 = await convertUsingTokenDecimals(
-              tokenOne,
-              tokenTwoValue[1]
-            );
+        if (u3swaptokenValue[0] > tokenTwoValue[1]) {
+          calculatedBalance = await convertUsingTokenDecimals(
+            tokenOne,
+            u3swaptokenValue[0]
+          );
+          calculatedBalance1 = await convertUsingTokenDecimals(
+            tokenOne,
+            tokenTwoValue[1]
+          );
 
-          }
+        }
 
 
-      setShowRight(true);
+        setShowRight(true);
 
-      setPriceList([calculatedBalance, calculatedBalance1]);
+        setPriceList([calculatedBalance, calculatedBalance1]);
 
-    
+
         if (Number(calculatedBalance)) {
 
 
-            var inputvalue: any = inputOne.inputValue
-              var ra: any = Number(calculatedBalance) / Number(inputvalue)
-              var re = Number(rate)
-              var ress: any = Number(((re - ra) / re) * 100)
-              if (ress < 0) {
-                ress = -ress
-              }
-            setPriceImpact(cryptoDecimals(ress))
+          var inputvalue: any = inputOne.inputValue
+          var ra: any = Number(calculatedBalance) / Number(inputvalue)
+          var re = Number(rate)
+          var ress: any = Number(((re - ra) / re) * 100)
+          if (ress < 0) {
+            ress = -ress
+          }
+          setPriceImpact(cryptoDecimals(ress))
 
           setinputTwo({
             convertedValue: tokenTwoValue[1],
@@ -1186,8 +1048,8 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
 
                 <Button className="swapBtn my-2" onClick={() => handleSwitchTokens()}>
                   {/* <DropUpswapIcon /> */}
-                  <IoIosArrowRoundDown  className="icon down"  />
-                  <IoIosArrowRoundUp  className="icon up"  />
+                  <IoIosArrowRoundDown className="icon down" />
+                  <IoIosArrowRoundUp className="icon up" />
 
                 </Button>
               </div>
@@ -1199,63 +1061,63 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
                 dollarVal={tk2DollarValue}
                 shimmer={shimmerState}
                 key=""
-               
+
               />
             </div>
 
-             <div className="addCard_footer ">
-            <Button
-              fluid
-              className={`btnapprove mb-3 ${!walletAddress
-                ? "fluid"
-                : isWrongNetwork ||
-                  insufficientBalance ||
-                  sufficientLiquidityCheck ||
-                  Number(inputOne?.convertedValue) == 0 ||
-                  Number(inputTwo?.convertedValue) == 0
-                  ? "grayBorder"
-                  : "fluid"
-                }`}
-              onClick={() => {
-                if (!walletAddress) {
-                  open({view:"Connect"});
-                  // setConnectWallet(true);
-                } else {
-
-                  setReviewShow(true);
-                  // navigate("review-swap", {
-                  //   state: {
-                  //     tokenDetails,
-                  //     selectedField,
-                  //     inputOne,
-                  //     inputTwo,
-                  //     tk1DollarValue,
-                  //     tk2DollarValue,
-                  //   },
-                  // });
-                }
-              }}
-              disabled={
-                !walletAddress
-                  ? false
+            <div className="addCard_footer ">
+              <Button
+                fluid
+                className={`btnapprove mb-3 ${!walletAddress
+                  ? "fluid"
                   : isWrongNetwork ||
-                  insufficientBalance ||
-                  sufficientLiquidityCheck ||
-                  Number(inputOne?.inputValue) == 0 ||
-                  Number(inputTwo?.inputValue) == 0
-              }
-            >
-              {!walletAddress
-                ? "Connect Wallet"
-                : insufficientBalance
-                  ? `Insufficient ${tokenOne?.symbol}`
-                  : sufficientLiquidityCheck
-                    ? "Insufficient Liquidity"
-                    : // : chainValues.label === "SBC"
-                    // ? "Trade will be Live Soon!"
-                    "Approve and Swap"}
-            </Button>
-          </div>
+                    insufficientBalance ||
+                    sufficientLiquidityCheck ||
+                    Number(inputOne?.convertedValue) == 0 ||
+                    Number(inputTwo?.convertedValue) == 0
+                    ? "grayBorder"
+                    : "fluid"
+                  }`}
+                onClick={() => {
+                  if (!walletAddress) {
+                    open({ view: "Connect" });
+                    // setConnectWallet(true);
+                  } else {
+
+                    setReviewShow(true);
+                    // navigate("review-swap", {
+                    //   state: {
+                    //     tokenDetails,
+                    //     selectedField,
+                    //     inputOne,
+                    //     inputTwo,
+                    //     tk1DollarValue,
+                    //     tk2DollarValue,
+                    //   },
+                    // });
+                  }
+                }}
+                disabled={
+                  !walletAddress
+                    ? false
+                    : isWrongNetwork ||
+                    insufficientBalance ||
+                    sufficientLiquidityCheck ||
+                    Number(inputOne?.inputValue) == 0 ||
+                    Number(inputTwo?.inputValue) == 0
+                }
+              >
+                {!walletAddress
+                  ? "Connect Wallet"
+                  : insufficientBalance
+                    ? `Insufficient ${tokenOne?.symbol}`
+                    : sufficientLiquidityCheck
+                      ? "Insufficient Liquidity"
+                      : // : chainValues.label === "SBC"
+                      // ? "Trade will be Live Soon!"
+                      "Approve and Swap"}
+              </Button>
+            </div>
             {/* <div className="showBtn">
               <button onClick={toggleVisibility}>
                 {!showMore ? "Show More" : "Show Less"}
@@ -1312,7 +1174,7 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
               </AnimatePresence>
             </ul> */}
           </div>
-         {/* previous btn  */}
+          {/* previous btn  */}
         </div>
 
         <AnimatePresence mode="sync">
@@ -1369,97 +1231,97 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
                   )}
                   {quoteList.length > 0 &&
                     quoteList.map((data: any, index: any) => (
-                        <div className="addCard_recieveValues mt-4" key={index}>
-                          <div
-                            className={`recieve_values_div ${index == activeIndex ? 'recieve_active' : ''}`}
-                            onClick={() => {
-                              setInputValue(
-                                data.toAmount,
-                                selectedField,
-                                data,
-                                index,
-                               0,
-                              )
-                              setLifiRoute(data)
-                            }}
-                          >
-                            <div className="best_returns"></div>
-                            <div className="first_value_div pt-3">
-                              <Accordion>
-                                <Accordion.Item eventKey="0" className="border-0">
-                                  <Accordion.Header>
-                                    <div className="d-flex align-items-center gap-3">
-                                      <img src={tokenTwo.icon} className="sideicon" />
-                                      <div className="font-geist">
-                                        <h1 className="fw-bold">{Number(data.toAmount).toFixed(7)}</h1>
-                                        <div className="d-flex align-items-center gap-3">
-                                          {/* <h5 className="mt-1 fw-medium">${Number(toCustomFixed(data.amountOutFormatted, 7) * Number(usdPrice)).toFixed(1)}</h5> */}
-                                          <h5 className="mt-1 fw-medium">
-                                            $
-                                            {Number(data?.toAmount * data?.toToken?.priceUSD).toFixed(5)}
-                                            {/* <small>{data.priceImpactPercentFormatted}</small> */}
-                                          </h5>
-                                          <div className="d-flex align-items-center gap-2 squid_div">
-                                            <img
-                                              src={ data?.steps?.[0]?.toolDetails?.logoURI || ''}
-                                              width={25}
-                                            />
-                                            {/* {data.dex} */}
-                                            {data?.steps[0].toolDetails?.name }
-                                          </div>
+                      <div className="addCard_recieveValues mt-4" key={index}>
+                        <div
+                          className={`recieve_values_div ${index == activeIndex ? 'recieve_active' : ''}`}
+                          onClick={() => {
+                            setInputValue(
+                              data.toAmount,
+                              selectedField,
+                              data,
+                              index,
+                              0,
+                            )
+                            setLifiRoute(data)
+                          }}
+                        >
+                          <div className="best_returns"></div>
+                          <div className="first_value_div pt-3">
+                            <Accordion>
+                              <Accordion.Item eventKey="0" className="border-0">
+                                <Accordion.Header>
+                                  <div className="d-flex align-items-center gap-3">
+                                    <img src={tokenTwo.icon} className="sideicon" />
+                                    <div className="font-geist">
+                                      <h1 className="fw-bold">{Number(data.toAmount).toFixed(7)}</h1>
+                                      <div className="d-flex align-items-center gap-3">
+                                        {/* <h5 className="mt-1 fw-medium">${Number(toCustomFixed(data.amountOutFormatted, 7) * Number(usdPrice)).toFixed(1)}</h5> */}
+                                        <h5 className="mt-1 fw-medium">
+                                          $
+                                          {Number(data?.toAmount * data?.toToken?.priceUSD).toFixed(5)}
+                                          {/* <small>{data.priceImpactPercentFormatted}</small> */}
+                                        </h5>
+                                        <div className="d-flex align-items-center gap-2 squid_div">
+                                          <img
+                                            src={data?.steps?.[0]?.toolDetails?.logoURI || ''}
+                                            width={25}
+                                          />
+                                          {/* {data.dex} */}
+                                          {data?.steps[0].toolDetails?.name}
                                         </div>
                                       </div>
                                     </div>
-                                  </Accordion.Header>
-                                  <Accordion.Body>
-                                    <div className="squid_ul">
-                                      <div className="d-flex gap-3">
-                                        <img
-                                          src={ data?.steps?.[0]?.toolDetails?.logoURI || ''}
-                                          width={25}
-                                        />
-                                        {/* <p className="squid_lifi_text">{data.dex}</p> */}
-                                        <p className="squid_lifi_text">
-                                          { data?.steps[0].toolDetails?.name}
-                                        </p>
-                                      </div>
+                                  </div>
+                                </Accordion.Header>
+                                <Accordion.Body>
+                                  <div className="squid_ul">
+                                    <div className="d-flex gap-3">
+                                      <img
+                                        src={data?.steps?.[0]?.toolDetails?.logoURI || ''}
+                                        width={25}
+                                      />
+                                      {/* <p className="squid_lifi_text">{data.dex}</p> */}
+                                      <p className="squid_lifi_text">
+                                        {data?.steps[0].toolDetails?.name}
+                                      </p>
                                     </div>
-                                  </Accordion.Body>
-                                </Accordion.Item>
-                              </Accordion>
-                            </div>
-                            <div className="d-flex justify-content-between align-items-center mt-4 recieve_price_div d-flex justify-content-between">
-                              <h6>
-                                {/* 1 {tokenOne?.name} ~ {Number(data.fixedRate).toFixed(2)} {tokenTwo?.name} */}1{' '}
-                                {tokenOne?.name} ~ {data.tokenOutPerTokenIn} {tokenTwo?.name}
-                              </h6>
-                              <div className="d-flex gap-4">
-                                <p className='d-flex gap-2'>
-                                  <div className='my-auto'>
+                                  </div>
+                                </Accordion.Body>
+                              </Accordion.Item>
+                            </Accordion>
+                          </div>
+                          <div className="d-flex justify-content-between align-items-center mt-4 recieve_price_div d-flex justify-content-between">
+                            <h6>
+                              {/* 1 {tokenOne?.name} ~ {Number(data.fixedRate).toFixed(2)} {tokenTwo?.name} */}1{' '}
+                              {tokenOne?.name} ~ {data.tokenOutPerTokenIn} {tokenTwo?.name}
+                            </h6>
+                            <div className="d-flex gap-4">
+                              <p className='d-flex gap-2'>
+                                <div className='my-auto'>
                                   <GasIcon /></div><div className='my-auto'>$
                                   {data?.steps?.length > 0
                                     ? calculateTotalGasFeeUsd(data.steps).toFixed(5)
                                     : ""} </div>
-                                </p>
-                                {/* <p><GasIcon /> ${data?.lifiRoute?.gasCostUSD || Number(parseFloat(data.estimatedGasFeeFormatted.replace(/[^\d.]/g, '')) * bnbdollar).toFixed(5)}</p> */}
+                              </p>
+                              {/* <p><GasIcon /> ${data?.lifiRoute?.gasCostUSD || Number(parseFloat(data.estimatedGasFeeFormatted.replace(/[^\d.]/g, '')) * bnbdollar).toFixed(5)}</p> */}
 
-                                
-                                 
-                                <p className='d-flex gap-2'>
+
+
+                              <p className='d-flex gap-2'>
                                 <div className='my-auto'>
-                                    <ClockIcon />
-                                    </div>
-                                    <div className='my-auto'>
-                                    { data?.steps[0].estimate.executionDuration || '30'}s
-                                    </div>
-                                  </p>
-                                 
-                               
-                              </div>
+                                  <ClockIcon />
+                                </div>
+                                <div className='my-auto'>
+                                  {data?.steps[0].estimate.executionDuration || '30'}s
+                                </div>
+                              </p>
+
+
                             </div>
                           </div>
                         </div>
-                      ))}
+                      </div>
+                    ))}
                 </div>
               </div>
             </motion.li>
@@ -1631,7 +1493,7 @@ const [quoteListMetaData, setQuoteListMetaData] = useState<any>({});
               {/* <div className="my-2 ms-4">
                 <h1>{type} Aggregator </h1>
               </div> */}
-               {/* {quoteList?.length > 0 && (
+              {/* {quoteList?.length > 0 && (
                   <h1>{quoteList[activeIndex]?.label?.replace(/Aggregator/gi, '').trim() || ''} Aggregator </h1>
                 )} */}
               <div className="token_receive">
