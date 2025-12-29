@@ -1022,6 +1022,12 @@ const SwapCard = () => {
     Number(inputOne?.convertedValue);
 
 
+ const capitalizeFirstLetter = (string:any) => {
+  if (typeof string !== 'string' || string.length === 0) {
+    return '';
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
   return (
     <>
@@ -1490,12 +1496,12 @@ const SwapCard = () => {
               </div> */}
               </div>
 
-              {/* <div className="my-2 ms-4">
-                <h1>{type} Aggregator </h1>
-              </div> */}
-              {/* {quoteList?.length > 0 && (
-                  <h1>{quoteList[activeIndex]?.label?.replace(/Aggregator/gi, '').trim() || ''} Aggregator </h1>
-                )} */}
+              <div className="my-2 ms-4">
+                {/* <h1>{type} Aggregator </h1> */}
+                {quoteList?.length > 0 && (
+                  <h1>{capitalizeFirstLetter(quoteList[activeIndex]?.steps[0]?.tool?.replace(/Aggregator/gi, '').trim()) || ''} Aggregator </h1>
+                )}
+              </div>
               <div className="token_receive">
                 <div className="token_receive_leftSide">
                   <h6 className="mb-2">You Receive</h6>
