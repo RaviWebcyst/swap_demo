@@ -2083,7 +2083,7 @@ body.dark-theme .tokenBtn .tokenIcon {
 .bg-color{
     border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-    margin-bottom: 10rem;
+    // margin-bottom: 10rem;
   background: linear-gradient(149.47deg, #ffffff 3.23%, #dff9ff 90.15%);
 }
 
@@ -2099,10 +2099,13 @@ body.dark-theme .tokenBtn .tokenIcon {
 }
 
 body.dark-theme .bg-color{
-    border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-    margin-bottom: 10rem;
-  background: linear-gradient(141.68deg, #171717 3.52%, #08261f 96.69%);
+   background: url("../public/swap-bg.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+  //   border-bottom-left-radius: 20px;
+  // border-bottom-right-radius: 20px;
+  //   margin-bottom: 10rem;
+  // background: linear-gradient(141.68deg, #171717 3.52%, #08261f 96.69%);
 }
 
 body.dark-theme .bg-image {
