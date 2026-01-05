@@ -111,7 +111,7 @@ const ViewWallet = ({ logoutOnCick, justClose, address }: any) => {
           )}
 
           
-              <div className="connect_btn d-flex justify-content-center mt-3">
+              {/* <div className="connect_btn d-flex justify-content-center mt-3">
                 {' '}
                 <Button
                 className="h-100 p-3 px-4"
@@ -121,7 +121,7 @@ const ViewWallet = ({ logoutOnCick, justClose, address }: any) => {
                 >
                   Connect Another Wallet
                 </Button>
-              </div>
+              </div> */}
           
         </div>
       </section>

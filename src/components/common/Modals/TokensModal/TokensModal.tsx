@@ -1190,7 +1190,7 @@ const TokensModal = forwardRef<TokensModalRef, any>(
                         </div>
                         <ul style={{ overflowX: 'hidden', minHeight: '31rem' }} className="mt-3 mx-4">
                           {filteredNetworks.length > 0 ? (
-                            filteredNetworks.filter((data) => data?.key === "pol" || data.key === 'bas' || data.key === "sol" || data.key === "bsc" || data.key === 'eth' || data.key === "son" || data.key === "arb" || data.key === "xdc")
+                            filteredNetworks.filter((data) => data?.key === "pol" || data.key === 'bas' || data.key === "bsc" || data.key === 'eth')
                               .map((value: any, index: number) => {
                                 // const isChecked =
                                 //   store.getState().user.chainValues.currency ==
@@ -1323,7 +1323,7 @@ const TokensModal = forwardRef<TokensModalRef, any>(
 
                   <ul style={{ overflowX: 'hidden', minHeight: '40rem' }} className="mt-3 mx-4">
                     {filteredNetworks.length > 0 ? (
-                      filteredNetworks.filter((data) => data?.key === "pol" || data.key === 'bas' || data.key === "sol" || data.key === "bsc" || data.key === 'eth' || data.key === "son" || data.key === "arb" || data.key === "xdc")
+                      filteredNetworks.filter((data) => data?.key === "pol" || data.key === 'bas'  || data.key === "bsc" || data.key === 'eth' )
                         .map((value: any, index: number) => {
                           // const isChecked =
                           //   store.getState().user.chainValues.currency ==
