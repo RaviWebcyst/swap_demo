@@ -20,7 +20,7 @@ import { setTransactionCounter } from "../../../../features/theme/user.slice";
 import TxnModal from "../../../common/Modals/TxnModal/TxnModal";
 import { TOKEN_DATA } from "../../../../interfaces/Liquidity";
 import useIsWrongNetwork from "../../../../CustomHook/useisWrongNetwork";
-import { createConfig, EVM, executeRoute, Solana } from "@lifi/sdk";
+import { createConfig, EVM, executeRoute } from "@lifi/sdk";
 import { useWalletClient } from "wagmi";
 import { modal, useAppKitNetwork, useAppKitProvider } from "@reown/appkit/react";
 import { Provider } from "ethers";
@@ -44,8 +44,8 @@ const ReviewSwap = (props:any) => {
   const {
     walletAddress,
     chainValues,
-    solanawalletAddress
-  }: { walletAddress: string; chainValues: any,solanawalletAddress:any } = useAppSelector(
+    
+  }: { walletAddress: string; chainValues: any} = useAppSelector(
     (store: any) => store?.user
   );
   // const { state } = useLocation();
@@ -54,7 +54,6 @@ const ReviewSwap = (props:any) => {
     const { data: walletClient } = useWalletClient() // Wagmi wallet client
     const { setNetworkInReduxState } = useWalletConnect();
 
-    const { walletProvider: solanaProvider } = useAppKitProvider<Provider>("solana");
     const { walletProvider: evmProvider } = useAppKitProvider<Provider>("eip155");
 
     const [senderRes, setSenderRes] = useState<any>({
@@ -144,7 +143,7 @@ const ReviewSwap = (props:any) => {
   const handleSwap = async () => {
   
 
-      if ((tokenOne.chainId != 1151111081099710 && !walletAddress) || (tokenOne.chainId == 1151111081099710 && !solanawalletAddress)) return; // not connected then return
+      if ((tokenOne.chainId != 1151111081099710 && !walletAddress) ) return; // not connected then return
 
       if (state.tokenDetails.tokenOneData.chainId !== state.tokenDetails.tokenTwoData.chainId) { // chain according set transaction loading modal
         setShowBridge(true)
@@ -192,18 +191,13 @@ const ReviewSwap = (props:any) => {
               [137]: ["https://polygon-bor-rpc.publicnode.com"],
               [1]: ['https://ethereum-rpc.publicnode.com'],
               [56]: ['https://bsc-dataseed.binance.org'],
-              [1151111081099710]: ['https://solana-mainnet.g.alchemy.com/v2/9a-QjODy8s7aOykW9t83SGhzmB0CJeKq'],
 
             },
             providers: [
               EVM({
                 getWalletClient: async () => walletClient as any,
               }),
-              Solana({
-                async getWalletAdapter() {
-                  return solanaProvider as any;
-                },
-              }),
+              
             ],
           })
 
@@ -217,9 +211,7 @@ const ReviewSwap = (props:any) => {
           let options: any = {
 
             executionSettings: { // execution setting for lifi sdk
-              solana: {
-                walletAdapter: solanaProvider
-              },
+              
               gasZip: {
                 enabled: true,  // enable gaszip transaction
               },

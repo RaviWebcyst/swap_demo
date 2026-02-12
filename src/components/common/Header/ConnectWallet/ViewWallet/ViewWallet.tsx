@@ -17,7 +17,6 @@ import './ViewWallet.scss'
 
 import {
   resetUserSlice,
-  setSolanaWalletAddress,
   setUserConnected,
   setWalletAddress,
 } from '../../../../../features/theme/user.slice'
@@ -27,10 +26,9 @@ import { useAppKit, useAppKitAccount, useDisconnect, useWalletInfo } from '@reow
 
 
 const ViewWallet = ({ logoutOnCick, justClose, address }: any) => {
-  const { solanawalletAddress }: { solanawalletAddress: any } = useAppSelector((store: any) => store?.user)
+  
 
   var wallet = useWalletInfo()
-  var { walletInfo } = useWalletInfo('solana')
   var { walletInfo: evmWallet } = useWalletInfo('eip155')
   const { open } = useAppKit()
 
@@ -49,11 +47,7 @@ const ViewWallet = ({ logoutOnCick, justClose, address }: any) => {
 
   }
 
-  const handleDisconnectSolana = async () => {
-    await disconnect({ namespace: 'solana' })
-    dispatch(setSolanaWalletAddress(''))
-    justClose()
-  }
+
 
   return (
     <>
@@ -89,26 +83,7 @@ const ViewWallet = ({ logoutOnCick, justClose, address }: any) => {
               </div>
             </div>
           )}
-          {solanawalletAddress && (
-            <div className="viewWallet_tophead solana">
-              <div className="viewWallet_tophead_connectIcon">
-                {/* <img src={icon} alt="rezorIcon" /> */}
-                <img src={walletInfo?.icon} alt="rezorIcon" />
-                {/* <span className="walletIcon">
-               <img src={metamask} alt="wallet" />
-             </span> */}
-                <h6>{customizeAddress(solanawalletAddress || '')}</h6>
-              </div>
-              <div className="viewWallet_tophead_rightBtn">
-                <Button className="without_bg_border btnlogout" onClick={() => handleDisconnectSolana()}>
-                  <LogoutIcon />
-                  <span className="d-flex align-items-center" onClick={() => handleDisconnectSolana}>
-                    <LogoutIcon /> Disconnect
-                  </span>
-                </Button>
-              </div>
-            </div>
-          )}
+          
 
           
               {/* <div className="connect_btn d-flex justify-content-center mt-3">

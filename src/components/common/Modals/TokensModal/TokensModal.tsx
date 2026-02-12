@@ -37,7 +37,7 @@ import { customizeAddress } from "../../../../utils/helpers";
 import { custom } from "viem";
 import store from "../../../../app/store";
 import { useAppKitNetwork } from "@reown/appkit/react";
-import { mainnet, bsc, solana } from "@reown/appkit/networks";
+import { mainnet, bsc } from "@reown/appkit/networks";
 import { NetworkTypes } from "../../../../interfaces/common";
 import { useSelector } from "react-redux";
 import * as chains from "viem/chains";

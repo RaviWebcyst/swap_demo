@@ -26,8 +26,7 @@ const ConnectWallet = (props: propTypes) => {
   const {
   
     walletAddress,
-    solanawalletAddress,
-  }: {walletAddress:any,solanawalletAddress:any } = useAppSelector(
+  }: {walletAddress:any } = useAppSelector(
     (store: any) => store?.user);
 
 
@@ -49,12 +48,12 @@ const ConnectWallet = (props: propTypes) => {
   return (
     <>
       <Offcanvas
-        className={`connect_wallet ${walletAddress && solanawalletAddress ? 'heightBoth' : solanawalletAddress || walletAddress ?'wallet_heights' : ''}`}
+        className={`connect_wallet ${walletAddress  ? 'heightBoth' :  walletAddress ?'wallet_heights' : ''}`}
         show={props.show}
         placement="end"
         onHide={props.handleClose}
       >
-        {!walletAddress && !solanawalletAddress ? (
+        {!walletAddress  ? (
           <>
             <div className="action_btn">
               <button className="croseBtn" onClick={() => props?.handleClose()}>
