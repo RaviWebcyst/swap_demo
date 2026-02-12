@@ -632,9 +632,10 @@ const SwapCard = () => {
       convertedValue: value,
       inputValue: toCustomFixed(amount, 7),
       toolTipValue: amount,
-    })
+    });
+    
 
-    setTk2DollarValue(data?.lifiRoute?.toAmountUSD)
+    setTk2DollarValue(data?.toAmountUSD)
 
   }
 
