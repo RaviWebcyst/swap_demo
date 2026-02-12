@@ -8,7 +8,8 @@ module.exports = function override(config) {
     buffer: require.resolve("buffer"),
 
     // 👇 IMPORTANT FIX
-    process: require.resolve("process/browser.js")
+    process: require.resolve("process/browser.js"),
+     vm: false,
   };
 
   config.resolve.alias = {
