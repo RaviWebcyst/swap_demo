@@ -134,7 +134,7 @@ export const networkConfig = (chainId: number = NETWORKS[0].chainId) => {
 export const metadata = {
   name: " swap",
   description: " swap WalletConnect",
-  url: "http://localhost:3000",
+  url: "https://swap-demo-beryl.vercel.app/",
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
