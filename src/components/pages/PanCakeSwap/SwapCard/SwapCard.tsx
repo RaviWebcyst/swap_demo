@@ -634,7 +634,7 @@ const SwapCard = () => {
       toolTipValue: amount,
     });
     
-
+    // set out token price in dollars
     setTk2DollarValue(data?.toAmountUSD)
 
   }
